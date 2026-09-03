@@ -1,0 +1,1914 @@
+<!DOCTYPE html  PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'  'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'><html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>OWL 2 Web Ontology Language Profiles (Second Edition)</title>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <style type="text/css">
+   .editsection { display: none; }
+</style>
+<link href="owl.css" rel="stylesheet" type="text/css" />
+<link href="https://www.w3.org/StyleSheets/TR/W3C-REC" rel="stylesheet" type="text/css" />
+
+  
+</head>
+<body>
+
+<div class="head">
+<a href="https://www.w3.org/"><img alt="W3C" height="48" src="https://www.w3.org/Icons/w3c_home" width="72" /></a><h1 id="title" style="clear:both">OWL 2 Web 本体语言 <br /><span id="short-title">剖面（第二版）</span></h1>
+
+<h2 id="W3C-doctype">W3C 推荐标准 2012年12月11日</h2>
+
+<!-- no inplace warning -->
+<dl>
+<dt>This version:</dt>
+<dd><a href="https://www.w3.org/TR/2012/REC-owl2-profiles-20121211/" id="this-version-url">http://www.w3.org/TR/2012/REC-owl2-profiles-20121211/</a></dd>
+
+<dt>Latest version (series 2):</dt>
+<dd><a href="https://www.w3.org/TR/owl2-profiles/">http://www.w3.org/TR/owl2-profiles/</a></dd>
+
+<dt>Latest Recommendation:</dt>
+<dd><a href="https://www.w3.org/TR/owl-profiles">http://www.w3.org/TR/owl-profiles</a></dd>
+
+<dt>Previous version:</dt>
+<dd><a href="https://www.w3.org/TR/2012/PER-owl2-profiles-20121018/">http://www.w3.org/TR/2012/PER-owl2-profiles-20121018/</a></dd>
+</dl>
+
+<dl><dt>Editors:</dt><dd><a href="http://www.cs.ox.ac.uk/people/boris.motik/">Boris Motik</a>, University of Oxford</dd>
+<dd><a href="http://www.cs.ox.ac.uk/people/bernardo.cuencagrau/">Bernardo Cuenca Grau</a>, University of Oxford</dd>
+<dd><a href="http://www.cs.ox.ac.uk/people/ian.horrocks/">Ian Horrocks</a>, University of Oxford</dd>
+<dd><a href="https://www.w3.org/2007/OWL/wiki/Zhe_Wu">Zhe Wu</a>, Oracle</dd>
+<dd><a href="http://domino.research.ibm.com/comm/research_people.nsf/pages/achille.index.html">Achille Fokoue</a>, IBM Corporation</dd>
+<dd><a href="http://www.informatik.uni-bremen.de/~clu/">Carsten Lutz</a>, University of Bremen</dd>
+<dt>Contributors: (in alphabetical order)</dt><dd><a href="http://www.inf.unibz.it/~calvanese/">Diego Calvanese</a>, Free University of Bozen-Bolzano</dd>
+<dd><a href="http://semanticweb.org/wiki/Jeremy_J._Carroll">Jeremy Carroll</a>, HP (now at TopQuadrant)</dd>
+<dd><a href="http://www.dis.uniroma1.it/~degiacom/">Giuseppe De Giacomo</a>, Sapienza Universit&agrave; di Roma</dd>
+<dd><a href="http://tw.rpi.edu/wiki/James_A._Hendler">Jim Hendler</a>, Rensselaer Polytechnic Institute</dd>
+<dd><a href="https://www.w3.org/People/Ivan/">Ivan Herman</a>, W3C/ERCIM</dd>
+<dd><a href="http://www.cs.man.ac.uk/~bparsia/">Bijan Parsia</a>, University of Manchester</dd>
+<dd>Peter F. Patel-Schneider, Nuance Communications</dd>
+<dd><a href="http://sciencecommons.org/about/whoweare/ruttenberg/">Alan Ruttenberg</a>, Science Commons (Creative Commons)</dd>
+<dd><a href="http://www.cs.man.ac.uk/~sattler/">Uli Sattler</a>, University of Manchester</dd>
+<dd><a href="http://www.fzi.de/michael.schneider">Michael Schneider</a>, FZI Research Center for Information Technology</dd>
+</dl>
+
+<p>Please refer to the <a href="https://www.w3.org/2007/OWL/errata"><strong>errata</strong></a> for this document, which may include some normative corrections.</p>
+
+<p>A <a href="https://www.w3.org/TR/2012/REC-owl2-profiles-20121211/diff-from-20121018">color-coded version of this document showing changes made since the previous version</a> is also available.</p><p>This document is also available in these non-normative formats: <a href="https://www.w3.org/2012/pdf/REC-owl2-profiles-20121211.pdf">PDF version</a>.</p>
+
+<p>See also <a href="https://www.w3.org/2007/OWL/translation/owl2-profiles">translations</a>.</p>
+
+<p class="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> &copy; 2012 <a href="https://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>&reg;</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.eu/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>), All Rights Reserved. W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
+
+</div>
+<hr />
+<h2><a id="abstract" name="abstract">摘要</a></h2>
+
+<div>
+<div><p>OWL 2 Web 本体语言（非正式称为 OWL 2）是一种用于语义万维网的本体语言，具有形式化定义的语义。OWL 2 本体提供类、属性、个体和数据值，并以语义万维网文档的形式存储。OWL 2 本体可以与用 RDF 书写的信息一起使用，而 OWL 2 本体本身也主要以 RDF 文档的形式进行交换。OWL 2 <a href="https://www.w3.org/TR/2012/REC-owl2-overview-20121211/" title="Document Overview">文档概述</a>描述了 OWL 2 的总体状况，应在阅读其他 OWL 2 文档之前先行阅读。</p><p>本文档给出了 OWL 2 若干剖面（profile）的规范，这些剖面可以被更简单和/或更高效地实现。在逻辑学中，剖面通常被称为片段。大多数剖面是通过对 OWL 2 本体的结构施加限制来定义的。这些限制通过修改函数式语法的产生式来规定。</p></div>
+</div>
+
+<h2 class="no-toc no-num">
+<a id="w3c_status" name="w3c_status">本文档状态</a>
+</h2>
+    
+<h4 class="no-toc no-num" id="may-be">可能被取代</h4>
+    
+<p><em>本节描述本文档发布时的状态。其他文档可能会取代本文档。当前的 W3C 出版物列表以及本技术报告的最新修订版，可在 http://www.w3.org/TR/ 的 <a href="https://www.w3.org/TR/">W3C 技术报告索引</a>中找到。</em></p>
+
+    
+
+<!-- no eventStatusExtra -->
+
+<!-- no statusExtra -->
+
+<div></div>
+
+
+
+           <h4 class="no-toc no-num" id="status-changes">变更摘要</h4>
+
+            <div>自<a href="https://www.w3.org/TR/2012/PER-owl2-profiles-20121018/">上一版本</a>以来，没有任何<a href="https://www.w3.org/2005/10/Process-20051014/tr#substantive-change">实质性</a>变更。有关次要变更的详情，请参见<a href="#changelog">变更日志</a>和<a href="https://www.w3.org/TR/2012/REC-owl2-profiles-20121211/diff-from-20121018">彩色标注的差异对照</a>。</div>
+
+
+
+<h4 class="no-toc no-num" id="please">请发送评论</h4><p>请将任何评论发送至 <a class="mailto" href="mailto:public-owl-comments@w3.org">public-owl-comments@w3.org</a>
+    （<a class="http" href="http://lists.w3.org/Archives/Public/public-owl-comments/">公开
+    存档</a>）。尽管 <a href="https://www.w3.org/2007/OWL/">OWL 工作组</a>对本文档的工作已经完成，评论仍可能在<a href="https://www.w3.org/2007/OWL/errata">勘误表</a>或未来的修订版中得到处理。欢迎开发者在 <a class="mailto" href="mailto:public-owl-dev@w3.org">public-owl-dev@w3.org</a>（<a class="http" href="http://lists.w3.org/Archives/Public/public-owl-dev/">公开存档</a>）开展公开讨论。</p>
+    
+<h4 class="no-toc no-num" id="endorsement">已获 W3C 认可</h4>
+    
+<p><em>本文档已经 W3C 会员、软件开发者以及其他 W3C 小组和利益相关方审阅，并已获理事长（Director）认可为 W3C 推荐标准。这是一份稳定的文档，可用作参考材料或被其他文档引用。W3C 在制定推荐标准过程中的作用是提请各方关注本规范并促进其广泛部署。这有助于增强万维网的功能与互操作性。</em></p>
+
+
+<h4 class="no-toc no-num" id="patents">专利</h4>
+    
+<p><em>本文档由一个依据 <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/">2004 年 2 月 5 日 W3C 专利政策</a>运作的小组制定。W3C 维护着一份与该小组成果相关的<a href="https://www.w3.org/2004/01/pp-impl/41712/status" rel="disclosure">专利披露公开列表</a>；该页面还包含披露专利的说明。</em></p>
+
+<hr title="Separator After Status Section" />
+
+
+<table class="toc" id="toc" summary="Contents"><tbody><tr><td><div id="toctitle"><h2>目录</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">引言</span></a></li>
+<li class="toclevel-1"><a href="#OWL_2_EL"><span class="tocnumber">2</span> <span class="toctext">OWL 2 EL</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Feature_Overview"><span class="tocnumber">2.1</span> <span class="toctext">特性概览</span></a></li>
+<li class="toclevel-2"><a href="#Profile_Specification"><span class="tocnumber">2.2</span> <span class="toctext">剖面规范</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Entities"><span class="tocnumber">2.2.1</span> <span class="toctext">实体</span></a></li>
+<li class="toclevel-3"><a href="#Property_Expressions"><span class="tocnumber">2.2.2</span> <span class="toctext">属性表达式</span></a></li>
+<li class="toclevel-3"><a href="#Class_Expressions"><span class="tocnumber">2.2.3</span> <span class="toctext">类表达式</span></a></li>
+<li class="toclevel-3"><a href="#Data_Ranges"><span class="tocnumber">2.2.4</span> <span class="toctext">数据范围</span></a></li>
+<li class="toclevel-3"><a href="#Axioms"><span class="tocnumber">2.2.5</span> <span class="toctext">公理</span></a></li>
+<li class="toclevel-3"><a href="#Global_Restrictions"><span class="tocnumber">2.2.6</span> <span class="toctext">全局限制</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#OWL_2_QL"><span class="tocnumber">3</span> <span class="toctext">OWL 2 QL</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Feature_Overview_2"><span class="tocnumber">3.1</span> <span class="toctext">特性概览</span></a></li>
+<li class="toclevel-2"><a href="#Profile_Specification_2"><span class="tocnumber">3.2</span> <span class="toctext">剖面规范</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Entities_2"><span class="tocnumber">3.2.1</span> <span class="toctext">实体</span></a></li>
+<li class="toclevel-3"><a href="#Property_Expressions_2"><span class="tocnumber">3.2.2</span> <span class="toctext">属性表达式</span></a></li>
+<li class="toclevel-3"><a href="#Class_Expressions_2"><span class="tocnumber">3.2.3</span> <span class="toctext">类表达式</span></a></li>
+<li class="toclevel-3"><a href="#Data_Ranges_2"><span class="tocnumber">3.2.4</span> <span class="toctext">数据范围</span></a></li>
+<li class="toclevel-3"><a href="#Axioms_2"><span class="tocnumber">3.2.5</span> <span class="toctext">公理</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#OWL_2_RL"><span class="tocnumber">4</span> <span class="toctext">OWL 2 RL</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Feature_Overview_3"><span class="tocnumber">4.1</span> <span class="toctext">特性概览</span></a></li>
+<li class="toclevel-2"><a href="#Profile_Specification_3"><span class="tocnumber">4.2</span> <span class="toctext">剖面规范</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Entities_3"><span class="tocnumber">4.2.1</span> <span class="toctext">实体</span></a></li>
+<li class="toclevel-3"><a href="#Property_Expressions_3"><span class="tocnumber">4.2.2</span> <span class="toctext">属性表达式</span></a></li>
+<li class="toclevel-3"><a href="#Class_Expressions_3"><span class="tocnumber">4.2.3</span> <span class="toctext">类表达式</span></a></li>
+<li class="toclevel-3"><a href="#Data_Ranges_3"><span class="tocnumber">4.2.4</span> <span class="toctext">数据范围</span></a></li>
+<li class="toclevel-3"><a href="#Axioms_3"><span class="tocnumber">4.2.5</span> <span class="toctext">公理</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules"><span class="tocnumber">4.3</span> <span class="toctext">使用规则在 OWL 2 RL 与 RDF 图上进行推理</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Computational_Properties"><span class="tocnumber">5</span> <span class="toctext">计算性质</span></a></li>
+<li class="toclevel-1"><a href="#Appendix:_Complete_Grammars_for_Profiles"><span class="tocnumber">6</span> <span class="toctext">附录：各剖面的完整文法</span></a>
+<ul>
+<li class="toclevel-2"><a href="#OWL_2_EL_2"><span class="tocnumber">6.1</span> <span class="toctext">OWL 2 EL</span></a></li>
+<li class="toclevel-2"><a href="#OWL_2_QL_2"><span class="tocnumber">6.2</span> <span class="toctext">OWL 2 QL</span></a></li>
+<li class="toclevel-2"><a href="#OWL_2_RL_2"><span class="tocnumber">6.3</span> <span class="toctext">OWL 2 RL</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Appendix:_Change_Log_.28Informative.29"><span class="tocnumber">7</span> <span class="toctext">附录：变更日志（非规范性）</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Changes_Since_Recommendation"><span class="tocnumber">7.1</span> <span class="toctext">自推荐标准以来的变更</span></a></li>
+<li class="toclevel-2"><a href="#Changes_Since_Proposed_Recommendation"><span class="tocnumber">7.2</span> <span class="toctext">自提案推荐标准以来的变更</span></a></li>
+<li class="toclevel-2"><a href="#Changes_Since_Candidate_Recommendation"><span class="tocnumber">7.3</span> <span class="toctext">自候选推荐标准以来的变更</span></a></li>
+<li class="toclevel-2"><a href="#Changes_Since_Last_Call"><span class="tocnumber">7.4</span> <span class="toctext">自最终征求意见以来的变更</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Acknowledgments"><span class="tocnumber">8</span> <span class="toctext">致谢</span></a></li>
+<li class="toclevel-1"><a href="#References"><span class="tocnumber">9</span> <span class="toctext">参考文献</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Normative_References"><span class="tocnumber">9.1</span> <span class="toctext">规范性参考文献</span></a></li>
+<li class="toclevel-2"><a href="#Nonnormative_References"><span class="tocnumber">9.2</span> <span class="toctext">非规范性参考文献</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></tbody></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<p><br />
+</p>
+<a id="Introduction" name="Introduction"></a><h2> <span class="mw-headline">1  引言 </span></h2>
+<p>OWL 2 <i>剖面</i>（在计算逻辑中通常称为<i>片段</i>或<i>子语言</i>）是 OWL 2 的精简版本，它以牺牲部分表达能力为代价来换取推理效率。本文档描述 OWL 2 的三个剖面，每个剖面以不同的方式实现效率，并适用于不同的应用场景。各剖面彼此独立，因此（潜在）用户可以跳过他们不感兴趣的剖面描述。实践中选择使用哪个剖面，取决于手头本体的结构和推理任务（有关理解和选择剖面的更多帮助，请参见 OWL 2 入门 [<cite><a href="#ref-owl-2-primer" title="">OWL 2 Primer</a></cite>] 的<a href="https://www.w3.org/TR/2012/REC-owl2-primer-20121211/#OWL_2_Profiles" title="Primer">第 10 节</a>）。
+</p>
+<ul><li> <b>OWL 2 EL</b> 特别适用于那些所用本体包含大量属性和/或类的应用。该剖面捕获了许多此类本体所使用的表达能力，并且是 OWL 2 的一个子集，其基本推理问题可以在关于本体规模的多项式时间内完成 [<cite><a href="#ref-ELpp" title="">EL++</a></cite>]（有关计算复杂度的更多信息，请参见<a href="#Computational_Properties" title="">第 5 节</a>）。已有针对该剖面的专用推理算法，且已被证明能够以高度可扩展的方式实现。EL 这一缩写反映了该剖面以 EL 描述逻辑族 [<cite><a href="#ref-ELpp" title="">EL++</a></cite>] 为基础，这类逻辑仅提供存在量化。
+</li><li> <b>OWL 2 QL</b> 面向使用海量实例数据、且查询应答是最重要推理任务的应用。在 OWL 2 QL 中，合取查询应答可以使用传统的关系数据库系统来实现。采用合适的推理技术，关于数据（断言）的规模，可靠且完备的合取查询应答可以在 LOGSPACE 内完成。与 OWL 2 EL 一样，可以使用多项式时间算法来实现本体一致性和类表达式归约推理问题。该剖面的表达能力必然相当有限，尽管它确实包含了概念模型（如 UML 类图和 ER 图）的大多数主要特征。QL 这一缩写反映了这样一个事实：该剖面中的查询应答可以通过将查询重写为一种标准的关系查询语言（Query Language）来实现。
+</li><li> <b>OWL 2 RL</b> 面向需要在不牺牲过多表达能力的情况下实现可扩展推理的应用。它旨在同时容纳以下两类应用：可以用语言的完整表达力换取效率的 OWL 2 应用，以及需要增加一些表达力的 RDF(S) 应用。OWL 2 RL 推理系统可以使用基于规则的推理引擎来实现。本体一致性、类表达式可满足性、类表达式归约、实例检查以及合取查询应答问题，都可以在关于本体规模的多项式时间内求解。RL 这一缩写反映了这样一个事实：该剖面中的推理可以使用一种标准的规则语言（Rule Language）来实现。
+</li></ul>
+<p>OWL 2 剖面是通过对 OWL 2 本体的结构施加限制来定义的。句法限制可以通过修改函数式语法 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 的文法并可能附加全局限制来规定。在本文档中，修改后的文法以两种方式给出。在每个剖面定义中，仅给出与完整文法不同的部分；也就是说，仅呈现与函数式语法不同的产生式，而与函数式语法相同的产生式不再重复。此外，每个剖面的完整文法在<a href="#Appendix:_Complete_Grammars_for_Profiles" title="">附录</a>中给出。请注意，任何一个剖面都不是另一个剖面的子集。
+</p><p>任何剖面中的本体都可以使用 OWL 2 的任意一种语法写入本体文档。
+</p><p>除了此处规定的剖面之外，还存在许多其他可能的 OWL 2 剖面&mdash;&mdash;例如，有一整个扩展 OWL 2 QL 的剖面族。本文档未列出 OWL Lite [<cite><a href="#ref-owl-1-reference" title="">OWL 1 Reference</a></cite>]；然而，所有 OWL Lite 本体都是 OWL 2 本体，因此 OWL Lite 可以被视为 OWL 2 的一个剖面。类似地，OWL 1 DL 也可以被视为 OWL 2 的一个剖面。
+</p><p>斜体关键词 <em class="RFC2119" title="MUST in RFC 2119 context">必须</em>、<em class="RFC2119" title="MUST NOT in RFC 2119 context">不得</em>、<em class="RFC2119" title="SHOULD in RFC 2119 context">应当</em>、<em class="RFC2119" title="SHOULD NOT in RFC 2119 context">不应当</em>和 <em class="RFC2119" title="MAY in RFC 2119 context">可以</em>用于规定 OWL 2 文档和工具的规范性特征，其含义按照 RFC 2119 [<cite><a href="#ref-rfc-2119" title="">RFC 2119</a></cite>] 的规定解释。
+</p>
+<a id="OWL_2_EL" name="OWL_2_EL"></a><h2> <span class="mw-headline">2  OWL 2 EL </span></h2>
+<p>OWL 2 EL 剖面 [<cite><a href="#ref-ELpp" title="">EL++</a></cite>,<cite><a href="#ref-ELppUpd" title="">EL++ Update</a></cite>] 被设计为 OWL 2 的一个子集，它
+</p>
+<ul><li> 特别适用于所用本体定义了大量类和/或属性的应用，
+</li><li> 捕获了许多此类本体所使用的表达能力，并且
+</li><li> 其本体一致性、类表达式归约和实例检查均可在多项式时间内判定。
+</li></ul>
+<p>例如，OWL 2 EL 提供的类构造子足以表达超大型生物医学本体 SNOMED CT [<cite><a href="#ref-snomed-ct" title="">SNOMED CT</a></cite>]。
+</p>
+<a id="Feature_Overview" name="Feature_Overview"></a><h3> <span class="mw-headline">2.1  特性概览 </span></h3>
+<p>OWL 2 EL 对可在公理中使用的类约束的类型施加限制。具体而言，支持以下类型的类约束：
+</p>
+<ul><li> 对类表达式的存在量化（<span class="nonterminal">ObjectSomeValuesFrom</span>）或对数据范围的存在量化（<span class="nonterminal">DataSomeValuesFrom</span>）
+</li><li> 对个体的存在量化（<span class="nonterminal">ObjectHasValue</span>）或对字面量的存在量化（<span class="nonterminal">DataHasValue</span>）
+</li><li> 自身约束（<span class="nonterminal">ObjectHasSelf</span>）
+</li><li> 仅涉及<i>单个</i>个体的枚举（<span class="nonterminal">ObjectOneOf</span>）或仅涉及<i>单个</i>字面量的枚举（<span class="nonterminal">DataOneOf</span>）
+</li><li> 类的交（<span class="nonterminal">ObjectIntersectionOf</span>）与数据范围的交（<span class="nonterminal">DataIntersectionOf</span>）
+</li></ul>
+<p>OWL 2 EL 支持以下公理，所有这些公理都被限制在允许的类表达式集合之内：
+</p>
+<ul><li> 类包含（<span class="nonterminal">SubClassOf</span>）
+</li><li> 类等价（<span class="nonterminal">EquivalentClasses</span>）
+</li><li> 类互斥（<span class="nonterminal">DisjointClasses</span>）
+</li><li> 对象属性包含（<span class="nonterminal">SubObjectPropertyOf</span>，含或不含属性链）与数据属性包含（<span class="nonterminal">SubDataPropertyOf</span>）
+</li><li> 属性等价（<span class="nonterminal">EquivalentObjectProperties</span> 和 <span class="nonterminal">EquivalentDataProperties</span>），
+</li><li> 传递对象属性（<span class="nonterminal">TransitiveObjectProperty</span>）
+</li><li> 自反对象属性（<span class="nonterminal">ReflexiveObjectProperty</span>）
+</li><li> 定义域限制（<span class="nonterminal">ObjectPropertyDomain</span> 和 <span class="nonterminal">DataPropertyDomain</span>）
+</li><li> 值域限制（<span class="nonterminal">ObjectPropertyRange</span> 和 <span class="nonterminal">DataPropertyRange</span>）
+</li><li> 断言（<span class="nonterminal">SameIndividual</span>、<span class="nonterminal">DifferentIndividuals</span>、<span class="nonterminal">ClassAssertion</span>、<span class="nonterminal">ObjectPropertyAssertion</span>、<span class="nonterminal">DataPropertyAssertion</span>、<span class="nonterminal">NegativeObjectPropertyAssertion</span> 和 <span class="nonterminal">NegativeDataPropertyAssertion</span>）
+</li><li> 函数式数据属性（<span class="nonterminal">FunctionalDataProperty</span>）
+</li><li> 键（<span class="nonterminal">HasKey</span>）
+</li></ul>
+<p>OWL 2 EL 不支持以下构造：
+</p>
+<ul><li> 对类表达式的全称量化（<span class="nonterminal">ObjectAllValuesFrom</span>）或对数据范围的全称量化（<span class="nonterminal">DataAllValuesFrom</span>）
+</li><li> 基数约束（<span class="nonterminal">ObjectMaxCardinality</span>、<span class="nonterminal">ObjectMinCardinality</span>、<span class="nonterminal">ObjectExactCardinality</span>、<span class="nonterminal">DataMaxCardinality</span>、<span class="nonterminal">DataMinCardinality</span> 和 <span class="nonterminal">DataExactCardinality</span>）
+</li><li> 析取（<span class="nonterminal">ObjectUnionOf</span>、<span class="nonterminal">DisjointUnion</span> 和 <span class="nonterminal">DataUnionOf</span>）
+</li><li> 类取反（<span class="nonterminal">ObjectComplementOf</span>）
+</li><li> 涉及多个个体的枚举（<span class="nonterminal">ObjectOneOf</span> 和 <span class="nonterminal">DataOneOf</span>）
+</li><li> 互斥属性（<span class="nonterminal">DisjointObjectProperties</span> 和 <span class="nonterminal">DisjointDataProperties</span>）
+</li><li> 非自反对象属性（<span class="nonterminal">IrreflexiveObjectProperty</span>）
+</li><li> 逆对象属性（<span class="nonterminal">InverseObjectProperties</span>）
+</li><li> 函数式及反函数式对象属性（<span class="nonterminal">FunctionalObjectProperty</span> 和 <span class="nonterminal">InverseFunctionalObjectProperty</span>）
+</li><li> 对称对象属性（<span class="nonterminal">SymmetricObjectProperty</span>）
+</li><li> 反对称对象属性（<span class="nonterminal">AsymmetricObjectProperty</span>）
+</li></ul>
+<a id="Profile_Specification" name="Profile_Specification"></a><h3> <span class="mw-headline">2.2  剖面规范 </span></h3>
+<p>以下各节规定 OWL 2 EL 本体的结构。
+</p>
+<a id="Entities" name="Entities"></a><h4> <span class="mw-headline">2.2.1  实体 </span></h4>
+<p>实体在 OWL 2 EL 中的定义方式与结构规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 相同，且 OWL 2 EL 支持所有预定义类和属性。此外，OWL 2 EL 支持以下数据类型：
+</p>
+<ul><li> <i>rdf:PlainLiteral</i>
+</li><li> <i>rdf:XMLLiteral</i>
+</li><li> <i>rdfs:Literal</i>
+</li><li> <i>owl:real</i>
+</li><li> <i>owl:rational</i>
+</li><li> <i>xsd:decimal</i>
+</li><li> <i>xsd:integer</i>
+</li><li> <i>xsd:nonNegativeInteger</i>
+</li><li> <i>xsd:string</i>
+</li><li> <i>xsd:normalizedString</i>
+</li><li> <i>xsd:token</i>
+</li><li> <i>xsd:Name</i>
+</li><li> <i>xsd:NCName</i>
+</li><li> <i>xsd:NMTOKEN</i>
+</li><li> <i>xsd:hexBinary</i>
+</li><li> <i>xsd:base64Binary</i>
+</li><li> <i>xsd:anyURI</i>
+</li><li> <i>xsd:dateTime</i>
+</li><li> <i>xsd:dateTimeStamp</i>
+</li></ul>
+<p>所支持数据类型集合的设计使得：这些类型中任意一组的值空间之交要么为空、要么无限，这是获得所需计算性质 [<cite><a href="#ref-ELpp" title="">EL++</a></cite>] 所必需的。因此，以下数据类型<em class="RFC2119" title="MUST NOT in RFC 2119 context">不得</em>在 OWL 2 EL 中使用：<i>xsd:double</i>、<i>xsd:float</i>、<i>xsd:nonPositiveInteger</i>、<i>xsd:positiveInteger</i>、<i>xsd:negativeInteger</i>、<i>xsd:long</i>、<i>xsd:int</i>、<i>xsd:short</i>、<i>xsd:byte</i>、<i>xsd:unsignedLong</i>、<i>xsd:unsignedInt</i>、<i>xsd:unsignedShort</i>、<i>xsd:unsignedByte</i>、<i>xsd:language</i> 和 <i>xsd:boolean</i>。
+</p><p>最后，OWL 2 EL 不支持匿名个体。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">Individual</span>&nbsp;:= <span class="nonterminal">NamedIndividual</span>
+</p>
+</div>
+<a id="Property_Expressions" name="Property_Expressions"></a><h4> <span class="mw-headline">2.2.2  属性表达式 </span></h4>
+<p>OWL 2 EL 不支持逆属性，因此对象属性表达式被限制为具名属性。数据属性表达式的定义方式与结构规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 相同。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">ObjectPropertyExpression</span>&nbsp;:= <span class="nonterminal">ObjectProperty</span>
+</p>
+</div>
+<a id="Class_Expressions" name="Class_Expressions"></a><h4> <span class="mw-headline">2.2.3   类表达式 </span></h4>
+<p>为了支持高效推理，OWL 2 EL 将所支持的类表达式集合限制为 <span class="nonterminal">ObjectIntersectionOf</span>、<span class="nonterminal">ObjectSomeValuesFrom</span>、<span class="nonterminal">ObjectHasSelf</span>、<span class="nonterminal">ObjectHasValue</span>、<span class="nonterminal">DataSomeValuesFrom</span>、<span class="nonterminal">DataHasValue</span>，以及仅包含单个个体的 <span class="nonterminal">ObjectOneOf</span>。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">ClassExpression</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">Class</span> | <span class="nonterminal">ObjectIntersectionOf</span> | <span class="nonterminal">ObjectOneOf</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">ObjectSomeValuesFrom</span> | <span class="nonterminal">ObjectHasValue</span> | <span class="nonterminal">ObjectHasSelf</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DataSomeValuesFrom</span> | <span class="nonterminal">DataHasValue</span><br />
+<span class="nonterminal">ObjectOneOf</span>&nbsp;:= 'ObjectOneOf' '(' <span class="nonterminal">Individual</span> ')'
+</p>
+</div>
+<a id="Data_Ranges" name="Data_Ranges"></a><h4> <span class="mw-headline">2.2.4  数据范围 </span></h4>
+<p>在 OWL 2 EL 中，数据范围表达式被限制为 OWL 2 EL 所承认的预定义数据类型、数据范围的交，以及仅由单个字面量构成的字面量枚举。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">DataRange</span>&nbsp;:= <span class="nonterminal">Datatype</span> | <span class="nonterminal">DataIntersectionOf</span> | <span class="nonterminal">DataOneOf</span><br />
+<span class="nonterminal">DataOneOf</span>&nbsp;:= 'DataOneOf' '(' <span class="nonterminal">Literal</span> ')'
+</p>
+</div>
+<a id="Axioms" name="Axioms"></a><h4> <span class="mw-headline">2.2.5  公理 </span></h4>
+<p>OWL 2 EL 的类公理与结构规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 相同，唯一的例外是不允许使用 <span class="nonterminal">DisjointUnion</span>。各类公理的定义方式与结构规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 相同，不同之处在于它们使用 <span class="nonterminal">ClassExpression</span> 的新定义。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">ClassAxiom</span>&nbsp;:= <span class="nonterminal">SubClassOf</span> | <span class="nonterminal">EquivalentClasses</span> | <span class="nonterminal">DisjointClasses</span>
+</p>
+</div>
+<p>OWL 2 EL 支持以下对象属性公理，它们的定义方式与结构规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 相同，不同之处在于它们使用 <span class="nonterminal">ObjectPropertyExpression</span> 的新定义。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">ObjectPropertyAxiom</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">EquivalentObjectProperties</span> | <span class="nonterminal">SubObjectPropertyOf</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">ObjectPropertyDomain</span> | <span class="nonterminal">ObjectPropertyRange</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">ReflexiveObjectProperty</span> | <span class="nonterminal">TransitiveObjectProperty</span>
+</p>
+</div>
+<p>除 <span class="nonterminal">DisjointDataProperties</span> 外，OWL 2 EL 提供与结构规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 相同的关于数据属性的公理。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">DataPropertyAxiom</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">SubDataPropertyOf</span> | <span class="nonterminal">EquivalentDataProperties</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DataPropertyDomain</span> | <span class="nonterminal">DataPropertyRange</span> | <span class="nonterminal">FunctionalDataProperty</span>
+</p>
+</div>
+<p>OWL 2 EL 中的断言以及所有其他公理与结构规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 相同，不同之处在于类表达式和对象属性表达式受到前面各节所定义的限制。
+</p>
+<a id="Global_Restrictions" name="Global_Restrictions"></a><h4> <span class="mw-headline">2.2.6  全局限制 </span></h4>
+<p>OWL 2 EL 在结构规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 第 11 节关于公理的全局限制之上，增加了一个附加条件 [<cite><a href="#ref-ELppUpd" title="">EL++ Update</a></cite>]。为了定义该条件，使用以下概念。
+</p><p>如果公理集合 <span class="name">Ax</span> 包含以下公理（其中 k &ge; 1 为整数，<span class="name">OP<sub>i</sub></span> 均为对象属性），则称 <span class="name">Ax</span> <i>对对象属性</i> <span class="name">OP<sub>1</sub></span> <i>施加了到类表达式</i> <span class="name">CE</span> <i>的值域限制</i>：
+</p>
+<div class="fss">
+<p>SubObjectPropertyOf( OP<sub>1</sub> OP<sub>2</sub>)<br />
+...<br />
+SubObjectPropertyOf( OP<sub>k-1</sub> OP<sub>k</sub> )<br />
+ObjectPropertyRange( OP<sub>k</sub> CE )
+</p>
+</div>
+<p>OWL 2 EL 本体的公理闭包 <span class="name">Ax</span> <em class="RFC2119" title="MUST in RFC 2119 context">必须</em>遵守结构规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 第 11 节所述的限制，并且，如果
+</p>
+<ul><li> <span class="name">Ax</span> 包含 <span class="name">SubObjectPropertyOf( ObjectPropertyChain( OP<sub>1</sub> ... OP<sub>n</sub> ) OP )</span>，且
+</li><li> <span class="name">Ax</span> 对 <span class="name">OP</span> 施加了到某个类表达式 <span class="name">CE</span> 的值域限制
+</li></ul>
+<p>那么 <span class="name">Ax</span> <em class="RFC2119" title="MUST in RFC 2119 context">必须</em>对 <span class="name">OP<sub>n</sub></span> 施加到 <span class="name">CE</span> 的值域限制。
+</p><p>对于上一定义第一项中不包含属性链的每个 <span class="nonterminal">SubObjectPropertyOf</span> 公理，该附加限制都空真地成立。对于自反和传递角色上的值域限制没有附加限制&mdash;&mdash;也就是说，只要满足前述限制，就可以在自反和/或传递角色上施加值域限制。
+</p>
+<a id="OWL_2_QL" name="OWL_2_QL"></a><h2> <span class="mw-headline">3  OWL 2 QL </span></h2>
+<p>OWL 2 QL 剖面的设计目标是：相对于数据（断言）的规模，正确且完备的查询应答可在 LOGSPACE 内完成（更精确地说，是在 AC<sup>0</sup> 内），同时提供表达概念模型（如 UML 类图和 ER 图）所需的许多主要特性。特别地，本剖面包含了 RDFS 与 OWL 2 DL 的交集。其设计使得存储在标准关系数据库系统中的数据（断言）可以通过本体经由一种简单的重写机制进行查询，即把查询重写为一条 SQL 查询，然后由 RDBMS 系统应答，而无需对数据做任何改动。
+</p><p>OWL 2 QL 基于 DL-Lite 描述逻辑族 [<cite><a href="#ref-DL-Lite" title="">DL-Lite</a></cite>]。文献中已描述了 DL-Lite 的若干变体，其中 DL-Lite<sub>R</sub> 为 OWL 2 QL 提供了逻辑基础。DL-Lite<sub>R</sub> 不要求唯一名称假设（UNA），因为做出该假设对 DL-Lite<sub>R</sub> 本体的语义推论没有任何影响。DL-Lite 的表达能力更强的变体（如 DL-Lite<sub>A</sub>）在 DL-Lite<sub>R</sub> 之上扩展了函数型属性，并且还可以进一步扩展键；然而，为使查询应答保持在 LOGSPACE 内，这些扩展要求 UNA，并且需要对不同类型公理所用属性之间的交互施加某些全局性限制。将 OWL 2 QL 建立在 DL-Lite<sub>R</sub> 之上，避免了显式公理化 UNA 所带来的实际问题。DL-Lite 的其他变体也可以在 OWL 2 QL 之上得到支持，但可能需要对本体的结构施加额外的限制。
+</p>
+<a id="Feature_Overview_2" name="Feature_Overview_2"></a><h3> <span class="mw-headline">3.1  特性概览 </span></h3>
+<p>OWL 2 QL 的定义不仅在于其所支持的构造集合，还对这些构造允许出现的位置施加了限制。类表达式中各构造的允许用法汇总于表 1。
+</p>
+<div class="center">
+<table border="2" cellpadding="5" style="text-align: left">
+<caption> <span class="caption">表 1.</span> OWL 2 QL 中类表达式的语法限制
+</caption>
+<tbody><tr>
+<th> 子类表达式
+</th><th> 超类表达式
+</th></tr>
+<tr>
+<td> 一个类<br /> 存在量化（<span class="nonterminal">ObjectSomeValuesFrom</span>）<br /> &nbsp;&nbsp;&nbsp; 其中类被限定为 <i>owl:Thing</i><br /> 指向数据范围的存在量化（<span class="nonterminal">DataSomeValuesFrom</span>）
+</td><td> 一个类<br /> 交集（<span class="nonterminal">ObjectIntersectionOf</span>）<br /> 取反（<span class="nonterminal">ObjectComplementOf</span>）<br /> 指向一个类的存在量化（<span class="nonterminal">ObjectSomeValuesFrom</span>）<br /> 指向数据范围的存在量化（<span class="nonterminal">DataSomeValuesFrom</span>）
+</td></tr></tbody></table>
+</div>
+<p>OWL 2 QL 支持以下公理，并对其加以约束以符合上述对类表达式的限制：
+</p>
+<ul><li> 子类公理（<span class="nonterminal">SubClassOf</span>）
+</li><li> 类表达式等价（<span class="nonterminal">EquivalentClasses</span>）
+</li><li> 类表达式不相交（<span class="nonterminal">DisjointClasses</span>）
+</li><li> 逆对象属性（<span class="nonterminal">InverseObjectProperties</span>）
+</li><li> 属性包含（不涉及属性链的 <span class="nonterminal">SubObjectPropertyOf</span> 以及 <span class="nonterminal">SubDataPropertyOf</span>）
+</li><li> 属性等价（<span class="nonterminal">EquivalentObjectProperties</span> 和 <span class="nonterminal">EquivalentDataProperties</span>）
+</li><li> 属性定义域（<span class="nonterminal">ObjectPropertyDomain</span> 和 <span class="nonterminal">DataPropertyDomain</span>）
+</li><li> 属性值域（<span class="nonterminal">ObjectPropertyRange</span> 和 <span class="nonterminal">DataPropertyRange</span>）
+</li><li> 不相交属性（<span class="nonterminal">DisjointObjectProperties</span> 和 <span class="nonterminal">DisjointDataProperties</span>）
+</li><li> 对称属性（<span class="nonterminal">SymmetricObjectProperty</span>）
+</li><li> 自反属性（<span class="nonterminal">ReflexiveObjectProperty</span>）
+</li><li> 反自反属性（<span class="nonterminal">IrreflexiveObjectProperty</span>）
+</li><li> 反对称属性（<span class="nonterminal">AsymmetricObjectProperty</span>）
+</li><li> 除个体相等断言和负属性断言之外的断言（<span class="nonterminal">DifferentIndividuals</span>、<span class="nonterminal">ClassAssertion</span>、<span class="nonterminal">ObjectPropertyAssertion</span> 和 <span class="nonterminal">DataPropertyAssertion</span>）
+</li></ul>
+<p>OWL 2 QL 不支持以下构造：
+</p>
+<ul><li> 在子类位置出现指向类表达式或数据范围的存在量化（<span class="nonterminal">ObjectSomeValuesFrom</span> 和 <span class="nonterminal">DataSomeValuesFrom</span>）
+</li><li> 自身限制（<span class="nonterminal">ObjectHasSelf</span>）
+</li><li> 指向个体或字面量的存在量化（<span class="nonterminal">ObjectHasValue</span>、<span class="nonterminal">DataHasValue</span>）
+</li><li> 个体和字面量的枚举（<span class="nonterminal">ObjectOneOf</span>、<span class="nonterminal">DataOneOf</span>）
+</li><li> 指向类表达式或数据范围的全称量化（<span class="nonterminal">ObjectAllValuesFrom</span>、<span class="nonterminal">DataAllValuesFrom</span>）
+</li><li> 基数约束（<span class="nonterminal">ObjectMaxCardinality</span>、<span class="nonterminal">ObjectMinCardinality</span>、<span class="nonterminal">ObjectExactCardinality</span>、<span class="nonterminal">DataMaxCardinality</span>、<span class="nonterminal">DataMinCardinality</span>、<span class="nonterminal">DataExactCardinality</span>）
+</li><li> 析取（<span class="nonterminal">ObjectUnionOf</span>、<span class="nonterminal">DisjointUnion</span> 和 <span class="nonterminal">DataUnionOf</span>）
+</li><li> 涉及属性链的属性包含（<span class="nonterminal">SubObjectPropertyOf</span>）
+</li><li> 函数型与逆函数型属性（<span class="nonterminal">FunctionalObjectProperty</span>、<span class="nonterminal">InverseFunctionalObjectProperty</span> 和 <span class="nonterminal">FunctionalDataProperty</span>）
+</li><li> 传递属性（<span class="nonterminal">TransitiveObjectProperty</span>）
+</li><li> 键（<span class="nonterminal">HasKey</span>）
+</li><li> 个体相等断言和负属性断言
+</li></ul>
+<p>OWL 2 QL 不支持个体相等断言（<span class="nonterminal">SameIndividual</span>）：将此类公理加入 OWL 2 QL 会提高查询应答的数据复杂度，使其不再是一阶可重写的，这意味着查询应答将无法直接利用关系数据库技术来实现。然而，对于一个包含个体相等断言、但其余部分符合 OWL 2 QL 的本体 <i>O</i>，可以先计算 <i>O</i> 中相等（<span class="nonterminal">SameIndividual</span>）关系的自反&ndash;对称&ndash;传递闭包（这需要应答递归查询，且可以在相对于数据规模的 LOGSPACE 内实现）[<cite><a href="#ref-DL-Lite-bool" title="">DL-Lite-bool</a></cite>]，然后在查询应答过程中利用该关系来模拟个体相等推理 [<cite><a href="#ref-automated-reasoning" title="">Automated Reasoning</a></cite>]。
+</p>
+<a id="Profile_Specification_2" name="Profile_Specification_2"></a><h3> <span class="mw-headline">3.2  剖面规约 </span></h3>
+<p>OWL 2 QL 的文法产生式在以下各节中定义。请注意，每个 OWL 2 QL 本体都必须满足结构规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 第 11 节中定义的公理全局限制。
+</p>
+<a id="Entities_2" name="Entities_2"></a><h4> <span class="mw-headline">3.2.1  实体 </span></h4>
+<p>OWL 2 QL 中实体的定义方式与结构规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 相同，并且 OWL 2 QL 支持所有预定义类和属性。此外，OWL 2 QL 支持以下数据类型：
+</p>
+<ul><li> <i>rdf:PlainLiteral</i>
+</li><li> <i>rdf:XMLLiteral</i>
+</li><li> <i>rdfs:Literal</i>
+</li><li> <i>owl:real</i>
+</li><li> <i>owl:rational</i>
+</li><li> <i>xsd:decimal</i>
+</li><li> <i>xsd:integer</i>
+</li><li> <i>xsd:nonNegativeInteger</i>
+</li><li> <i>xsd:string</i>
+</li><li> <i>xsd:normalizedString</i>
+</li><li> <i>xsd:token</i>
+</li><li> <i>xsd:Name</i>
+</li><li> <i>xsd:NCName</i>
+</li><li> <i>xsd:NMTOKEN</i>
+</li><li> <i>xsd:hexBinary</i>
+</li><li> <i>xsd:base64Binary</i>
+</li><li> <i>xsd:anyURI</i>
+</li><li> <i>xsd:dateTime</i>
+</li><li> <i>xsd:dateTimeStamp</i>
+</li></ul>
+<p>所支持数据类型的集合经过精心设计，使得其中任意一组数据类型的值空间之交要么为空、要么无限，这是获得所需计算性质所必需的。因此，以下数据类型<em class="RFC2119" title="MUST NOT in RFC 2119 context">不得</em>在 OWL 2 QL 中使用：<i>xsd:double</i>、<i>xsd:float</i>、<i>xsd:nonPositiveInteger</i>、<i>xsd:positiveInteger</i>、<i>xsd:negativeInteger</i>、<i>xsd:long</i>、<i>xsd:int</i>、<i>xsd:short</i>、<i>xsd:byte</i>、<i>xsd:unsignedLong</i>、<i>xsd:unsignedInt</i>、<i>xsd:unsignedShort</i>、<i>xsd:unsignedByte</i>、<i>xsd:language</i> 和 <i>xsd:boolean</i>。
+</p><p>最后，OWL 2 QL 不支持匿名个体。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">Individual</span>&nbsp;:= <span class="nonterminal">NamedIndividual</span>
+</p>
+</div>
+<a id="Property_Expressions_2" name="Property_Expressions_2"></a><h4> <span class="mw-headline">3.2.2  属性表达式 </span></h4>
+<p>OWL 2 QL 的对象属性表达式和数据属性表达式与结构规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 中的相同。
+</p>
+<a id="Class_Expressions_2" name="Class_Expressions_2"></a><h4> <span class="mw-headline">3.2.3  类表达式 </span></h4>
+<p>在 OWL 2 QL 中，类表达式分为两种类型。<span class="nonterminal">subClassExpression</span> 产生式定义了可在 <span class="nonterminal">SubClassOf</span> 公理中作为子类表达式出现的类表达式，而 <span class="nonterminal">superClassExpression</span> 产生式定义了可在 <span class="nonterminal">SubClassOf</span> 公理中作为超类表达式出现的类。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">subClassExpression</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">Class</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">subObjectSomeValuesFrom</span> | <span class="nonterminal">DataSomeValuesFrom</span><br />
+<span class="nonterminal">subObjectSomeValuesFrom</span>&nbsp;:= 'ObjectSomeValuesFrom' '(' <span class="nonterminal">ObjectPropertyExpression</span> <i>owl:Thing</i> ')'<br />
+<br />
+<span class="nonterminal">superClassExpression</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">Class</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">superObjectIntersectionOf</span> | <span class="nonterminal">superObjectComplementOf</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">superObjectSomeValuesFrom</span> | <span class="nonterminal">DataSomeValuesFrom</span><br />
+<span class="nonterminal">superObjectIntersectionOf</span>&nbsp;:= 'ObjectIntersectionOf' '(' <span class="nonterminal">superClassExpression</span> <span class="nonterminal">superClassExpression</span> { <span class="nonterminal">superClassExpression</span> } ')'<br />
+<span class="nonterminal">superObjectComplementOf</span>&nbsp;:= 'ObjectComplementOf' '(' <span class="nonterminal">subClassExpression</span> ')'<br />
+<span class="nonterminal">superObjectSomeValuesFrom</span>&nbsp;:= 'ObjectSomeValuesFrom' '(' <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">Class</span> ')'
+</p>
+</div>
+<a id="Data_Ranges_2" name="Data_Ranges_2"></a><h4> <span class="mw-headline">3.2.4  数据范围 </span></h4>
+<p>在 OWL 2 QL 中，数据范围表达式被限制为预定义数据类型以及数据范围的交集。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">DataRange</span>&nbsp;:= <span class="nonterminal">Datatype</span> | <span class="nonterminal">DataIntersectionOf</span>
+</p>
+</div>
+<a id="Axioms_2" name="Axioms_2"></a><h4> <span class="mw-headline">3.2.5  公理 </span></h4>
+<p>OWL 2 QL 的类公理与结构规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 中的相同，不同之处在于不允许使用 <span class="nonterminal">DisjointUnion</span>；此外，所有引用 <span class="nonterminal">ClassExpression</span> 产生式的公理都被重新定义，以酌情使用 <span class="nonterminal">subClassExpression</span> 和/或 <span class="nonterminal">superClassExpression</span>。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">SubClassOf</span>&nbsp;:= 'SubClassOf' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subClassExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<span class="nonterminal">EquivalentClasses</span>&nbsp;:= 'EquivalentClasses' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subClassExpression</span> <span class="nonterminal">subClassExpression</span> { <span class="nonterminal">subClassExpression</span> } ')'<br />
+<span class="nonterminal">DisjointClasses</span>&nbsp;:= 'DisjointClasses' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subClassExpression</span> <span class="nonterminal">subClassExpression</span> { <span class="nonterminal">subClassExpression</span> } ')'<br />
+<span class="nonterminal">ClassAxiom</span>&nbsp;:= <span class="nonterminal">SubClassOf</span> | <span class="nonterminal">EquivalentClasses</span> | <span class="nonterminal">DisjointClasses</span>
+</p>
+</div>
+<p>OWL 2 QL 不允许在属性包含公理中使用属性链；但支持简单的属性包含。此外，OWL 2 QL 不允许使用函数型和传递型对象属性，并将对象属性定义域和值域公理中的类表达式限制为 <span class="nonterminal">superClassExpression</span>。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">ObjectPropertyDomain</span>&nbsp;:= 'ObjectPropertyDomain' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<span class="nonterminal">ObjectPropertyRange</span>&nbsp;:= 'ObjectPropertyRange' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<span class="nonterminal">SubObjectPropertyOf</span>&nbsp;:= 'SubObjectPropertyOf' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">ObjectPropertyExpression</span> ')'<br />
+<span class="nonterminal">ObjectPropertyAxiom</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">SubObjectPropertyOf</span> | <span class="nonterminal">EquivalentObjectProperties</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DisjointObjectProperties</span> | <span class="nonterminal">InverseObjectProperties</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">ObjectPropertyDomain</span> | <span class="nonterminal">ObjectPropertyRange</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">ReflexiveObjectProperty</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">SymmetricObjectProperty</span> | <span class="nonterminal">AsymmetricObjectProperty</span>
+</p>
+</div>
+<p>OWL 2 QL 不允许函数型数据属性公理，并将数据属性定义域公理中的类表达式限制为 <span class="nonterminal">superClassExpression</span>。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">DataPropertyDomain</span>&nbsp;:= 'DataPropertyDomain' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<span class="nonterminal">DataPropertyAxiom</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">SubDataPropertyOf</span> | <span class="nonterminal">EquivalentDataProperties</span> | <span class="nonterminal">DisjointDataProperties</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DataPropertyDomain</span> | <span class="nonterminal">DataPropertyRange</span>
+</p>
+</div>
+<p>OWL 2 QL 不允许负对象属性断言和个体相等公理。此外，OWL 2 QL 中的类断言只能涉及原子类。个体不等公理和属性断言与结构规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 中的相同。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">ClassAssertion</span>&nbsp;:= 'ClassAssertion' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">Class</span> <span class="nonterminal">Individual</span> ')'<br />
+<span class="nonterminal">Assertion</span>&nbsp;:= <span class="nonterminal">DifferentIndividuals</span> | <span class="nonterminal">ClassAssertion</span> | <span class="nonterminal">ObjectPropertyAssertion</span> | <span class="nonterminal">DataPropertyAssertion</span>
+</p>
+</div>
+<p>最后，OWL 2 QL 中的公理与结构规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 中的相同，不同之处在于不允许使用键公理。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">Axiom</span>&nbsp;:= <span class="nonterminal">Declaration</span> | <span class="nonterminal">ClassAxiom</span> | <span class="nonterminal">ObjectPropertyAxiom</span> | <span class="nonterminal">DataPropertyAxiom</span> | <span class="nonterminal">DatatypeDefinition</span> | <span class="nonterminal">Assertion</span> | <span class="nonterminal">AnnotationAxiom</span>
+</p>
+</div><a id="OWL_2_RL" name="OWL_2_RL"></a><h2> <span class="mw-headline">4   OWL 2 RL </span></h2>
+<p>OWL 2 RL 剖面面向需要可扩展推理能力、同时又不愿牺牲太多表达能力的应用。它既适用于可以用语言的完整表达力换取效率的 OWL 2 应用，也适用于需要从 OWL 2 获得额外表达力的 RDF(S) 应用。其实现方式是：定义一个适合用基于规则的技术来实现的 OWL 2 语法子集（见<a href="#Profile_Specification_3" title="">第 4.2 节</a>），并以一阶蕴含式的形式给出 OWL 2 RDF-Based Semantics [<cite><a href="#ref-owl-2-rdf-semantics" title="">OWL 2 RDF-Based Semantics</a></cite>] 的部分公理化，作为此类实现的基础（见<a href="#Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules" title="">第 4.3 节</a>）。OWL 2 RL 的设计受到 Description Logic Programs [<cite><a href="#ref-dlp" title="">DLP</a></cite>] 和 pD* [<cite><a href="#ref-pdstar" title="">pD*</a></cite>] 的启发。
+</p><p>对于满足<a href="#Profile_Specification_3" title="">第 4.2 节</a>所述语法约束的本体，合适的基于规则的实现（例如基于<a href="#Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules" title="">第 4.3 节</a>给出的部分公理化的实现）将具有理想的计算性质；例如，它可以对某几类查询返回<i>所有</i>且<i>仅</i>正确的答案（见<a href="#Theorem-PR1" title="">定理 PR1</a> 和 OWL 2 Conformance [<cite><a href="#ref-owl-2-conformance" title="">OWL 2 Conformance</a></cite>]）。此类实现也可以用于任意的 RDF 图。不过在这种情况下，这些性质不再成立——特别是，不再能保证返回<i>所有</i>正确答案，例如当 RDF 图以非常规方式使用内建词汇时。然而，此类实现仍然只会产生正确的蕴含结果（见 OWL 2 Conformance [<cite><a href="#ref-owl-2-conformance" title="">OWL 2 Conformance</a></cite>]）。
+</p>
+<a id="Feature_Overview_3" name="Feature_Overview_3"></a><h3> <span class="mw-headline">4.1  特性概览 </span></h3>
+<p>通过限制各种构造的使用方式，可以用基于规则的推理引擎来实现推理系统，同时仍能提供理想的计算保证。这些限制旨在避免推断出知识库中未显式存在的个体，并避免不确定性推理的需求。其实现方式是将构造的使用限制在特定的语法位置上。例如在 <span class="name">SubClassOf</span> 公理中，子类表达式和超类表达式中的构造必须遵循表 2 所示的使用模式。
+</p>
+<div class="center">
+<table border="2" cellpadding="5" style="text-align: left">
+<caption> <span class="caption">表 2.</span> OWL 2 RL 中类表达式的语法限制
+</caption>
+<tbody><tr>
+<th> 子类表达式
+</th><th> 超类表达式
+</th></tr>
+<tr>
+<td> 除 <i>owl:Thing</i> 之外的类<br /> 个体的枚举（<span class="nonterminal">ObjectOneOf</span>）<br /> 类表达式的交集（<span class="nonterminal">ObjectIntersectionOf</span>）<br /> 类表达式的并集（<span class="nonterminal">ObjectUnionOf</span>）<br /> 到类表达式的存在量化（<span class="nonterminal">ObjectSomeValuesFrom</span>）<br /> 到数据范围的存在量化（<span class="nonterminal">DataSomeValuesFrom</span>）<br /> 到个体的存在量化（<span class="nonterminal">ObjectHasValue</span>）<br /> 到字面量的存在量化（<span class="nonterminal">DataHasValue</span>）
+</td><td> 除 <i>owl:Thing</i> 之外的类<br /> 类的交集（<span class="nonterminal">ObjectIntersectionOf</span>）<br /> 否定（<span class="nonterminal">ObjectComplementOf</span>）<br /> 到类表达式的全称量化（<span class="nonterminal">ObjectAllValuesFrom</span>）<br /> 到个体的存在量化（<span class="nonterminal">ObjectHasValue</span>）<br /> 到类表达式的至多 0/1 基数约束（<span class="nonterminal">ObjectMaxCardinality</span> 0/1）<br /> 到数据范围的全称量化（<span class="nonterminal">DataAllValuesFrom</span>）<br /> 到字面量的存在量化（<span class="nonterminal">DataHasValue</span>）<br /> 到数据范围的至多 0/1 基数约束（<span class="nonterminal">DataMaxCardinality</span> 0/1）
+</td></tr></tbody></table>
+</div>
+<p>OWL 2 RL 中的所有公理都以符合这些限制的方式受到约束。因此，OWL 2 RL 支持 OWL 2 的全部公理，但类的不相交并（<span class="nonterminal">DisjointUnion</span>）和自反对象属性公理（<span class="nonterminal">ReflexiveObjectProperty</span>）除外。
+</p>
+<a id="Profile_Specification_3" name="Profile_Specification_3"></a><h3> <span class="mw-headline">4.2  剖面规约 </span></h3>
+<p>OWL 2 RL 的产生式在以下各节中定义。OWL 2 RL 不仅按所支持构造的集合来定义，还限制了这些构造可以出现的位置。注意，每个 OWL 2 RL 本体都必须满足结构规约 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 第 11 节中定义的公理全局限制。
+</p>
+<a id="Entities_3" name="Entities_3"></a><h4> <span class="mw-headline">4.2.1  实体 </span></h4>
+<p>OWL 2 RL 中实体的定义方式与结构规约 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 相同。OWL 2 RL 支持预定义类 <i>owl:Nothing</i> 和 <i>owl:Thing</i>，但后者的使用受到 OWL 2 RL 文法的限制。此外，OWL 2 RL 不支持预定义的对象属性和数据属性 <i>owl:topObjectProperty</i>、<i>owl:bottomObjectProperty</i>、<i>owl:topDataProperty</i> 和 <i>owl:bottomDataProperty</i>。最后，OWL 2 RL 支持以下数据类型：
+</p>
+<ul><li> <i>rdf:PlainLiteral</i>
+</li><li> <i>rdf:XMLLiteral</i>
+</li><li> <i>rdfs:Literal</i>
+</li><li> <i>xsd:decimal</i>
+</li><li> <i>xsd:integer</i>
+</li><li> <i>xsd:nonNegativeInteger</i>
+</li><li> <i>xsd:nonPositiveInteger</i>
+</li><li> <i>xsd:positiveInteger</i>
+</li><li> <i>xsd:negativeInteger</i>
+</li><li> <i>xsd:long</i>
+</li><li> <i>xsd:int</i>
+</li><li> <i>xsd:short</i>
+</li><li> <i>xsd:byte</i>
+</li><li> <i>xsd:unsignedLong</i>
+</li><li> <i>xsd:unsignedInt</i>
+</li><li> <i>xsd:unsignedShort</i>
+</li><li> <i>xsd:unsignedByte</i>
+</li><li> <i>xsd:float</i>
+</li><li> <i>xsd:double</i>
+</li><li> <i>xsd:string</i>
+</li><li> <i>xsd:normalizedString</i>
+</li><li> <i>xsd:token</i>
+</li><li> <i>xsd:language</i>
+</li><li> <i>xsd:Name</i>
+</li><li> <i>xsd:NCName</i>
+</li><li> <i>xsd:NMTOKEN</i>
+</li><li> <i>xsd:boolean</i>
+</li><li> <i>xsd:hexBinary</i>
+</li><li> <i>xsd:base64Binary</i>
+</li><li> <i>xsd:anyURI</i>
+</li><li> <i>xsd:dateTime</i>
+</li><li> <i>xsd:dateTimeStamp</i>
+</li></ul>
+<p>所支持的数据类型集合的设计目标是允许在规则系统中实现。<i>owl:real</i> 和 <i>owl:rational</i> 数据类型<em class="RFC2119" title="MUST NOT in RFC 2119 context">不得</em>在 OWL 2 RL 中使用。
+</p>
+<a id="Property_Expressions_3" name="Property_Expressions_3"></a><h4> <span class="mw-headline">4.2.2  属性表达式 </span></h4>
+<p>OWL 2 RL 中的属性表达式与结构规约 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 中的属性表达式相同。
+</p>
+<a id="Class_Expressions_3" name="Class_Expressions_3"></a><h4> <span class="mw-headline">4.2.3  类表达式 </span></h4>
+<p>OWL 2 RL 中有三种类型的类表达式。<span class="nonterminal">subClassExpression</span> 产生式定义了可以在 <span class="nonterminal">SubClassOf</span> 公理中作为子类表达式出现的类表达式；<span class="nonterminal">superClassExpression</span> 产生式定义了可以在 <span class="nonterminal">SubClassOf</span> 公理中作为超类表达式出现的类表达式；<span class="nonterminal">equivClassExpressions</span> 产生式定义了可以在 <span class="nonterminal">EquivalentClasses</span> 公理中出现的类。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">zeroOrOne </span>&nbsp;:= '0' | '1'<br />
+<br />
+<span class="nonterminal">subClassExpression</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">Class</span> other than <i>owl:Thing</i> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">subObjectIntersectionOf</span> | <span class="nonterminal">subObjectUnionOf</span> | <span class="nonterminal">ObjectOneOf</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">subObjectSomeValuesFrom</span> | <span class="nonterminal">ObjectHasValue</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DataSomeValuesFrom</span> | <span class="nonterminal">DataHasValue</span><br />
+<span class="nonterminal">subObjectIntersectionOf</span>&nbsp;:= 'ObjectIntersectionOf' '(' <span class="nonterminal">subClassExpression</span> <span class="nonterminal">subClassExpression</span> { <span class="nonterminal">subClassExpression</span> } ')'<br />
+<span class="nonterminal">subObjectUnionOf</span>&nbsp;:= 'ObjectUnionOf' '(' <span class="nonterminal">subClassExpression</span> <span class="nonterminal">subClassExpression</span> { <span class="nonterminal">subClassExpression</span> } ')'<br />
+<span class="nonterminal">subObjectSomeValuesFrom</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; 'ObjectSomeValuesFrom' '(' <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">subClassExpression</span> ')' |<br />
+&nbsp;&nbsp;&nbsp; 'ObjectSomeValuesFrom' '(' <span class="nonterminal">ObjectPropertyExpression</span> <i>owl:Thing</i> ')'<br />
+<br />
+<span class="nonterminal">superClassExpression</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">Class</span> other than <i>owl:Thing</i> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">superObjectIntersectionOf</span> | <span class="nonterminal">superObjectComplementOf</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">superObjectAllValuesFrom</span> | <span class="nonterminal">ObjectHasValue</span> | <span class="nonterminal">superObjectMaxCardinality</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DataAllValuesFrom</span> | <span class="nonterminal">DataHasValue</span> | <span class="nonterminal">superDataMaxCardinality</span><br />
+<span class="nonterminal">superObjectIntersectionOf</span>&nbsp;:= 'ObjectIntersectionOf' '(' <span class="nonterminal">superClassExpression</span> <span class="nonterminal">superClassExpression</span> { <span class="nonterminal">superClassExpression</span> } ')'<br />
+<span class="nonterminal">superObjectComplementOf</span>&nbsp;:= 'ObjectComplementOf' '(' <span class="nonterminal">subClassExpression</span> ')'<br />
+<span class="nonterminal">superObjectAllValuesFrom</span>&nbsp;:= 'ObjectAllValuesFrom' '(' <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<span class="nonterminal">superObjectMaxCardinality</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; 'ObjectMaxCardinality' '(' <span class="nonterminal">zeroOrOne</span> <span class="nonterminal">ObjectPropertyExpression</span> [ <span class="nonterminal">subClassExpression</span> ] ')' |<br />
+&nbsp;&nbsp;&nbsp; 'ObjectMaxCardinality' '(' <span class="nonterminal">zeroOrOne</span> <span class="nonterminal">ObjectPropertyExpression</span> <i>owl:Thing</i> ')'<br />
+<span class="nonterminal">superDataMaxCardinality</span>&nbsp;:= 'DataMaxCardinality' '(' <span class="nonterminal">zeroOrOne</span> <span class="nonterminal">DataPropertyExpression</span> [ <span class="nonterminal">DataRange</span> ] ')' <br />
+<br />
+<span class="nonterminal">equivClassExpression</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">Class</span> other than <i>owl:Thing</i> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">equivObjectIntersectionOf</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">ObjectHasValue</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DataHasValue</span><br />
+<span class="nonterminal">equivObjectIntersectionOf</span>&nbsp;:= 'ObjectIntersectionOf' '(' <span class="nonterminal">equivClassExpression</span> <span class="nonterminal">equivClassExpression</span> { <span class="nonterminal">equivClassExpression</span> } ')'
+</p>
+</div>
+<a id="Data_Ranges_3" name="Data_Ranges_3"></a><h4> <span class="mw-headline">4.2.4  数据范围 </span></h4>
+<p>在 OWL 2 RL 中，数据范围表达式被限制为 OWL 2 RL 所接受的预定义数据类型以及数据范围的交集。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">DataRange</span>&nbsp;:= <span class="nonterminal">Datatype</span> | <span class="nonterminal">DataIntersectionOf</span>
+</p>
+</div>
+<a id="Axioms_3" name="Axioms_3"></a><h4> <span class="mw-headline">4.2.5  公理 </span></h4>
+<p>OWL 2 RL 重新定义了结构规约 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 中所有涉及类表达式的公理。具体而言，它要求各类公理使用适当形式的类表达式（即 <span class="nonterminal">subClassExpression</span>、<span class="nonterminal">superClassExpression</span> 或 <span class="nonterminal">equivClassExpression</span> 之一），并且不允许使用 <span class="nonterminal">DisjointUnion</span> 公理。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">ClassAxiom</span>&nbsp;:= <span class="nonterminal">SubClassOf</span> | <span class="nonterminal">EquivalentClasses</span> | <span class="nonterminal">DisjointClasses</span><br />
+<span class="nonterminal">SubClassOf</span>&nbsp;:= 'SubClassOf' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subClassExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<span class="nonterminal">EquivalentClasses</span>&nbsp;:= 'EquivalentClasses' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">equivClassExpression</span> <span class="nonterminal">equivClassExpression</span> { <span class="nonterminal">equivClassExpression</span> } ')'<br />
+<span class="nonterminal">DisjointClasses</span>&nbsp;:= 'DisjointClasses' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subClassExpression</span> <span class="nonterminal">subClassExpression</span> { <span class="nonterminal">subClassExpression</span> } ')'
+</p>
+</div>
+<p>OWL 2 RL 中关于属性表达式的公理与结构规约 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 相同，唯一的区别在于：属性定义域和值域公理中的类表达式被限制为 <span class="nonterminal">superClassExpression</span>，并且不允许使用自反属性。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">ObjectPropertyDomain</span>&nbsp;:= 'ObjectPropertyDomain' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<span class="nonterminal">ObjectPropertyRange</span>&nbsp;:= 'ObjectPropertyRange' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<span class="nonterminal">DataPropertyDomain</span>&nbsp;:= 'DataPropertyDomain' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<span class="nonterminal">ObjectPropertyAxiom</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">SubObjectPropertyOf</span> | <span class="nonterminal">EquivalentObjectProperties</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DisjointObjectProperties</span> | <span class="nonterminal">InverseObjectProperties</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">ObjectPropertyDomain</span> | <span class="nonterminal">ObjectPropertyRange</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">FunctionalObjectProperty</span> | <span class="nonterminal">InverseFunctionalObjectProperty</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">IrreflexiveObjectProperty</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">SymmetricObjectProperty</span> | <span class="nonterminal">AsymmetricObjectProperty</span><br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">TransitiveObjectProperty</span>
+</p>
+</div>
+<p>OWL 2 RL 将正断言中的类表达式限制为 <span class="nonterminal">superClassExpression</span>。其余所有断言均与结构规约 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 相同。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">ClassAssertion</span>&nbsp;:= 'ClassAssertion' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">superClassExpression</span> <span class="nonterminal">Individual</span> ')'
+</p>
+</div>
+<p>OWL 2 RL 将键中的类表达式限制为 <span class="nonterminal">subClassExpression</span>。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">HasKey</span>&nbsp;:= 'HasKey' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subClassExpression</span> '(' { <span class="nonterminal">ObjectPropertyExpression</span> } ')' '(' { <span class="nonterminal">DataPropertyExpression</span> } ')' ')'
+</p>
+</div>
+<p>OWL 2 RL 中的其余所有公理均按结构规约 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 中的定义。
+</p>
+<a id="Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules" name="Reasoning_in_OWL_2_RL_and_RDF_Graphs_using_Rules"></a><h3> <span class="mw-headline">4.3  在 OWL 2 RL 与 RDF 图上用规则进行推理 </span></h3>
+<p>本节以一阶蕴含式的形式给出 OWL 2 RDF-Based Semantics [<cite><a href="#ref-owl-2-rdf-semantics" title="">OWL 2 RDF-Based Semantics</a></cite>] 的部分公理化；这一公理化称为 OWL 2 RL/RDF 规则。这些规则为使用基于规则的技术（如逻辑程序设计 [<cite><a href="#ref-logic-programming" title="">Logic Programming</a></cite>, <cite><a href="#ref-lloyd" title="">Lloyd</a></cite>]）进行实际实现提供了有用的起点。
+</p><p>这些规则以关于三元谓词 <span class="name">T</span> 的全称量化一阶蕴含式给出。该谓词表示对 RDF 三元组的推广，其中空白节点和字面量可以出现在所有位置上（类似于 pD* [<cite><a href="#ref-pdstar" title="">pD*</a></cite>] 中的部分推广以及 RIF [<cite><a href="#ref-rif-rdf-owl" title="">RIF RDF &amp; OWL</a></cite>] 中的广义 RDF 三元组）；因此，<span class="name">T(s, p, o)</span> 表示一个主语为 <span class="name">s</span>、谓词为 <span class="name">p</span>、宾语为 <span class="name">o</span> 的广义 RDF 三元组。蕴含式中的变量以问号开头。"if" 部分为空的规则应理解为始终适用。命题符号 <span class="name">false</span> 是表示矛盾的特殊符号：如果它被推出，则初始 RDF 图是不一致的。本节列出的规则集并非最小化的，因为某些规则可由其他规则推出；这样做是为了使 OWL 2 词汇的每个部分的语义推论的定义都是自包含的。
+</p><p>许多条件包含与 RDF 列表构造相匹配的原子。为了简化规则的表述，<span class="name">LIST[h, e<sub>1</sub>, ..., e<sub>n</sub>]</span> 用作表 3 所示三元组合取式的缩写，其中 <span class="name">z<sub>2</sub></span>, ..., <span class="name">z<sub>n</sub></span> 是全新变量，不在使用该缩写的任何位置出现。
+</p>
+<div class="center">
+<table border="2" cellpadding="5">
+<caption> <span class="caption">表 3.</span> <span class="name">LIST[h, e<sub>1</sub>, ..., e<sub>n</sub>]</span> 的展开
+</caption>
+<tbody><tr>
+<td class="name"> T(h, rdf:first, e<sub>1</sub>)
+</td><td class="name"> T(h, rdf:rest, z<sub>2</sub>)
+</td></tr>
+<tr>
+<td class="name"> T(z<sub>2</sub>, rdf:first, e<sub>2</sub>)
+</td><td class="name"> T(z<sub>2</sub>, rdf:rest, z<sub>3</sub>)
+</td></tr>
+<tr>
+<td class="name"> ...
+</td><td class="name"> ...
+</td></tr>
+<tr>
+<td class="name"> T(z<sub>n</sub>, rdf:first, e<sub>n</sub>)
+</td><td class="name"> T(z<sub>n</sub>, rdf:rest, rdf:nil)
+</td></tr>
+</tbody></table>
+</div>
+<p>为便于查阅，该公理化被拆分为若干张表。每条规则都有一个简短的唯一名称。若干表中的各行规定了需要针对最右列给出的每一种下标组合进行实例化的规则。
+</p><p>表 4 对相等性的语义进行公理化。具体而言，它将相等关系 <span class="name">owl:sameAs</span> 定义为自反、对称且传递的，并对其公理化标准的相等性替换性质。
+</p>
+<div class="center">
+<table border="2" cellpadding="5">
+<caption> <span class="caption">表 4.</span> 相等性的语义
+</caption>
+<tbody><tr>
+<th>
+</th><th> 前件
+</th><th> 后件
+</th></tr>
+<tr>
+<td> <span class="name" id="eq-ref">eq-ref</span>
+</td><td class="name"> T(?s,&nbsp;?p,&nbsp;?o)<br />
+</td><td class="name"> T(?s, owl:sameAs,&nbsp;?s)<br /> T(?p, owl:sameAs,&nbsp;?p)<br /> T(?o, owl:sameAs,&nbsp;?o)
+</td></tr>
+<tr>
+<td> <span class="name" id="eq-sym">eq-sym</span>
+</td><td class="name"> T(?x, owl:sameAs,&nbsp;?y)
+</td><td class="name"> T(?y, owl:sameAs,&nbsp;?x)
+</td></tr>
+<tr>
+<td> <span class="name" id="eq-trans">eq-trans</span>
+</td><td class="name"> T(?x, owl:sameAs,&nbsp;?y)<br /> T(?y, owl:sameAs,&nbsp;?z)
+</td><td class="name"> T(?x, owl:sameAs,&nbsp;?z)
+</td></tr>
+<tr>
+<td> <span class="name" id="eq-rep-s">eq-rep-s</span>
+</td><td class="name"> T(?s, owl:sameAs,&nbsp;?s')<br /> T(?s,&nbsp;?p,&nbsp;?o)<br />
+</td><td class="name"> T(?s',&nbsp;?p,&nbsp;?o)
+</td></tr>
+<tr>
+<td> <span class="name" id="eq-rep-p">eq-rep-p</span>
+</td><td class="name"> T(?p, owl:sameAs,&nbsp;?p')<br /> T(?s,&nbsp;?p,&nbsp;?o)<br />
+</td><td class="name"> T(?s,&nbsp;?p',&nbsp;?o)
+</td></tr>
+<tr>
+<td> <span class="name" id="eq-rep-o">eq-rep-o</span>
+</td><td class="name"> T(?o, owl:sameAs,&nbsp;?o')<br /> T(?s,&nbsp;?p,&nbsp;?o)<br />
+</td><td class="name"> T(?s,&nbsp;?p,&nbsp;?o')
+</td></tr>
+<tr>
+<td> <span class="name" id="eq-diff1">eq-diff1</span>
+</td><td class="name"> T(?x, owl:sameAs,&nbsp;?y)<br /> T(?x, owl:differentFrom,&nbsp;?y)<br />
+</td><td class="name"> false
+</td></tr>
+<tr>
+<td> <span class="name" id="eq-diff2">eq-diff2</span>
+</td><td class="name"> T(?x, rdf:type, owl:AllDifferent)<br /> T(?x, owl:members,&nbsp;?y)<br /> LIST[?y,&nbsp;?z<sub>1</sub>, ...,&nbsp;?z<sub>n</sub>]<br /> T(?z<sub>i</sub>, owl:sameAs,&nbsp;?z<sub>j</sub>)
+</td><td class="name"> false
+</td><td> 对每个 1 &le; i &lt; j &le; n
+</td></tr>
+<tr>
+<td> <span class="name" id="eq-diff3">eq-diff3</span>
+</td><td class="name"> T(?x, rdf:type, owl:AllDifferent)<br /> T(?x, owl:distinctMembers,&nbsp;?y)<br /> LIST[?y,&nbsp;?z<sub>1</sub>, ...,&nbsp;?z<sub>n</sub>]<br /> T(?z<sub>i</sub>, owl:sameAs,&nbsp;?z<sub>j</sub>)
+</td><td class="name"> false
+</td><td> 对每个 1 &le; i &lt; j &le; n
+</td></tr>
+</tbody></table>
+</div>
+<p>表 5 规定了关于属性的公理所应满足的语义条件。
+</p>
+<div class="center">
+<table border="2" cellpadding="5">
+<caption> <span class="caption">表 5.</span> 属性相关公理的语义
+</caption>
+<tbody><tr>
+<th>
+</th><th> 前件
+</th><th> 后件
+</th></tr>
+<tr>
+<td> <span class="name" id="prp-ap">prp-ap</span>
+</td><td class="name">
+</td><td class="name"> T(ap, rdf:type, owl:AnnotationProperty)
+</td><td> 对 OWL 2 RL 的每个内建注解属性
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-dom">prp-dom</span>
+</td><td class="name"> T(?p, rdfs:domain,&nbsp;?c)<br /> T(?x,&nbsp;?p,&nbsp;?y)
+</td><td class="name"> T(?x, rdf:type,&nbsp;?c)
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-rng">prp-rng</span>
+</td><td class="name"> T(?p, rdfs:range,&nbsp;?c)<br /> T(?x,&nbsp;?p,&nbsp;?y)
+</td><td class="name"> T(?y, rdf:type,&nbsp;?c)
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-fp">prp-fp</span>
+</td><td class="name"> T(?p, rdf:type, owl:FunctionalProperty)<br /> T(?x,&nbsp;?p,&nbsp;?y<sub>1</sub>)<br /> T(?x,&nbsp;?p,&nbsp;?y<sub>2</sub>)
+</td><td class="name"> T(?y<sub>1</sub>, owl:sameAs,&nbsp;?y<sub>2</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-ifp">prp-ifp</span>
+</td><td class="name"> T(?p, rdf:type, owl:InverseFunctionalProperty)<br /> T(?x<sub>1</sub>,&nbsp;?p,&nbsp;?y)<br /> T(?x<sub>2</sub>,&nbsp;?p,&nbsp;?y)
+</td><td class="name"> T(?x<sub>1</sub>, owl:sameAs,&nbsp;?x<sub>2</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-irp">prp-irp</span>
+</td><td class="name"> T(?p, rdf:type, owl:IrreflexiveProperty)<br /> T(?x,&nbsp;?p,&nbsp;?x)
+</td><td class="name"> false
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-symp">prp-symp</span>
+</td><td class="name"> T(?p, rdf:type, owl:SymmetricProperty)<br /> T(?x,&nbsp;?p,&nbsp;?y)
+</td><td class="name"> T(?y,&nbsp;?p,&nbsp;?x)
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-asyp">prp-asyp</span>
+</td><td class="name"> T(?p, rdf:type, owl:AsymmetricProperty)<br /> T(?x,&nbsp;?p,&nbsp;?y)<br /> T(?y,&nbsp;?p,&nbsp;?x)
+</td><td class="name"> false
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-trp">prp-trp</span>
+</td><td class="name"> T(?p, rdf:type, owl:TransitiveProperty)<br /> T(?x,&nbsp;?p,&nbsp;?y)<br /> T(?y,&nbsp;?p,&nbsp;?z)
+</td><td class="name"> T(?x,&nbsp;?p,&nbsp;?z)
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-spo1">prp-spo1</span>
+</td><td class="name"> T(?p<sub>1</sub>, rdfs:subPropertyOf,&nbsp;?p<sub>2</sub>)<br /> T(?x,&nbsp;?p<sub>1</sub>,&nbsp;?y)<br />
+</td><td class="name"> T(?x,&nbsp;?p<sub>2</sub>,&nbsp;?y)
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-spo2">prp-spo2</span>
+</td><td class="name"> T(?p, owl:propertyChainAxiom,&nbsp;?x)<br /> LIST[?x,&nbsp;?p<sub>1</sub>, ...,&nbsp;?p<sub>n</sub>]<br /> T(?u<sub>1</sub>,&nbsp;?p<sub>1</sub>,&nbsp;?u<sub>2</sub>)<br /> T(?u<sub>2</sub>,&nbsp;?p<sub>2</sub>,&nbsp;?u<sub>3</sub>)<br /> ...<br /> T(?u<sub>n</sub>,&nbsp;?p<sub>n</sub>,&nbsp;?u<sub>n+1</sub>)
+</td><td class="name"> T(?u<sub>1</sub>,&nbsp;?p,&nbsp;?u<sub>n+1</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-eqp1">prp-eqp1</span>
+</td><td class="name"> T(?p<sub>1</sub>, owl:equivalentProperty,&nbsp;?p<sub>2</sub>)<br /> T(?x,&nbsp;?p<sub>1</sub>,&nbsp;?y)
+</td><td class="name"> T(?x,&nbsp;?p<sub>2</sub>,&nbsp;?y)
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-eqp2">prp-eqp2</span>
+</td><td class="name"> T(?p<sub>1</sub>, owl:equivalentProperty,&nbsp;?p<sub>2</sub>)<br /> T(?x,&nbsp;?p<sub>2</sub>,&nbsp;?y)
+</td><td class="name"> T(?x,&nbsp;?p<sub>1</sub>,&nbsp;?y)
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-pdw">prp-pdw</span>
+</td><td class="name"> T(?p<sub>1</sub>, owl:propertyDisjointWith,&nbsp;?p<sub>2</sub>)<br /> T(?x,&nbsp;?p<sub>1</sub>,&nbsp;?y)<br /> T(?x,&nbsp;?p<sub>2</sub>,&nbsp;?y)
+</td><td class="name"> false
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-adp">prp-adp</span>
+</td><td class="name"> T(?x, rdf:type, owl:AllDisjointProperties)<br /> T(?x, owl:members,&nbsp;?y)<br /> LIST[?y,&nbsp;?p<sub>1</sub>, ...,&nbsp;?p<sub>n</sub>]<br /> T(?u,&nbsp;?p<sub>i</sub>,&nbsp;?v)<br /> T(?u,&nbsp;?p<sub>j</sub>,&nbsp;?v)
+</td><td class="name"> false
+</td><td> 对每个 1 &le; i &lt; j &le; n
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-inv1">prp-inv1</span>
+</td><td class="name"> T(?p<sub>1</sub>, owl:inverseOf,&nbsp;?p<sub>2</sub>)<br /> T(?x,&nbsp;?p<sub>1</sub>,&nbsp;?y)
+</td><td class="name"> T(?y,&nbsp;?p<sub>2</sub>,&nbsp;?x)
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-inv2">prp-inv2</span>
+</td><td class="name"> T(?p<sub>1</sub>, owl:inverseOf,&nbsp;?p<sub>2</sub>)<br /> T(?x,&nbsp;?p<sub>2</sub>,&nbsp;?y)
+</td><td class="name"> T(?y,&nbsp;?p<sub>1</sub>,&nbsp;?x)
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-key">prp-key</span>
+</td><td class="name"> T(?c, owl:hasKey,&nbsp;?u)<br /> LIST[?u,&nbsp;?p<sub>1</sub>, ...,&nbsp;?p<sub>n</sub>]<br /> T(?x, rdf:type,&nbsp;?c)<br /> T(?x,&nbsp;?p<sub>1</sub>,&nbsp;?z<sub>1</sub>)<br /> ...<br /> T(?x,&nbsp;?p<sub>n</sub>,&nbsp;?z<sub>n</sub>)<br /> T(?y, rdf:type,&nbsp;?c)<br /> T(?y,&nbsp;?p<sub>1</sub>,&nbsp;?z<sub>1</sub>)<br /> ...<br /> T(?y,&nbsp;?p<sub>n</sub>,&nbsp;?z<sub>n</sub>)
+</td><td class="name"> T(?x, owl:sameAs,&nbsp;?y)
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-npa1">prp-npa1</span>
+</td><td class="name"> T(?x, owl:sourceIndividual,&nbsp;?i<sub>1</sub>)<br /> T(?x, owl:assertionProperty,&nbsp;?p)<br /> T(?x, owl:targetIndividual,&nbsp;?i<sub>2</sub>)<br /> T(?i<sub>1</sub>,&nbsp;?p,&nbsp;?i<sub>2</sub>)
+</td><td class="name"> false
+</td></tr>
+<tr>
+<td> <span class="name" id="prp-npa2">prp-npa2</span>
+</td><td class="name"> T(?x, owl:sourceIndividual,&nbsp;?i)<br /> T(?x, owl:assertionProperty,&nbsp;?p)<br /> T(?x, owl:targetValue,&nbsp;?lt)<br /> T(?i,&nbsp;?p,&nbsp;?lt)
+</td><td class="name"> false
+</td></tr>
+</tbody></table>
+</div>
+<p>表 6 规定了类的语义条件。
+</p>
+<div class="center">
+<table border="2" cellpadding="5">
+<caption> <span class="caption">表 6.</span> 类的语义
+</caption>
+<tbody><tr>
+<th>
+</th><th> 前件
+</th><th> 后件
+</th></tr>
+<tr>
+<td> <span class="name" id="cls-thing">cls-thing</span>
+</td><td class="name">
+</td><td class="name"> T(owl:Thing, rdf:type, owl:Class)
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-nothing1">cls-nothing1</span>
+</td><td class="name">
+</td><td class="name"> T(owl:Nothing, rdf:type, owl:Class)
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-nothing2">cls-nothing2</span>
+</td><td class="name"> T(?x, rdf:type, owl:Nothing)
+</td><td class="name"> false
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-int1">cls-int1</span>
+</td><td class="name"> T(?c, owl:intersectionOf,&nbsp;?x)<br /> LIST[?x,&nbsp;?c<sub>1</sub>, ...,&nbsp;?c<sub>n</sub>]<br /> T(?y, rdf:type,&nbsp;?c<sub>1</sub>)<br /> T(?y, rdf:type,&nbsp;?c<sub>2</sub>)<br /> ...<br /> T(?y, rdf:type,&nbsp;?c<sub>n</sub>)
+</td><td class="name"> T(?y, rdf:type,&nbsp;?c)
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-int2">cls-int2</span>
+</td><td class="name"> T(?c, owl:intersectionOf,&nbsp;?x)<br /> LIST[?x,&nbsp;?c<sub>1</sub>, ...,&nbsp;?c<sub>n</sub>]<br /> T(?y, rdf:type,&nbsp;?c)
+</td><td class="name"> T(?y, rdf:type,&nbsp;?c<sub>1</sub>)<br /> T(?y, rdf:type,&nbsp;?c<sub>2</sub>)<br /> ...<br /> T(?y, rdf:type,&nbsp;?c<sub>n</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-uni">cls-uni</span>
+</td><td class="name"> T(?c, owl:unionOf,&nbsp;?x)<br /> LIST[?x,&nbsp;?c<sub>1</sub>, ...,&nbsp;?c<sub>n</sub>]<br /> T(?y, rdf:type,&nbsp;?c<sub>i</sub>)
+</td><td class="name"> T(?y, rdf:type,&nbsp;?c)
+</td><td> 对每个 1 &le; i &le; n
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-com">cls-com</span>
+</td><td class="name"> T(?c<sub>1</sub>, owl:complementOf,&nbsp;?c<sub>2</sub>)<br /> T(?x, rdf:type,&nbsp;?c<sub>1</sub>)<br /> T(?x, rdf:type,&nbsp;?c<sub>2</sub>)
+</td><td class="name"> false
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-svf1">cls-svf1</span>
+</td><td class="name"> T(?x, owl:someValuesFrom,&nbsp;?y)<br /> T(?x, owl:onProperty,&nbsp;?p)<br /> T(?u,&nbsp;?p,&nbsp;?v)<br /> T(?v, rdf:type,&nbsp;?y)
+</td><td class="name"> T(?u, rdf:type,&nbsp;?x)
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-svf2">cls-svf2</span>
+</td><td class="name"> T(?x, owl:someValuesFrom, owl:Thing)<br /> T(?x, owl:onProperty,&nbsp;?p)<br /> T(?u,&nbsp;?p,&nbsp;?v)
+</td><td class="name"> T(?u, rdf:type,&nbsp;?x)
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-avf">cls-avf</span>
+</td><td class="name"> T(?x, owl:allValuesFrom,&nbsp;?y)<br /> T(?x, owl:onProperty,&nbsp;?p)<br /> T(?u, rdf:type,&nbsp;?x)<br /> T(?u,&nbsp;?p,&nbsp;?v)
+</td><td class="name"> T(?v, rdf:type,&nbsp;?y)
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-hv1">cls-hv1</span>
+</td><td class="name"> T(?x, owl:hasValue,&nbsp;?y)<br /> T(?x, owl:onProperty,&nbsp;?p)<br /> T(?u, rdf:type,&nbsp;?x)
+</td><td class="name"> T(?u,&nbsp;?p,&nbsp;?y)
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-hv2">cls-hv2</span>
+</td><td class="name"> T(?x, owl:hasValue,&nbsp;?y)<br /> T(?x, owl:onProperty,&nbsp;?p)<br /> T(?u,&nbsp;?p,&nbsp;?y)
+</td><td class="name"> T(?u, rdf:type,&nbsp;?x)
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-maxc1">cls-maxc1</span>
+</td><td class="name"> T(?x, owl:maxCardinality, "0"^^xsd:nonNegativeInteger)<br /> T(?x, owl:onProperty,&nbsp;?p)<br /> T(?u, rdf:type,&nbsp;?x)<br /> T(?u,&nbsp;?p,&nbsp;?y)
+</td><td class="name"> false
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-maxc2">cls-maxc2</span>
+</td><td class="name"> T(?x, owl:maxCardinality, "1"^^xsd:nonNegativeInteger)<br /> T(?x, owl:onProperty,&nbsp;?p)<br /> T(?u, rdf:type,&nbsp;?x)<br /> T(?u,&nbsp;?p,&nbsp;?y<sub>1</sub>)<br /> T(?u,&nbsp;?p,&nbsp;?y<sub>2</sub>)
+</td><td class="name"> T(?y<sub>1</sub>, owl:sameAs,&nbsp;?y<sub>2</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-maxqc1">cls-maxqc1</span>
+</td><td class="name"> T(?x, owl:maxQualifiedCardinality, "0"^^xsd:nonNegativeInteger)<br /> T(?x, owl:onProperty,&nbsp;?p)<br /> T(?x, owl:onClass,&nbsp;?c)<br /> T(?u, rdf:type,&nbsp;?x)<br /> T(?u,&nbsp;?p,&nbsp;?y)<br /> T(?y, rdf:type,&nbsp;?c)
+</td><td class="name"> false
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-maxqc2">cls-maxqc2</span>
+</td><td class="name"> T(?x, owl:maxQualifiedCardinality, "0"^^xsd:nonNegativeInteger)<br /> T(?x, owl:onProperty,&nbsp;?p)<br /> T(?x, owl:onClass, owl:Thing)<br /> T(?u, rdf:type,&nbsp;?x)<br /> T(?u,&nbsp;?p,&nbsp;?y)
+</td><td class="name"> false
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-maxqc3">cls-maxqc3</span>
+</td><td class="name"> T(?x, owl:maxQualifiedCardinality, "1"^^xsd:nonNegativeInteger)<br /> T(?x, owl:onProperty,&nbsp;?p)<br /> T(?x, owl:onClass,&nbsp;?c)<br /> T(?u, rdf:type,&nbsp;?x)<br /> T(?u,&nbsp;?p,&nbsp;?y<sub>1</sub>)<br /> T(?y<sub>1</sub>, rdf:type,&nbsp;?c)<br /> T(?u,&nbsp;?p,&nbsp;?y<sub>2</sub>)<br /> T(?y<sub>2</sub>, rdf:type,&nbsp;?c)
+</td><td class="name"> T(?y<sub>1</sub>, owl:sameAs,&nbsp;?y<sub>2</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-maxqc4">cls-maxqc4</span>
+</td><td class="name"> T(?x, owl:maxQualifiedCardinality, "1"^^xsd:nonNegativeInteger)<br /> T(?x, owl:onProperty,&nbsp;?p)<br /> T(?x, owl:onClass, owl:Thing)<br /> T(?u, rdf:type,&nbsp;?x)<br /> T(?u,&nbsp;?p,&nbsp;?y<sub>1</sub>)<br /> T(?u,&nbsp;?p,&nbsp;?y<sub>2</sub>)
+</td><td class="name"> T(?y<sub>1</sub>, owl:sameAs,&nbsp;?y<sub>2</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="cls-oo">cls-oo</span>
+</td><td class="name"> T(?c, owl:oneOf,&nbsp;?x)<br /> LIST[?x,&nbsp;?y<sub>1</sub>, ...,&nbsp;?y<sub>n</sub>]
+</td><td class="name"> T(?y<sub>1</sub>, rdf:type,&nbsp;?c)<br /> ...<br /> T(?y<sub>n</sub>, rdf:type,&nbsp;?c)
+</td></tr>
+</tbody></table>
+</div>
+<p>表 7 规定了类公理的语义条件。
+</p>
+<div class="center">
+<table border="2" cellpadding="5">
+<caption> <span class="caption">表 7.</span> 类公理的语义
+</caption>
+<tbody><tr>
+<td>
+</td><th> 前件
+</th><th> 后件
+</th></tr>
+<tr>
+<td> <span class="name" id="cax-sco">cax-sco</span>
+</td><td class="name"> T(?c<sub>1</sub>, rdfs:subClassOf,&nbsp;?c<sub>2</sub>)<br /> T(?x, rdf:type,&nbsp;?c<sub>1</sub>)
+</td><td class="name"> T(?x, rdf:type,&nbsp;?c<sub>2</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="cax-eqc1">cax-eqc1</span>
+</td><td class="name"> T(?c<sub>1</sub>, owl:equivalentClass,&nbsp;?c<sub>2</sub>)<br /> T(?x, rdf:type,&nbsp;?c<sub>1</sub>)
+</td><td class="name"> T(?x, rdf:type,&nbsp;?c<sub>2</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="cax-eqc2">cax-eqc2</span>
+</td><td class="name"> T(?c<sub>1</sub>, owl:equivalentClass,&nbsp;?c<sub>2</sub>)<br /> T(?x, rdf:type,&nbsp;?c<sub>2</sub>)
+</td><td class="name"> T(?x, rdf:type,&nbsp;?c<sub>1</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="cax-dw">cax-dw</span>
+</td><td class="name"> T(?c<sub>1</sub>, owl:disjointWith,&nbsp;?c<sub>2</sub>)<br /> T(?x, rdf:type,&nbsp;?c<sub>1</sub>)<br /> T(?x, rdf:type,&nbsp;?c<sub>2</sub>)
+</td><td class="name"> false
+</td></tr>
+<tr>
+<td> <span class="name" id="cax-adc">cax-adc</span>
+</td><td class="name"> T(?x, rdf:type, owl:AllDisjointClasses)<br /> T(?x, owl:members,&nbsp;?y)<br /> LIST[?y,&nbsp;?c<sub>1</sub>, ...,&nbsp;?c<sub>n</sub>]<br /> T(?z, rdf:type,&nbsp;?c<sub>i</sub>)<br /> T(?z, rdf:type,&nbsp;?c<sub>j</sub>)
+</td><td class="name"> false
+</td><td> 对每个 1 &le; i &lt; j &le; n
+</td></tr>
+</tbody></table>
+</div>
+<p>表 8 规定了数据类型的语义。
+</p>
+<div class="center">
+<table border="2" cellpadding="5">
+<caption> <span class="caption">表 8.</span> 数据类型的语义
+</caption>
+<tbody><tr>
+<td>
+</td><th> 前件
+</th><th> 后件
+</th></tr>
+<tr>
+<td> <span class="name" id="dt-type1">dt-type1</span>
+</td><td class="name">
+</td><td class="name"> T(dt, rdf:type, rdfs:Datatype)
+</td><td> 对 OWL 2 RL 支持的每个数据类型 <span class="name">dt</span>
+</td></tr>
+<tr>
+<td> <span class="name" id="dt-type2">dt-type2</span>
+</td><td class="name">
+</td><td class="name"> T(lt, rdf:type, dt)
+</td><td> 对每个字面量 <span class="name">lt</span> 和 OWL 2 RL 支持的每个数据类型 <span class="name">dt</span>，<br /> 使得 <span class="name">lt</span> 的数据值包含在 <span class="name">dt</span> 的值空间中
+</td></tr>
+<tr>
+<td> <span class="name" id="dt-eq">dt-eq</span>
+</td><td class="name">
+</td><td class="name"> T(lt<sub>1</sub>, owl:sameAs, lt<sub>2</sub>)
+</td><td> 对所有具有相同数据值的字面量 <span class="name">lt<sub>1</sub></span> 和 <span class="name">lt<sub>2</sub></span>
+</td></tr>
+<tr>
+<td> <span class="name" id="dt-diff">dt-diff</span>
+</td><td class="name">
+</td><td class="name"> T(lt<sub>1</sub>, owl:differentFrom, lt<sub>2</sub>)
+</td><td> 对所有具有不同数据值的字面量 <span class="name">lt<sub>1</sub></span> 和 <span class="name">lt<sub>2</sub></span>
+</td></tr>
+<tr>
+<td> <span class="name" id="dt-not-type">dt-not-type</span>
+</td><td class="name"> T(lt, rdf:type, dt)
+</td><td class="name"> false
+</td><td> 对每个字面量 <span class="name">lt</span> 和 OWL 2 RL 支持的每个数据类型 <span class="name">dt</span>，<br /> 使得 <span class="name">lt</span> 的数据值不包含在 <span class="name">dt</span> 的值空间中
+</td></tr>
+</tbody></table>
+</div>
+<p>表 9 规定了对用于定义模式的词汇的语义限制。
+</p>
+<div class="center">
+<table border="2" cellpadding="5">
+<caption> <span class="caption">表 9.</span> 模式词汇的语义
+</caption>
+<tbody><tr>
+<th>
+</th><th> 前件
+</th><th> 后件
+</th></tr>
+<tr>
+<td> <span class="name" id="scm-cls">scm-cls</span>
+</td><td class="name"> T(?c, rdf:type, owl:Class)
+</td><td class="name"> T(?c, rdfs:subClassOf,&nbsp;?c)<br /> T(?c, owl:equivalentClass,&nbsp;?c)<br /> T(?c, rdfs:subClassOf, owl:Thing)<br /> T(owl:Nothing, rdfs:subClassOf,&nbsp;?c)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-sco">scm-sco</span>
+</td><td class="name"> T(?c<sub>1</sub>, rdfs:subClassOf,&nbsp;?c<sub>2</sub>)<br /> T(?c<sub>2</sub>, rdfs:subClassOf,&nbsp;?c<sub>3</sub>)
+</td><td class="name"> T(?c<sub>1</sub>, rdfs:subClassOf,&nbsp;?c<sub>3</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-eqc1">scm-eqc1</span>
+</td><td class="name"> T(?c<sub>1</sub>, owl:equivalentClass,&nbsp;?c<sub>2</sub>)
+</td><td class="name"> T(?c<sub>1</sub>, rdfs:subClassOf,&nbsp;?c<sub>2</sub>)<br /> T(?c<sub>2</sub>, rdfs:subClassOf,&nbsp;?c<sub>1</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-eqc2">scm-eqc2</span>
+</td><td class="name"> T(?c<sub>1</sub>, rdfs:subClassOf,&nbsp;?c<sub>2</sub>)<br /> T(?c<sub>2</sub>, rdfs:subClassOf,&nbsp;?c<sub>1</sub>)
+</td><td class="name"> T(?c<sub>1</sub>, owl:equivalentClass,&nbsp;?c<sub>2</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-op">scm-op</span>
+</td><td class="name"> T(?p, rdf:type, owl:ObjectProperty)
+</td><td class="name"> T(?p, rdfs:subPropertyOf,&nbsp;?p)<br /> T(?p, owl:equivalentProperty,&nbsp;?p)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-dp">scm-dp</span>
+</td><td class="name"> T(?p, rdf:type, owl:DatatypeProperty)
+</td><td class="name"> T(?p, rdfs:subPropertyOf,&nbsp;?p)<br /> T(?p, owl:equivalentProperty,&nbsp;?p)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-spo">scm-spo</span>
+</td><td class="name"> T(?p<sub>1</sub>, rdfs:subPropertyOf,&nbsp;?p<sub>2</sub>)<br /> T(?p<sub>2</sub>, rdfs:subPropertyOf,&nbsp;?p<sub>3</sub>)
+</td><td class="name"> T(?p<sub>1</sub>, rdfs:subPropertyOf,&nbsp;?p<sub>3</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-eqp1">scm-eqp1</span>
+</td><td class="name"> T(?p<sub>1</sub>, owl:equivalentProperty,&nbsp;?p<sub>2</sub>)
+</td><td class="name"> T(?p<sub>1</sub>, rdfs:subPropertyOf,&nbsp;?p<sub>2</sub>)<br /> T(?p<sub>2</sub>, rdfs:subPropertyOf,&nbsp;?p<sub>1</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-eqp2">scm-eqp2</span>
+</td><td class="name"> T(?p<sub>1</sub>, rdfs:subPropertyOf,&nbsp;?p<sub>2</sub>)<br /> T(?p<sub>2</sub>, rdfs:subPropertyOf,&nbsp;?p<sub>1</sub>)
+</td><td class="name"> T(?p<sub>1</sub>, owl:equivalentProperty,&nbsp;?p<sub>2</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-dom1">scm-dom1</span>
+</td><td class="name"> T(?p, rdfs:domain,&nbsp;?c<sub>1</sub>)<br /> T(?c<sub>1</sub>, rdfs:subClassOf,&nbsp;?c<sub>2</sub>)
+</td><td class="name"> T(?p, rdfs:domain,&nbsp;?c<sub>2</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-dom2">scm-dom2</span>
+</td><td class="name"> T(?p<sub>2</sub>, rdfs:domain,&nbsp;?c)<br /> T(?p<sub>1</sub>, rdfs:subPropertyOf,&nbsp;?p<sub>2</sub>)
+</td><td class="name"> T(?p<sub>1</sub>, rdfs:domain,&nbsp;?c)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-rng1">scm-rng1</span>
+</td><td class="name"> T(?p, rdfs:range,&nbsp;?c<sub>1</sub>)<br /> T(?c<sub>1</sub>, rdfs:subClassOf,&nbsp;?c<sub>2</sub>)
+</td><td class="name"> T(?p, rdfs:range,&nbsp;?c<sub>2</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-rng2">scm-rng2</span>
+</td><td class="name"> T(?p<sub>2</sub>, rdfs:range,&nbsp;?c)<br /> T(?p<sub>1</sub>, rdfs:subPropertyOf,&nbsp;?p<sub>2</sub>)
+</td><td class="name"> T(?p<sub>1</sub>, rdfs:range,&nbsp;?c)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-hv">scm-hv</span>
+</td><td class="name"> T(?c<sub>1</sub>, owl:hasValue,&nbsp;?i)<br /> T(?c<sub>1</sub>, owl:onProperty,&nbsp;?p<sub>1</sub>)<br /> T(?c<sub>2</sub>, owl:hasValue,&nbsp;?i)<br /> T(?c<sub>2</sub>, owl:onProperty,&nbsp;?p<sub>2</sub>)<br /> T(?p<sub>1</sub>, rdfs:subPropertyOf,&nbsp;?p<sub>2</sub>)
+</td><td class="name"> T(?c<sub>1</sub>, rdfs:subClassOf,&nbsp;?c<sub>2</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-svf1">scm-svf1</span>
+</td><td class="name"> T(?c<sub>1</sub>, owl:someValuesFrom,&nbsp;?y<sub>1</sub>)<br /> T(?c<sub>1</sub>, owl:onProperty,&nbsp;?p)<br /> T(?c<sub>2</sub>, owl:someValuesFrom,&nbsp;?y<sub>2</sub>)<br /> T(?c<sub>2</sub>, owl:onProperty,&nbsp;?p)<br /> T(?y<sub>1</sub>, rdfs:subClassOf,&nbsp;?y<sub>2</sub>)
+</td><td class="name"> T(?c<sub>1</sub>, rdfs:subClassOf,&nbsp;?c<sub>2</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-svf2">scm-svf2</span>
+</td><td class="name"> T(?c<sub>1</sub>, owl:someValuesFrom,&nbsp;?y)<br /> T(?c<sub>1</sub>, owl:onProperty,&nbsp;?p<sub>1</sub>)<br /> T(?c<sub>2</sub>, owl:someValuesFrom,&nbsp;?y)<br /> T(?c<sub>2</sub>, owl:onProperty,&nbsp;?p<sub>2</sub>)<br /> T(?p<sub>1</sub>, rdfs:subPropertyOf,&nbsp;?p<sub>2</sub>)
+</td><td class="name"> T(?c<sub>1</sub>, rdfs:subClassOf,&nbsp;?c<sub>2</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-avf1">scm-avf1</span>
+</td><td class="name"> T(?c<sub>1</sub>, owl:allValuesFrom,&nbsp;?y<sub>1</sub>)<br /> T(?c<sub>1</sub>, owl:onProperty,&nbsp;?p)<br /> T(?c<sub>2</sub>, owl:allValuesFrom,&nbsp;?y<sub>2</sub>)<br /> T(?c<sub>2</sub>, owl:onProperty,&nbsp;?p)<br /> T(?y<sub>1</sub>, rdfs:subClassOf,&nbsp;?y<sub>2</sub>)
+</td><td class="name"> T(?c<sub>1</sub>, rdfs:subClassOf,&nbsp;?c<sub>2</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-avf2">scm-avf2</span>
+</td><td class="name"> T(?c<sub>1</sub>, owl:allValuesFrom,&nbsp;?y)<br /> T(?c<sub>1</sub>, owl:onProperty,&nbsp;?p<sub>1</sub>)<br /> T(?c<sub>2</sub>, owl:allValuesFrom,&nbsp;?y)<br /> T(?c<sub>2</sub>, owl:onProperty,&nbsp;?p<sub>2</sub>)<br /> T(?p<sub>1</sub>, rdfs:subPropertyOf,&nbsp;?p<sub>2</sub>)
+</td><td class="name"> T(?c<sub>2</sub>, rdfs:subClassOf,&nbsp;?c<sub>1</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-int">scm-int</span>
+</td><td class="name"> T(?c, owl:intersectionOf,&nbsp;?x)<br /> LIST[?x,&nbsp;?c<sub>1</sub>, ...,&nbsp;?c<sub>n</sub>]
+</td><td class="name"> T(?c, rdfs:subClassOf,&nbsp;?c<sub>1</sub>)<br /> T(?c, rdfs:subClassOf,&nbsp;?c<sub>2</sub>)<br /> ...<br /> T(?c, rdfs:subClassOf,&nbsp;?c<sub>n</sub>)
+</td></tr>
+<tr>
+<td> <span class="name" id="scm-uni">scm-uni</span>
+</td><td class="name"> T(?c, owl:unionOf,&nbsp;?x)<br /> LIST[?x,&nbsp;?c<sub>1</sub>, ...,&nbsp;?c<sub>n</sub>]
+</td><td class="name"> T(?c<sub>1</sub>, rdfs:subClassOf,&nbsp;?c)<br /> T(?c<sub>2</sub>, rdfs:subClassOf,&nbsp;?c)<br /> ...<br /> T(?c<sub>n</sub>, rdfs:subClassOf,&nbsp;?c)
+</td></tr></tbody></table>
+</div>
+<p>为避免实践中可能出现的性能问题，OWL 2 RL/RDF 规则不包含 RDF 和 RDFS 的公理化三元组（即分别必须被每个 RDF 和 RDFS 解释满足的那些三元组）[<cite><a href="#ref-rdf-semantics" title="">RDF Semantics</a></cite>] 以及相关的 OWL 词汇 [<cite><a href="#ref-owl-2-rdf-semantics" title="">OWL 2 RDF-Based Semantics</a></cite>]；此外，OWL 2 RL/RDF 规则包含了 RDFS [<cite><a href="#ref-rdf-semantics" title="">RDF Semantics</a></cite>] 的大部分（但并非全部）蕴含规则。OWL 2 RL/RDF 实现<em class="RFC2119" title="MAY in RFC 2119 context">可以</em>根据需要包含这些三元组和蕴含规则，而不会违反 OWL 2 RL 的一致性要求 [<cite><a href="#ref-owl-2-conformance" title="">OWL 2 Conformance</a></cite>]。
+</p><p><span id="Theorem-PR1"><b>定理 PR1.</b></span> 设 <i>R</i> 为如上定义的 OWL 2 RL/RDF 规则。进一步设 <i>O<sub>1</sub></i> 和 <i>O<sub>2</sub></i> 为满足以下性质的 OWL 2 RL 本体：
+</p>
+<ul><li> <i>O<sub>1</sub></i> 和 <i>O<sub>2</sub></i> 都不包含被用于多种实体类型的 IRI（即没有任何 IRI 既用作例如类、又用作个体）；
+</li><li> <i>O<sub>1</sub></i> 不包含 <span class="nonterminal">SubAnnotationPropertyOf</span>、<span class="nonterminal">AnnotationPropertyDomain</span> 和 <span class="nonterminal">AnnotationPropertyRange</span> 公理；并且
+</li><li> <i>O<sub>2</sub></i> 中的每条公理都是如下形式的断言，其中 <span class="name">a</span>, <span class="name">a<sub>1</sub></span>, ..., <span class="name">a<sub>n</sub></span> 为命名个体：
+<ul><li> <span class="name">ClassAssertion( C a )</span>，其中 <span class="name">C</span> 是一个类，
+</li><li> <span class="name">ObjectPropertyAssertion( OP a<sub>1</sub> a<sub>2</sub> )</span>，其中 <span class="name">OP</span> 是一个对象属性，
+</li><li> <span class="name">DataPropertyAssertion( DP a v )</span>，其中 <span class="name">DP</span> 是一个数据属性，或者
+</li><li> <span class="name">SameIndividual( a<sub>1</sub> ... a<sub>n</sub> )</span>。
+</li></ul>
+</li></ul>
+<p>进一步设 <i>RDF(O<sub>1</sub>)</i> 和 <i>RDF(O<sub>2</sub>)</i> 分别为 <i>O<sub>1</sub></i> 和 <i>O<sub>2</sub></i> 按 OWL 2 Mapping to RDF Graphs [<cite><a href="#ref-owl-2-rdf-mapping" title="">OWL 2 RDF Mapping</a></cite>] 翻译得到的 RDF 图；并设 <i>FO(RDF(O<sub>1</sub>))</i> 和 <i>FO(RDF(O<sub>2</sub>))</i> 为这些图翻译到一阶理论的结果，其中三元组用 <span class="name">T</span> 谓词表示——即 <span class="name">T(s, p, o)</span> 表示主语为 <span class="name">s</span>、谓词为 <span class="name">p</span>、宾语为 <span class="name">o</span> 的 RDF 三元组。那么，<i>O<sub>1</sub></i> 在 OWL 2 Direct Semantics [<cite><a href="#ref-owl-2-direct-semantics" title="">OWL 2 Direct Semantics</a></cite>] 下蕴含 <i>O<sub>2</sub></i>，当且仅当 <i>FO(RDF(O<sub>1</sub>))</i> &cup; <i>R</i> 在标准一阶语义下蕴含 <i>FO(RDF(O<sub>2</sub>))</i>。
+</p><p><i>证明概要。</i>不失一般性，可以假设 <i>O<sub>1</sub></i> 中的所有公理都已完全规范化——即公理中的所有类表达式的深度至多为一。设 <i>DLP(O<sub>1</sub>)</i> 为按照 Description Logic Programs [<cite><a href="#ref-dlp" title="">DLP</a></cite>] 将 <i>O<sub>1</sub></i> 翻译成一组规则所得到的规则集。
+</p><p>现在考虑每条由 <i>DLP(O<sub>1</sub>)</i>（或等价地由 <i>O<sub>1</sub></i>）蕴含的断言 <i>A</i> &isin; <i>O<sub>2</sub></i>。设 <i>dt</i> 为从 <i>DLP(O<sub>1</sub>)</i> 推出 <i>A</i> 的推导树。通过考察 OWL 2 RL 构造的集合可以看出，每棵这样的树都可以变换为一棵从 <i>FO(RDF(O<sub>1</sub>))</i> &cup; <i>R</i> 推出 <i>FO(RDF(A))</i> 的推导树 <i>dt'</i>。<i>dt</i> 中出现的每条断言 <i>B</i> 都具有定理中所述的形式。粗略地说，树 <i>dt'</i> 可以由 <i>dt</i> 通过将每条断言 <i>B</i> 替换为 <i>FO(RDF(B))</i>、并将 <i>DLP(O<sub>1</sub>)</i> 中的每条规则替换为表 3&ndash;8 中相应的规则而得到。因此，<i>FO(RDF(O<sub>1</sub>))</i> &cup; <i>R</i> 蕴含 <i>FO(RDF(A))</i>。
+</p><p>由于 <i>O<sub>1</sub></i> 中没有任何 IRI 同时用作个体和类或属性，<i>FO(RDF(O<sub>1</sub>))</i> &cup; <i>R</i> 不会推出形如 <span class="name">T(a:i1, owl:sameAs, a:i2)</span> 的三元组，其中 <i>a:i1</i> 或 <i>a:i2</i> 在 <i>O<sub>1</sub></i> 中用作类或属性。这使得我们可以用与前一种情况类似的方式，把从 <i>FO(RDF(O<sub>1</sub>))</i> &cup; <i>R</i> 推出 <i>FO(RDF(A))</i> 的推导树变换为从 <i>DLP(O<sub>1</sub>)</i> 推出 <i>A</i> 的推导树。证毕
+</p>
+<a id="Computational_Properties" name="Computational_Properties"></a><h2> <span class="mw-headline">5  计算性质 </span></h2>
+<p>本节描述本文档所定义语言的最相关推理问题的计算复杂度。关于计算复杂度的入门介绍，请参阅复杂度方面的教科书，例如 [<cite><a href="#ref-papa" title="">Papadimitriou</a></cite>]。这里考虑的推理问题包括<i>本体一致性</i>、<i>类表达式可满足性</i>、<i>类表达式包含</i>、<i>实例检查</i>以及<i>（布尔）合取查询回答</i> [<cite><a href="#ref-owl-2-direct-semantics" title="">OWL 2 Direct Semantics</a></cite>]。在评估复杂度时，考虑以下几种复杂度度量：
+</p>
+<ul><li> <b>数据复杂度（Data Complexity）</b>：相对于本体中断言的总大小度量的复杂度
+</li><li> <b>分类复杂度（Taxonomic Complexity）</b>：相对于本体中公理（不含断言）的总大小度量的复杂度
+</li><li> <b>查询复杂度（Query Complexity）</b>：相对于合取查询的总大小度量的复杂度（仅为合取查询回答定义）
+</li><li> <b>组合复杂度（Combined Complexity）</b>：相对于本体中公理与断言的总大小、合取查询（在合取查询回答的情形下），以及被检查的表达式（在类表达式可满足性、类表达式包含或实例检查的情形下）度量的复杂度
+</li></ul>
+<p>表 10 汇总了 RDF-Based 语义与直接语义下的 OWL 2、OWL 2 EL、OWL 2 QL、OWL 2 RL 以及 OWL 1 DL 的已知复杂度结果。各表项的含义如下：
+</p>
+<ul><li> <b>可判定性未知</b>表示尚不知道该推理问题是否可判定。
+</li><li> <b>可判定，但复杂度未知</b>表示已知该推理问题是可判定的，但其确切的计算复杂度尚不清楚。如有已知的下界，则在括号中给出；例如，<b>(NP-Hard)</b> 表示该问题至少与 NP 中的任何问题一样难。
+</li><li> <b>X-完全</b>（其中 X 为下文所述复杂度类之一）表示已知紧致的复杂度界——即该问题既被证明<i>属于</i>复杂度类 X（即已知存在只使用 X 所允许的时间/空间的算法），又被证明对 X 是<i>难的</i>（即它至少与 X 中的任何问题一样难）。下面按从最复杂到最简单的顺序，简要介绍本表中用到的复杂度类。
+<ul><li> <b>N2EXPTIME</b> 是可由非确定性算法在至多双指数于输入规模的<i>时间</i>内求解的问题类（即大致为 2<sup>2<sup>n</sup></sup>，其中 n 为输入规模）。
+</li><li> <b>NEXPTIME</b> 是可由非确定性算法在至多指数于输入规模的<i>时间</i>内求解的问题类（即大致为 2<sup>n</sup>，其中 n 为输入规模）。
+</li><li> <b>PSPACE</b> 是可由确定性算法使用至多多项式于输入规模的<i>空间</i>求解的问题类（即大致为 n<sup>c</sup>，其中 n 为输入规模，c 为常数）。
+</li><li> <b>NP</b> 是可由非确定性算法在至多多项式于输入规模的<i>时间</i>内求解的问题类（即大致为 n<sup>c</sup>，其中 n 为输入规模，c 为常数）。
+</li><li> <b>PTIME</b> 是可由确定性算法在至多多项式于输入规模的<i>时间</i>内求解的问题类（即大致为 n<sup>c</sup>，其中 n 为输入规模，c 为常数）。PTIME 通常称为<i>易处理的</i>，而上述各类中的问题通常称为<i>难处理的</i>。
+</li><li> <b>LOGSPACE</b> 是可由确定性算法使用至多对数于输入规模的<i>空间</i>求解的问题类（即大致为 log(n)，其中 n 为输入规模，c 为常数）。NLOGSPACE 是该类的非确定性版本。
+</li><li> <b>AC<sup>0</sup></b> 是 LOGSPACE 的真子类，它不是通过图灵机而是通过电路来定义的：AC<sup>0</sup> 是可由一族常数深度、多项式规模的电路定义的问题类，且该电路族可由确定性图灵机在对数时间（相对于输入规模）内生成。直观地说，AC<sup>0</sup> 允许我们使用多项式数量的处理器，但运行时间必须是常数。AC<sup>0</sup> 问题的一个典型例子是数据库上的一阶查询求值（或有限模型上一阶语句的模型检查），其中只有数据库（一阶模型）被视为输入，而查询（一阶语句）被假定为固定的。已知无向图可达性问题属于 LogSpace，但不属于 AC<sup>0</sup>。
+</li></ul>
+</li></ul>
+<p>下面的结果针对的是这些推理问题的<i>最坏情形</i>复杂度，因此并不意味着已实现的算法在所有输入问题上都必然以该复杂度运行，也不说明它们在某些/典型/特定类型的问题上使用多少空间/时间。对于 X-完全问题，这些结果只表明：任何推理算法都不可能在<i>所有</i>输入问题上使用比该类所示更少的时间/空间。
+</p>
+<div class="center">
+<table border="2" cellpadding="5" class="complexity">
+<caption> <span class="caption">表 10.</span> 各剖面的复杂度
+</caption>
+<tbody><tr>
+<th> 语言
+</th><th> 推理问题
+</th><th> 分类复杂度
+</th><th> 数据复杂度
+</th><th> 查询复杂度
+</th><th> 组合复杂度
+</th></tr>
+<tr>
+<td> OWL 2<br /> RDF-Based Semantics
+</td><td style="text-align: left"> 本体一致性，<br /> 类表达式可满足性，<br /> 类表达式包含，<br /> 实例检查，<br /> 合取查询回答
+</td><td> 不可判定
+</td><td> 不可判定
+</td><td> 不可判定
+</td><td> 不可判定
+</td></tr>
+<tr>
+<td rowspan="2"> OWL 2<br /> 直接语义
+</td><td style="text-align: left"> 本体一致性，<br /> 类表达式可满足性，<br /> 类表达式包含，<br /> 实例检查
+</td><td> N2EXPTIME-完全（若属性层次可翻译为多项式规模的非确定性有限自动机，则为 NEXPTIME-完全）
+</td><td> 可判定，但复杂度未知<br />(NP-Hard)
+</td><td> 不适用
+</td><td> N2EXPTIME-完全（若属性层次可翻译为多项式规模的非确定性有限自动机，则为 NEXPTIME-完全）
+</td></tr>
+<tr>
+<td style="text-align: left"> 合取查询回答
+</td><td> 可判定性未知
+</td><td> 可判定性未知
+</td><td> 可判定性未知
+</td><td> 可判定性未知
+</td></tr>
+<tr>
+<td rowspan="2"> <a href="#OWL_2_EL" title="">OWL 2 EL</a>
+</td><td style="text-align: left"> 本体一致性，<br /> 类表达式可满足性，<br /> 类表达式包含，<br /> 实例检查
+</td><td> PTIME-完全
+</td><td> PTIME-完全
+</td><td> 不适用
+</td><td> PTIME-完全
+</td></tr>
+<tr>
+<td style="text-align: left"> 合取查询回答
+</td><td> 属于 EXPTIME（若属性层次可翻译为多项式规模的非确定性有限自动机，则为 PTIME-完全）
+</td><td> PTIME-完全
+</td><td> NP 完全
+</td><td> 属于 EXPTIME（若属性层次可翻译为多项式规模的非确定性有限自动机，则为 PSPACE-完全）
+</td></tr>
+<tr>
+<td rowspan="2"> <a href="#OWL_2_QL" title="">OWL 2 QL</a>
+</td><td style="text-align: left"> 本体一致性，<br /> 类表达式可满足性，<br /> 类表达式包含，<br /> 实例检查
+</td><td> NLogSpace-完全
+</td><td> 属于 AC<sup>0</sup>
+</td><td> 不适用
+</td><td> NLogSpace-完全
+</td></tr>
+<tr>
+<td style="text-align: left"> 合取查询回答
+</td><td> NLogSpace-完全
+</td><td> 属于 AC<sup>0</sup>
+</td><td> NP 完全
+</td><td> NP 完全
+</td></tr>
+<tr>
+<td rowspan="3"> <a href="#OWL_2_RL" title="">OWL 2 RL</a>
+</td><td style="text-align: left"> 本体一致性
+</td><td> PTIME-完全
+</td><td> PTIME-完全
+</td><td> 不适用
+</td><td> PTIME-完全
+</td></tr>
+<tr>
+<td style="text-align: left"> 类表达式可满足性，<br /> 类表达式包含，<br /> 实例检查
+</td><td> PTIME-完全
+</td><td> PTIME-完全
+</td><td> 不适用
+</td><td> co-NP-完全（对原子类表达式为 PTIME-完全）
+</td></tr>
+<tr>
+<td style="text-align: left"> 合取查询回答
+</td><td> PTIME-完全
+</td><td> PTIME-完全
+</td><td> NP 完全
+</td><td> NP 完全
+</td></tr>
+<tr>
+<td rowspan="2"> OWL 1 DL
+</td><td style="text-align: left"> 本体一致性，<br /> 类表达式可满足性，<br /> 类表达式包含，<br /> 实例检查
+</td><td> NEXPTIME-完全
+</td><td> 可判定，但复杂度未知<br />(NP-Hard)
+</td><td> 不适用
+</td><td> NEXPTIME-完全
+</td></tr>
+<tr>
+<td style="text-align: left"> 合取查询回答
+</td><td> 可判定性未知
+</td><td> 可判定性未知
+</td><td> 可判定性未知
+</td><td> 可判定性未知
+</td></tr>
+</tbody></table>
+</div>
+<a id="Appendix:_Complete_Grammars_for_Profiles" name="Appendix:_Complete_Grammars_for_Profiles"></a><h2> <span class="mw-headline">6  附录：各剖面的完整文法 </span></h2>
+<p>本附录包含 OWL 2 全部三个剖面的文法。
+</p>
+<a id="OWL_2_EL_2" name="OWL_2_EL_2"></a><h3> <span class="mw-headline">6.1  OWL 2 EL </span></h3>
+<p>OWL 2 EL 的文法由 OWL 2 规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 的<a href="https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/#General_Definitions" title="Syntax">第 13.1 节</a>中给出的一般定义以及以下产生式组成。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">Class</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">Datatype</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">ObjectProperty</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">DataProperty</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">AnnotationProperty</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">Individual</span>&nbsp;:= <span class="nonterminal">NamedIndividual</span><br />
+<br />
+<span class="nonterminal">NamedIndividual</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">Literal</span>&nbsp;:= <span class="nonterminal">typedLiteral</span> | <span class="nonterminal">stringLiteralNoLanguage</span> | <span class="nonterminal">stringLiteralWithLanguage</span><br />
+<span class="nonterminal">typedLiteral</span>&nbsp;:= <span class="nonterminal">lexicalForm</span> '^^' <span class="nonterminal">Datatype</span><br />
+<span class="nonterminal">lexicalForm</span>&nbsp;:= <span class="nonterminal">quotedString</span><br />
+<span class="nonterminal">stringLiteralNoLanguage</span>&nbsp;:= <span class="nonterminal">quotedString</span><br />
+<span class="nonterminal">stringLiteralWithLanguage</span>&nbsp;:= <span class="nonterminal">quotedString</span> <span class="nonterminal">languageTag</span><br />
+<br />
+<br />
+<br />
+<span class="nonterminal">ObjectPropertyExpression</span>&nbsp;:= <span class="nonterminal">ObjectProperty</span><br />
+<br />
+<span class="nonterminal">DataPropertyExpression</span>&nbsp;:= <span class="nonterminal">DataProperty</span><br />
+<br />
+<br />
+<br />
+<span class="nonterminal">DataRange</span>&nbsp;:= <span class="nonterminal">Datatype</span> | <span class="nonterminal">DataIntersectionOf</span> | <span class="nonterminal">DataOneOf</span><br />
+<br />
+<span class="nonterminal">DataIntersectionOf</span>&nbsp;:= 'DataIntersectionOf' '(' <span class="nonterminal">DataRange</span> <span class="nonterminal">DataRange</span> { <span class="nonterminal">DataRange</span> } ')'<br />
+<br />
+<span class="nonterminal">DataOneOf</span>&nbsp;:= 'DataOneOf' '(' <span class="nonterminal">Literal</span> ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">ClassExpression</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">Class</span> | <span class="nonterminal">ObjectIntersectionOf</span> | <span class="nonterminal">ObjectOneOf</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">ObjectSomeValuesFrom</span> | <span class="nonterminal">ObjectHasValue</span> | <span class="nonterminal">ObjectHasSelf</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DataSomeValuesFrom</span> | <span class="nonterminal">DataHasValue</span><br />
+<br />
+<span class="nonterminal">ObjectIntersectionOf</span>&nbsp;:= 'ObjectIntersectionOf' '(' <span class="nonterminal">ClassExpression</span> <span class="nonterminal">ClassExpression</span> { <span class="nonterminal">ClassExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">ObjectOneOf</span>&nbsp;:= 'ObjectOneOf' '(' <span class="nonterminal">Individual</span> ')'<br />
+<br />
+<span class="nonterminal">ObjectSomeValuesFrom</span>&nbsp;:= 'ObjectSomeValuesFrom' '(' <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">ClassExpression</span> ')'<br />
+<br />
+<span class="nonterminal">ObjectHasValue</span>&nbsp;:= 'ObjectHasValue' '(' <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">Individual</span> ')'<br />
+<br />
+<span class="nonterminal">ObjectHasSelf</span>&nbsp;:= 'ObjectHasSelf' '(' <span class="nonterminal">ObjectPropertyExpression</span> ')'<br />
+<br />
+<span class="nonterminal">DataSomeValuesFrom</span>&nbsp;:= 'DataSomeValuesFrom' '(' <span class="nonterminal">DataPropertyExpression</span> { <span class="nonterminal">DataPropertyExpression</span> } <span class="nonterminal">DataRange</span> ')'<br />
+<br />
+<span class="nonterminal">DataHasValue</span>&nbsp;:= 'DataHasValue' '(' <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">Literal</span> ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">Axiom</span>&nbsp;:= <span class="nonterminal">Declaration</span> | <span class="nonterminal">ClassAxiom</span> | <span class="nonterminal">ObjectPropertyAxiom</span> | <span class="nonterminal">DataPropertyAxiom</span> | <span class="nonterminal">DatatypeDefinition</span> | <span class="nonterminal">HasKey</span> | <span class="nonterminal">Assertion</span> | <span class="nonterminal">AnnotationAxiom</span><br />
+<br />
+<br />
+<br />
+<span class="nonterminal">ClassAxiom</span>&nbsp;:= <span class="nonterminal">SubClassOf</span> | <span class="nonterminal">EquivalentClasses</span> | <span class="nonterminal">DisjointClasses</span>
+<br />
+<span class="nonterminal">SubClassOf</span>&nbsp;:= 'SubClassOf' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subClassExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<span class="nonterminal">subClassExpression</span>&nbsp;:= <span class="nonterminal">ClassExpression</span><br />
+<span class="nonterminal">superClassExpression</span>&nbsp;:= <span class="nonterminal">ClassExpression</span><br />
+<br />
+<span class="nonterminal">EquivalentClasses</span>&nbsp;:= 'EquivalentClasses' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ClassExpression</span> <span class="nonterminal">ClassExpression</span> { <span class="nonterminal">ClassExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">DisjointClasses</span>&nbsp;:= 'DisjointClasses' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ClassExpression</span> <span class="nonterminal">ClassExpression</span> { <span class="nonterminal">ClassExpression</span> } ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">ObjectPropertyAxiom</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">EquivalentObjectProperties</span> | <span class="nonterminal">SubObjectPropertyOf</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">ObjectPropertyDomain</span> | <span class="nonterminal">ObjectPropertyRange</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">ReflexiveObjectProperty</span> | <span class="nonterminal">TransitiveObjectProperty</span><br />
+<br />
+<span class="nonterminal">SubObjectPropertyOf</span>&nbsp;:= 'SubObjectPropertyOf' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subObjectPropertyExpression</span> <span class="nonterminal">superObjectPropertyExpression</span> ')'<br />
+<span class="nonterminal">subObjectPropertyExpression</span>&nbsp;:= <span class="nonterminal">ObjectPropertyExpression</span> | <span class="nonterminal">propertyExpressionChain</span><br />
+<span class="nonterminal">propertyExpressionChain</span>&nbsp;:= 'ObjectPropertyChain' '(' <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">ObjectPropertyExpression</span> { <span class="nonterminal">ObjectPropertyExpression</span> } ')'<br />
+<span class="nonterminal">superObjectPropertyExpression</span>&nbsp;:= <span class="nonterminal">ObjectPropertyExpression</span><br />
+<br />
+<span class="nonterminal">EquivalentObjectProperties</span>&nbsp;:= 'EquivalentObjectProperties' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">ObjectPropertyExpression</span> { <span class="nonterminal">ObjectPropertyExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">ObjectPropertyDomain</span>&nbsp;:= 'ObjectPropertyDomain' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">ClassExpression</span> ')'<br />
+<br />
+<span class="nonterminal">ObjectPropertyRange</span>&nbsp;:= 'ObjectPropertyRange' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">ClassExpression</span> ')'<br />
+<br />
+<span class="nonterminal">ReflexiveObjectProperty</span>&nbsp;:= 'ReflexiveObjectProperty' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> ')'<br />
+<br />
+<span class="nonterminal">TransitiveObjectProperty</span>&nbsp;:= 'TransitiveObjectProperty' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">DataPropertyAxiom</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">SubDataPropertyOf</span> | <span class="nonterminal">EquivalentDataProperties</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DataPropertyDomain</span> | <span class="nonterminal">DataPropertyRange</span> | <span class="nonterminal">FunctionalDataProperty</span><br />
+<br />
+<span class="nonterminal">SubDataPropertyOf</span>&nbsp;:= 'SubDataPropertyOf' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subDataPropertyExpression</span> <span class="nonterminal">superDataPropertyExpression</span> ')'<br />
+<span class="nonterminal">subDataPropertyExpression</span>&nbsp;:= <span class="nonterminal">DataPropertyExpression</span><br />
+<span class="nonterminal">superDataPropertyExpression</span>&nbsp;:= <span class="nonterminal">DataPropertyExpression</span><br />
+<br />
+<span class="nonterminal">EquivalentDataProperties</span>&nbsp;:= 'EquivalentDataProperties' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">DataPropertyExpression</span> { <span class="nonterminal">DataPropertyExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">DataPropertyDomain</span>&nbsp;:= 'DataPropertyDomain' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">ClassExpression</span> ')'<br />
+<br />
+<span class="nonterminal">DataPropertyRange</span>&nbsp;:= 'DataPropertyRange' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">DataRange</span> ')'<br />
+<br />
+<span class="nonterminal">FunctionalDataProperty</span>&nbsp;:= 'FunctionalDataProperty' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">DatatypeDefinition</span>&nbsp;:= 'DatatypeDefinition' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">Datatype</span> <span class="nonterminal">DataRange</span> ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">HasKey</span>&nbsp;:= 'HasKey' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ClassExpression</span> '(' { <span class="nonterminal">ObjectPropertyExpression</span> } ')' '(' { <span class="nonterminal">DataPropertyExpression</span> } ')' ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">Assertion</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">SameIndividual</span> | <span class="nonterminal">DifferentIndividuals</span> | <span class="nonterminal">ClassAssertion</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">ObjectPropertyAssertion</span> | <span class="nonterminal">NegativeObjectPropertyAssertion</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DataPropertyAssertion</span> | <span class="nonterminal">NegativeDataPropertyAssertion</span><br />
+<br />
+<span class="nonterminal">sourceIndividual</span>&nbsp;:= <span class="nonterminal">Individual</span><br />
+<span class="nonterminal">targetIndividual</span>&nbsp;:= <span class="nonterminal">Individual</span><br />
+<span class="nonterminal">targetValue</span>&nbsp;:= <span class="nonterminal">Literal</span><br />
+<br />
+<span class="nonterminal">SameIndividual</span>&nbsp;:= 'SameIndividual' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">Individual</span> <span class="nonterminal">Individual</span> { <span class="nonterminal">Individual</span> } ')'<br />
+<br />
+<span class="nonterminal">DifferentIndividuals</span>&nbsp;:= 'DifferentIndividuals' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">Individual</span> <span class="nonterminal">Individual</span> { <span class="nonterminal">Individual</span> } ')'<br />
+<br />
+<span class="nonterminal">ClassAssertion</span>&nbsp;:= 'ClassAssertion' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ClassExpression</span> <span class="nonterminal">Individual</span> ')'<br />
+<br />
+<span class="nonterminal">ObjectPropertyAssertion</span>&nbsp;:= 'ObjectPropertyAssertion' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">sourceIndividual</span> <span class="nonterminal">targetIndividual</span> ')'<br />
+<br />
+<span class="nonterminal">NegativeObjectPropertyAssertion</span>&nbsp;:= 'NegativeObjectPropertyAssertion' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">sourceIndividual</span> <span class="nonterminal">targetIndividual</span> ')'<br />
+<br />
+<span class="nonterminal">DataPropertyAssertion</span>&nbsp;:= 'DataPropertyAssertion' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">sourceIndividual</span> <span class="nonterminal">targetValue</span> ')'<br />
+<br />
+<span class="nonterminal">NegativeDataPropertyAssertion</span>&nbsp;:= 'NegativeDataPropertyAssertion' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">sourceIndividual</span> <span class="nonterminal">targetValue</span> ')'
+</p>
+</div>
+<a id="OWL_2_QL_2" name="OWL_2_QL_2"></a><h3> <span class="mw-headline">6.2  OWL 2 QL </span></h3>
+<p>OWL 2 QL 的文法由 OWL 2 规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 的<a href="https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/#General_Definitions" title="Syntax">第 13.1 节</a>中给出的一般定义以及以下产生式组成。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">Class</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">Datatype</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">ObjectProperty</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">DataProperty</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">AnnotationProperty</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">Individual</span>&nbsp;:= <span class="nonterminal">NamedIndividual</span><br />
+<br />
+<span class="nonterminal">NamedIndividual</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">Literal</span>&nbsp;:= <span class="nonterminal">typedLiteral</span> | <span class="nonterminal">stringLiteralNoLanguage</span> | <span class="nonterminal">stringLiteralWithLanguage</span><br />
+<span class="nonterminal">typedLiteral</span>&nbsp;:= <span class="nonterminal">lexicalForm</span> '^^' <span class="nonterminal">Datatype</span><br />
+<span class="nonterminal">lexicalForm</span>&nbsp;:= <span class="nonterminal">quotedString</span><br />
+<span class="nonterminal">stringLiteralNoLanguage</span>&nbsp;:= <span class="nonterminal">quotedString</span><br />
+<span class="nonterminal">stringLiteralWithLanguage</span>&nbsp;:= <span class="nonterminal">quotedString</span> <span class="nonterminal">languageTag</span><br />
+<br />
+<br />
+<br />
+<span class="nonterminal">ObjectPropertyExpression</span>&nbsp;:= <span class="nonterminal">ObjectProperty</span> | <span class="nonterminal">InverseObjectProperty</span><br />
+<br />
+<span class="nonterminal">InverseObjectProperty</span>&nbsp;:= 'ObjectInverseOf' '(' <span class="nonterminal">ObjectProperty</span> ')'<br />
+<br />
+<span class="nonterminal">DataPropertyExpression</span>&nbsp;:= <span class="nonterminal">DataProperty</span><br />
+<br />
+<br />
+<br />
+<span class="nonterminal">DataRange</span>&nbsp;:= <span class="nonterminal">Datatype</span> | <span class="nonterminal">DataIntersectionOf</span><br />
+<br />
+<span class="nonterminal">DataIntersectionOf</span>&nbsp;:= 'DataIntersectionOf' '(' <span class="nonterminal">DataRange</span> <span class="nonterminal">DataRange</span> { <span class="nonterminal">DataRange</span> } ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">subClassExpression</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">Class</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">subObjectSomeValuesFrom</span> | <span class="nonterminal">DataSomeValuesFrom</span><br />
+<br />
+<span class="nonterminal">subObjectSomeValuesFrom</span>&nbsp;:= 'ObjectSomeValuesFrom' '(' <span class="nonterminal">ObjectPropertyExpression</span> <i>owl:Thing</i> ')'<br />
+<br />
+<span class="nonterminal">superClassExpression</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">Class</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">superObjectIntersectionOf</span> | <span class="nonterminal">superObjectComplementOf</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">superObjectSomeValuesFrom</span> | <span class="nonterminal">DataSomeValuesFrom</span><br />
+<br />
+<span class="nonterminal">superObjectIntersectionOf</span>&nbsp;:= 'ObjectIntersectionOf' '(' <span class="nonterminal">superClassExpression</span> <span class="nonterminal">superClassExpression</span> { <span class="nonterminal">superClassExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">superObjectComplementOf</span>&nbsp;:= 'ObjectComplementOf' '(' <span class="nonterminal">subClassExpression</span> ')'<br />
+<br />
+<span class="nonterminal">superObjectSomeValuesFrom</span>&nbsp;:= 'ObjectSomeValuesFrom' '(' <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">Class</span> ')'<br />
+<br />
+<span class="nonterminal">DataSomeValuesFrom</span>&nbsp;:= 'DataSomeValuesFrom' '(' <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">DataRange</span> ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">Axiom</span>&nbsp;:= <span class="nonterminal">Declaration</span> | <span class="nonterminal">ClassAxiom</span> | <span class="nonterminal">ObjectPropertyAxiom</span> | <span class="nonterminal">DataPropertyAxiom</span> | <span class="nonterminal">DatatypeDefinition</span> | <span class="nonterminal">Assertion</span> | <span class="nonterminal">AnnotationAxiom</span><br />
+<br />
+<br />
+<br />
+<span class="nonterminal">ClassAxiom</span>&nbsp;:= <span class="nonterminal">SubClassOf</span> | <span class="nonterminal">EquivalentClasses</span> | <span class="nonterminal">DisjointClasses</span><br />
+<br />
+<span class="nonterminal">SubClassOf</span>&nbsp;:= 'SubClassOf' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subClassExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<br />
+<span class="nonterminal">EquivalentClasses</span>&nbsp;:= 'EquivalentClasses' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subClassExpression</span> <span class="nonterminal">subClassExpression</span> { <span class="nonterminal">subClassExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">DisjointClasses</span>&nbsp;:= 'DisjointClasses' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subClassExpression</span> <span class="nonterminal">subClassExpression</span> { <span class="nonterminal">subClassExpression</span> } ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">ObjectPropertyAxiom</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">SubObjectPropertyOf</span> | <span class="nonterminal">EquivalentObjectProperties</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DisjointObjectProperties</span> | <span class="nonterminal">InverseObjectProperties</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">ObjectPropertyDomain</span> | <span class="nonterminal">ObjectPropertyRange</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">ReflexiveObjectProperty</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">SymmetricObjectProperty</span> | <span class="nonterminal">AsymmetricObjectProperty</span><br />
+<br />
+<span class="nonterminal">SubObjectPropertyOf</span>&nbsp;:= 'SubObjectPropertyOf' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">ObjectPropertyExpression</span> ')'<br />
+<br />
+<span class="nonterminal">EquivalentObjectProperties</span>&nbsp;:= 'EquivalentObjectProperties' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">ObjectPropertyExpression</span> { <span class="nonterminal">ObjectPropertyExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">DisjointObjectProperties</span>&nbsp;:= 'DisjointObjectProperties' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">ObjectPropertyExpression</span> { <span class="nonterminal">ObjectPropertyExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">InverseObjectProperties</span>&nbsp;:= 'InverseObjectProperties' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">ObjectPropertyExpression</span> ')'<br />
+<br />
+<span class="nonterminal">ObjectPropertyDomain</span>&nbsp;:= 'ObjectPropertyDomain' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<br />
+<span class="nonterminal">ObjectPropertyRange</span>&nbsp;:= 'ObjectPropertyRange' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<br />
+<span class="nonterminal">ReflexiveObjectProperty</span>&nbsp;:= 'ReflexiveObjectProperty' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> ')'<br />
+<br />
+<span class="nonterminal">SymmetricObjectProperty</span>&nbsp;:= 'SymmetricObjectProperty' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> ')'<br />
+<br />
+<span class="nonterminal">AsymmetricObjectProperty</span>&nbsp;:= 'AsymmetricObjectProperty' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">DataPropertyAxiom</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">SubDataPropertyOf</span> | <span class="nonterminal">EquivalentDataProperties</span> | <span class="nonterminal">DisjointDataProperties</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DataPropertyDomain</span> | <span class="nonterminal">DataPropertyRange</span><br />
+<br />
+<span class="nonterminal">SubDataPropertyOf</span>&nbsp;:= 'SubDataPropertyOf' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subDataPropertyExpression</span> <span class="nonterminal">superDataPropertyExpression</span> ')'<br />
+<span class="nonterminal">subDataPropertyExpression</span>&nbsp;:= <span class="nonterminal">DataPropertyExpression</span><br />
+<span class="nonterminal">superDataPropertyExpression</span>&nbsp;:= <span class="nonterminal">DataPropertyExpression</span><br />
+<br />
+<span class="nonterminal">EquivalentDataProperties</span>&nbsp;:= 'EquivalentDataProperties' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">DataPropertyExpression</span> { <span class="nonterminal">DataPropertyExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">DisjointDataProperties</span>&nbsp;:= 'DisjointDataProperties' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">DataPropertyExpression</span> { <span class="nonterminal">DataPropertyExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">DataPropertyDomain</span>&nbsp;:= 'DataPropertyDomain' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<br />
+<span class="nonterminal">DataPropertyRange</span>&nbsp;:= 'DataPropertyRange' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">DataRange</span> ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">DatatypeDefinition</span>&nbsp;:= 'DatatypeDefinition' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">Datatype</span> <span class="nonterminal">DataRange</span> ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">Assertion</span>&nbsp;:= <span class="nonterminal">DifferentIndividuals</span> | <span class="nonterminal">ClassAssertion</span> | <span class="nonterminal">ObjectPropertyAssertion</span> | <span class="nonterminal">DataPropertyAssertion</span><br />
+<br />
+<span class="nonterminal">sourceIndividual</span>&nbsp;:= <span class="nonterminal">Individual</span><br />
+<span class="nonterminal">targetIndividual</span>&nbsp;:= <span class="nonterminal">Individual</span><br />
+<span class="nonterminal">targetValue</span>&nbsp;:= <span class="nonterminal">Literal</span><br />
+<br />
+<span class="nonterminal">DifferentIndividuals</span>&nbsp;:= 'DifferentIndividuals' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">Individual</span> <span class="nonterminal">Individual</span> { <span class="nonterminal">Individual</span> } ')'<br />
+<br />
+<span class="nonterminal">ClassAssertion</span>&nbsp;:= 'ClassAssertion' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">Class</span> <span class="nonterminal">Individual</span> ')'<br />
+<br />
+<span class="nonterminal">ObjectPropertyAssertion</span>&nbsp;:= 'ObjectPropertyAssertion' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">sourceIndividual</span> <span class="nonterminal">targetIndividual</span> ')'<br />
+<br />
+<span class="nonterminal">DataPropertyAssertion</span>&nbsp;:= 'DataPropertyAssertion' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">sourceIndividual</span> <span class="nonterminal">targetValue</span> ')'
+</p>
+</div>
+<a id="OWL_2_RL_2" name="OWL_2_RL_2"></a><h3> <span class="mw-headline">6.3  OWL 2 RL </span></h3>
+<p>OWL 2 RL 的文法由 OWL 2 规范 [<cite><a href="#ref-owl-2-specification" title="">OWL 2 Specification</a></cite>] 的<a href="https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/#General_Definitions" title="Syntax">第 13.1 节</a>中给出的一般定义以及以下产生式组成。
+</p>
+<div class="grammar">
+<p><span class="nonterminal">Class</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">Datatype</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">ObjectProperty</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">DataProperty</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">AnnotationProperty</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">Individual</span>&nbsp;:= <span class="nonterminal">NamedIndividual</span> | <span class="nonterminal">AnonymousIndividual</span><br />
+<br />
+<span class="nonterminal">NamedIndividual</span>&nbsp;:= <span class="nonterminal">IRI</span><br />
+<br />
+<span class="nonterminal">AnonymousIndividual</span>&nbsp;:= <span class="nonterminal">nodeID</span><br />
+<br />
+<span class="nonterminal">Literal</span>&nbsp;:= <span class="nonterminal">typedLiteral</span> | <span class="nonterminal">stringLiteralNoLanguage</span> | <span class="nonterminal">stringLiteralWithLanguage</span><br />
+<span class="nonterminal">typedLiteral</span>&nbsp;:= <span class="nonterminal">lexicalForm</span> '^^' <span class="nonterminal">Datatype</span><br />
+<span class="nonterminal">lexicalForm</span>&nbsp;:= <span class="nonterminal">quotedString</span><br />
+<span class="nonterminal">stringLiteralNoLanguage</span>&nbsp;:= <span class="nonterminal">quotedString</span><br />
+<span class="nonterminal">stringLiteralWithLanguage</span>&nbsp;:= <span class="nonterminal">quotedString</span> <span class="nonterminal">languageTag</span><br />
+<br />
+<br />
+<br />
+<span class="nonterminal">ObjectPropertyExpression</span>&nbsp;:= <span class="nonterminal">ObjectProperty</span> | <span class="nonterminal">InverseObjectProperty</span><br />
+<br />
+<span class="nonterminal">InverseObjectProperty</span>&nbsp;:= 'ObjectInverseOf' '(' <span class="nonterminal">ObjectProperty</span> ')'<br />
+<br />
+<span class="nonterminal">DataPropertyExpression</span>&nbsp;:= <span class="nonterminal">DataProperty</span><br />
+<br />
+<br />
+<br />
+<span class="nonterminal">DataRange</span>&nbsp;:= <span class="nonterminal">Datatype</span> | <span class="nonterminal">DataIntersectionOf</span><br />
+<br />
+<span class="nonterminal">DataIntersectionOf</span>&nbsp;:= 'DataIntersectionOf' '(' <span class="nonterminal">DataRange</span> <span class="nonterminal">DataRange</span> { <span class="nonterminal">DataRange</span> } ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">zeroOrOne </span>&nbsp;:= '0' | '1'<br />
+<br />
+<span class="nonterminal">subClassExpression</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">Class</span> other than <i>owl:Thing</i> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">subObjectIntersectionOf</span> | <span class="nonterminal">subObjectUnionOf</span> | <span class="nonterminal">ObjectOneOf</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">subObjectSomeValuesFrom</span> | <span class="nonterminal">ObjectHasValue</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DataSomeValuesFrom</span> | <span class="nonterminal">DataHasValue</span><br />
+<br />
+<span class="nonterminal">subObjectIntersectionOf</span>&nbsp;:= 'ObjectIntersectionOf' '(' <span class="nonterminal">subClassExpression</span> <span class="nonterminal">subClassExpression</span> { <span class="nonterminal">subClassExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">subObjectUnionOf</span>&nbsp;:= 'ObjectUnionOf' '(' <span class="nonterminal">subClassExpression</span> <span class="nonterminal">subClassExpression</span> { <span class="nonterminal">subClassExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">subObjectSomeValuesFrom</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; 'ObjectSomeValuesFrom' '(' <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">subClassExpression</span> ')' |<br />
+&nbsp;&nbsp;&nbsp; 'ObjectSomeValuesFrom' '(' <span class="nonterminal">ObjectPropertyExpression</span> <i>owl:Thing</i> ')'<br />
+<br />
+<span class="nonterminal">superClassExpression</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">Class</span> other than <i>owl:Thing</i> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">superObjectIntersectionOf</span> | <span class="nonterminal">superComplementOf</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">superObjectAllValuesFrom</span> | <span class="nonterminal">ObjectHasValue</span> | <span class="nonterminal">superObjectMaxCardinality</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DataAllValuesFrom</span> | <span class="nonterminal">DataHasValue</span> | <span class="nonterminal">superDataMaxCardinality</span><br />
+<br />
+<span class="nonterminal">superObjectIntersectionOf</span>&nbsp;:= 'ObjectIntersectionOf' '(' <span class="nonterminal">superClassExpression</span> <span class="nonterminal">superClassExpression</span> { <span class="nonterminal">superClassExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">superObjectComplementOf</span>&nbsp;:= 'ObjectComplementOf' '(' <span class="nonterminal">subClassExpression</span> ')'<br />
+<br />
+<span class="nonterminal">superObjectAllValuesFrom</span>&nbsp;:= 'ObjectAllValuesFrom' '(' <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<br />
+<span class="nonterminal">superObjectMaxCardinality</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; 'ObjectMaxCardinality' '(' <span class="nonterminal">zeroOrOne</span> <span class="nonterminal">ObjectPropertyExpression</span> [ <span class="nonterminal">subClassExpression</span> ] ')' |<br />
+&nbsp;&nbsp;&nbsp; 'ObjectMaxCardinality' '(' <span class="nonterminal">zeroOrOne</span> <span class="nonterminal">ObjectPropertyExpression</span> <i>owl:Thing</i> ')'<br />
+<br />
+<span class="nonterminal">superDataMaxCardinality</span>&nbsp;:= 'DataMaxCardinality' '(' <span class="nonterminal">zeroOrOne</span> <span class="nonterminal">DataPropertyExpression</span> [ <span class="nonterminal">DataRange</span> ] ')' |<br />
+<br />
+<span class="nonterminal">equivClassExpression</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">Class</span> other than <i>owl:Thing</i> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">equivObjectIntersectionOf</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">ObjectHasValue</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DataHasValue</span><br />
+<br />
+<span class="nonterminal">equivObjectIntersectionOf</span>&nbsp;:= 'ObjectIntersectionOf' '(' <span class="nonterminal">equivClassExpression</span> <span class="nonterminal">equivClassExpression</span> { <span class="nonterminal">equivClassExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">ObjectOneOf</span>&nbsp;:= 'ObjectOneOf' '(' <span class="nonterminal">Individual</span> { <span class="nonterminal">Individual</span> }')'<br />
+<br />
+<span class="nonterminal">ObjectHasValue</span>&nbsp;:= 'ObjectHasValue' '(' <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">Individual</span> ')'<br />
+<br />
+<span class="nonterminal">DataSomeValuesFrom</span>&nbsp;:= 'DataSomeValuesFrom' '(' <span class="nonterminal">DataPropertyExpression</span> { <span class="nonterminal">DataPropertyExpression</span> } <span class="nonterminal">DataRange</span> ')'<br />
+<br />
+<span class="nonterminal">DataAllValuesFrom</span>&nbsp;:= 'DataAllValuesFrom' '(' <span class="nonterminal">DataPropertyExpression</span> { <span class="nonterminal">DataPropertyExpression</span> } <span class="nonterminal">DataRange</span> ')'<br />
+<br />
+<span class="nonterminal">DataHasValue</span>&nbsp;:= 'DataHasValue' '(' <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">Literal</span> ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">Axiom</span>&nbsp;:= <span class="nonterminal">Declaration</span> | <span class="nonterminal">ClassAxiom</span> | <span class="nonterminal">ObjectPropertyAxiom</span> | <span class="nonterminal">DataPropertyAxiom</span> | <span class="nonterminal">DatatypeDefinition</span> | <span class="nonterminal">HasKey</span> | <span class="nonterminal">Assertion</span> | <span class="nonterminal">AnnotationAxiom</span><br />
+<br />
+<br />
+<br />
+<span class="nonterminal">ClassAxiom</span>&nbsp;:= <span class="nonterminal">SubClassOf</span> | <span class="nonterminal">EquivalentClasses</span> | <span class="nonterminal">DisjointClasses</span><br />
+<br />
+<span class="nonterminal">SubClassOf</span>&nbsp;:= 'SubClassOf' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subClassExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<br />
+<span class="nonterminal">EquivalentClasses</span>&nbsp;:= 'EquivalentClasses' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">equivClassExpression</span> <span class="nonterminal">equivClassExpression</span> { <span class="nonterminal">equivClassExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">DisjointClasses</span>&nbsp;:= 'DisjointClasses' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subClassExpression</span> <span class="nonterminal">subClassExpression</span> { <span class="nonterminal">subClassExpression</span> } ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">ObjectPropertyAxiom</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">SubObjectPropertyOf</span> | <span class="nonterminal">EquivalentObjectProperties</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DisjointObjectProperties</span> | <span class="nonterminal">InverseObjectProperties</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">ObjectPropertyDomain</span> | <span class="nonterminal">ObjectPropertyRange</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">FunctionalObjectProperty</span> | <span class="nonterminal">InverseFunctionalObjectProperty</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">IrreflexiveObjectProperty</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">SymmetricObjectProperty</span> | <span class="nonterminal">AsymmetricObjectProperty</span><br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">TransitiveObjectProperty</span><br />
+<br />
+<span class="nonterminal">SubObjectPropertyOf</span>&nbsp;:= 'SubObjectPropertyOf' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subObjectPropertyExpression</span> <span class="nonterminal">superObjectPropertyExpression</span> ')'<br />
+<span class="nonterminal">subObjectPropertyExpression</span>&nbsp;:= <span class="nonterminal">ObjectPropertyExpression</span> | <span class="nonterminal">propertyExpressionChain</span><br />
+<span class="nonterminal">propertyExpressionChain</span>&nbsp;:= 'ObjectPropertyChain' '(' <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">ObjectPropertyExpression</span> { <span class="nonterminal">ObjectPropertyExpression</span> } ')'<br />
+<span class="nonterminal">superObjectPropertyExpression</span>&nbsp;:= <span class="nonterminal">ObjectPropertyExpression</span><br />
+<br />
+<span class="nonterminal">EquivalentObjectProperties</span>&nbsp;:= 'EquivalentObjectProperties' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">ObjectPropertyExpression</span> { <span class="nonterminal">ObjectPropertyExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">DisjointObjectProperties</span>&nbsp;:= 'DisjointObjectProperties' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">ObjectPropertyExpression</span> { <span class="nonterminal">ObjectPropertyExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">InverseObjectProperties</span>&nbsp;:= 'InverseObjectProperties' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">ObjectPropertyExpression</span> ')'<br />
+<br />
+<span class="nonterminal">ObjectPropertyDomain</span>&nbsp;:= 'ObjectPropertyDomain' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<br />
+<span class="nonterminal">ObjectPropertyRange</span>&nbsp;:= 'ObjectPropertyRange' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<br />
+<span class="nonterminal">FunctionalObjectProperty</span>&nbsp;:= 'FunctionalObjectProperty' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> ')'<br />
+<br />
+<span class="nonterminal">InverseFunctionalObjectProperty</span>&nbsp;:= 'InverseFunctionalObjectProperty' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> ')'<br />
+<br />
+<span class="nonterminal">IrreflexiveObjectProperty</span>&nbsp;:= 'IrreflexiveObjectProperty' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> ')'<br />
+<br />
+<span class="nonterminal">SymmetricObjectProperty</span>&nbsp;:= 'SymmetricObjectProperty' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> ')'<br />
+<br />
+<span class="nonterminal">AsymmetricObjectProperty</span>&nbsp;:= 'AsymmetricObjectProperty' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> ')'<br />
+<br />
+<span class="nonterminal">TransitiveObjectProperty</span>&nbsp;:= 'TransitiveObjectProperty' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">DataPropertyAxiom</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">SubDataPropertyOf</span> | <span class="nonterminal">EquivalentDataProperties</span> | <span class="nonterminal">DisjointDataProperties</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DataPropertyDomain</span> | <span class="nonterminal">DataPropertyRange</span> | <span class="nonterminal">FunctionalDataProperty</span><br />
+<br />
+<span class="nonterminal">SubDataPropertyOf</span>&nbsp;:= 'SubDataPropertyOf' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subDataPropertyExpression</span> <span class="nonterminal">superDataPropertyExpression</span> ')'<br />
+<span class="nonterminal">subDataPropertyExpression</span>&nbsp;:= <span class="nonterminal">DataPropertyExpression</span><br />
+<span class="nonterminal">superDataPropertyExpression</span>&nbsp;:= <span class="nonterminal">DataPropertyExpression</span><br />
+<br />
+<span class="nonterminal">EquivalentDataProperties</span>&nbsp;:= 'EquivalentDataProperties' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">DataPropertyExpression</span> { <span class="nonterminal">DataPropertyExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">DisjointDataProperties</span>&nbsp;:= 'DisjointDataProperties' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">DataPropertyExpression</span> { <span class="nonterminal">DataPropertyExpression</span> } ')'<br />
+<br />
+<span class="nonterminal">DataPropertyDomain</span>&nbsp;:= 'DataPropertyDomain' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">superClassExpression</span> ')'<br />
+<br />
+<span class="nonterminal">DataPropertyRange</span>&nbsp;:= 'DataPropertyRange' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">DataRange</span> ')'<br />
+<br />
+<span class="nonterminal">FunctionalDataProperty</span>&nbsp;:= 'FunctionalDataProperty' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">DatatypeDefinition</span>&nbsp;:= 'DatatypeDefinition' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">Datatype</span> <span class="nonterminal">DataRange</span> ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">HasKey</span>&nbsp;:= 'HasKey' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">subClassExpression</span> '(' { <span class="nonterminal">ObjectPropertyExpression</span> } ')' '(' { <span class="nonterminal">DataPropertyExpression</span> } ')' ')'<br />
+<br />
+<br />
+<br />
+<span class="nonterminal">Assertion</span>&nbsp;:=<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">SameIndividual</span> | <span class="nonterminal">DifferentIndividuals</span> | <span class="nonterminal">ClassAssertion</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">ObjectPropertyAssertion</span> | <span class="nonterminal">NegativeObjectPropertyAssertion</span> |<br />
+&nbsp;&nbsp;&nbsp; <span class="nonterminal">DataPropertyAssertion</span> | <span class="nonterminal">NegativeDataPropertyAssertion</span><br />
+<br />
+<span class="nonterminal">sourceIndividual</span>&nbsp;:= <span class="nonterminal">Individual</span><br />
+<span class="nonterminal">targetIndividual</span>&nbsp;:= <span class="nonterminal">Individual</span><br />
+<span class="nonterminal">targetValue</span>&nbsp;:= <span class="nonterminal">Literal</span><br />
+<br />
+<span class="nonterminal">SameIndividual</span>&nbsp;:= 'SameIndividual' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">Individual</span> <span class="nonterminal">Individual</span> { <span class="nonterminal">Individual</span> } ')'<br />
+<br />
+<span class="nonterminal">DifferentIndividuals</span>&nbsp;:= 'DifferentIndividuals' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">Individual</span> <span class="nonterminal">Individual</span> { <span class="nonterminal">Individual</span> } ')'<br />
+<br />
+<span class="nonterminal">ClassAssertion</span>&nbsp;:= 'ClassAssertion' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">superClassExpression</span> <span class="nonterminal">Individual</span> ')'<br />
+<br />
+<span class="nonterminal">ObjectPropertyAssertion</span>&nbsp;:= 'ObjectPropertyAssertion' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">sourceIndividual</span> <span class="nonterminal">targetIndividual</span> ')'<br />
+<br />
+<span class="nonterminal">NegativeObjectPropertyAssertion</span>&nbsp;:= 'NegativeObjectPropertyAssertion' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">ObjectPropertyExpression</span> <span class="nonterminal">sourceIndividual</span> <span class="nonterminal">targetIndividual</span> ')'<br />
+<br />
+<span class="nonterminal">DataPropertyAssertion</span>&nbsp;:= 'DataPropertyAssertion' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">sourceIndividual</span> <span class="nonterminal">targetValue</span> ')'<br />
+<br />
+<span class="nonterminal">NegativeDataPropertyAssertion</span>&nbsp;:= 'NegativeDataPropertyAssertion' '(' <span class="nonterminal">axiomAnnotations</span> <span class="nonterminal">DataPropertyExpression</span> <span class="nonterminal">sourceIndividual</span> <span class="nonterminal">targetValue</span> ')'
+</p>
+</div>
+<div id="changelog">
+<a id="Appendix:_Change_Log_.28Informative.29" name="Appendix:_Change_Log_.28Informative.29"></a><h2> <span class="mw-headline">7  附录：变更日志（非规范性） </span></h2>
+<a id="Changes_Since_Recommendation" name="Changes_Since_Recommendation"></a><h3> <span class="mw-headline">7.1  自推荐标准以来的变更 </span></h3>
+<p>本节概述自 <a class="external text" href="https://www.w3.org/TR/2009/REC-owl2-profiles-20091027/" rel="nofollow" title="http://www.w3.org/TR/2009/REC-owl2-profiles-20091027/">2009年10月27日推荐标准</a>发布以来本文档的变更。
+</p>
+<ul><li> 随着 XML Schema 定义语言（XSD）1.1 第 2 部分：数据类型<a class="external text" href="https://www.w3.org/TR/2012/REC-xmlschema11-2-20120405/" rel="nofollow" title="http://www.w3.org/TR/2012/REC-xmlschema11-2-20120405/">2012年4月5日推荐标准</a>的发布，OWL 2 中基于 XSD 1.1 的各项内容现在被视为必需支持，先前在「本文档地位」一节中详述对 XSD 1.1 <a class="external text" href="https://www.w3.org/TR/2009/CR-xmlschema11-2-20090430/" rel="nofollow" title="http://www.w3.org/TR/2009/CR-xmlschema11-2-20090430/">2009年4月30日候选推荐标准</a>可选依赖性的说明已被移除。
+</li><li> <a href="#Computational_Properties" title="">第 5 节</a>中对各剖面计算性质的描述已作修订，以提高清晰度和精确性。
+</li><li> <a href="#OWL_2_RL_2" title="">第 6.3 节</a>中一条针对 <b>ReflexiveObjectProperty</b> 的冗余文法产生式已被移除。
+</li><li> 若干次要的排版错误已按 <a class="external text" href="https://www.w3.org/2007/OWL/wiki/Errata" rel="nofollow" title="http://www.w3.org/2007/OWL/wiki/Errata">OWL 2 勘误表</a>页面所述予以更正。
+</li></ul>
+<a id="Changes_Since_Proposed_Recommendation" name="Changes_Since_Proposed_Recommendation"></a><h3> <span class="mw-headline">7.2  自提案推荐标准以来的变更 </span></h3>
+<p>自 <a class="external text" href="https://www.w3.org/TR/2009/PR-owl2-profiles-20090922/" rel="nofollow" title="http://www.w3.org/TR/2009/PR-owl2-profiles-20090922/">2009年9月22日提案推荐标准</a>发布以来，本文档未作任何变更。
+</p>
+<a id="Changes_Since_Candidate_Recommendation" name="Changes_Since_Candidate_Recommendation"></a><h3> <span class="mw-headline">7.3  自候选推荐标准以来的变更 </span></h3>
+<p>本节概述自 <a class="external text" href="https://www.w3.org/TR/2009/CR-owl2-profiles-20090611/" rel="nofollow" title="http://www.w3.org/TR/2009/CR-owl2-profiles-20090611/">2009年6月11日候选推荐标准</a>发布以来本文档的变更。
+</p>
+<ul><li> 关于 owl:rational 和 rdf:XMLLiteral 数据类型的「风险特性」警告已被移除：其实现支持已得到充分论证，这些特性不再被视为存在风险（参见 <a class="external text" href="https://www.w3.org/2007/OWL/meeting/2009-08-05#resolution_5" rel="nofollow" title="http://www.w3.org/2007/OWL/meeting/2009-08-05#resolution_5">决议 5</a> 和 <a class="external text" href="https://www.w3.org/2007/OWL/meeting/2009-08-05#resolution_6" rel="nofollow" title="http://www.w3.org/2007/OWL/meeting/2009-08-05#resolution_6">决议 6</a>，2009年8月5日）。
+</li><li> 新增了一条关于各剖面名称由来的说明，并明确指出这些剖面互不包含、没有任何一个是另一个的子集。
+</li><li> 新增了对 Lloyd 所著 <i>Foundations of Logic Programming</i> 一书的引用。
+</li><li> 进行了一些次要的编辑性修改。
+</li></ul>
+<a id="Changes_Since_Last_Call" name="Changes_Since_Last_Call"></a><h3> <span class="mw-headline">7.4  自最后征集意见以来的变更 </span></h3>
+<p>本节概述自 <a class="external text" href="https://www.w3.org/TR/2009/WD-owl2-profiles-20090421/" rel="nofollow" title="http://www.w3.org/TR/2009/WD-owl2-profiles-20090421/">2009年4月21日最后征集意见工作草案</a>发布以来本文档的变更。
+</p>
+<ul><li> 修正了一条文法产生式，以使其与《结构规范与函数式语法》中的文法保持一致。
+</li><li> rdf:text 的名称已更改为 rdf:PlainLiteral。
+</li><li> 新增了对逻辑程序设计（logic programming）的引用。
+</li><li> 进行了一些次要的编辑性修改。
+</li></ul>
+</div>
+<a id="Acknowledgments" name="Acknowledgments"></a><h2> <span class="mw-headline">8  致谢 </span></h2>
+<p>OWL 2 开发的起点是 <a class="external text" href="https://www.w3.org/Submission/2006/10/" rel="nofollow" title="http://www.w3.org/Submission/2006/10/">OWL1.1 成员提交案</a>，它本身是用户与开发者反馈的成果，尤其是 <a class="external text" href="http://www.webont.org/owled/" rel="nofollow" title="http://www.webont.org/owled/">OWL Experiences and Directions（OWLED）研讨会系列</a>期间收集的信息。工作组还审议了 <a class="external text" href="https://www.w3.org/2004/OWL/" rel="nofollow" title="http://www.w3.org/2004/OWL/">WebOnt 工作组</a>遗留下来被<a class="external text" href="https://www.w3.org/2001/sw/WebOnt/webont-issues.html" rel="nofollow" title="http://www.w3.org/2001/sw/WebOnt/webont-issues.html">暂缓处理的议题</a>。
+</p><p>本文档由 OWL 工作组（见下文）编制，其内容反映了工作组全体的广泛讨论。
+编辑特别感谢
+Jie Bao (RPI)、
+Jim Hendler (RPI) 以及
+Jeff Pan (University of Aberdeen)
+的细致审阅。
+</p><p>本文档发布时 OWL 工作组会议的常出席成员有：
+Jie Bao (RPI)、
+Diego Calvanese (Free University of Bozen-Bolzano)、
+Bernardo Cuenca Grau (Oxford University Computing Laboratory)、
+Martin Dzbor (Open University)、
+Achille Fokoue (IBM Corporation)、
+Christine Golbreich (Universit&eacute; de Versailles St-Quentin and LIRMM)、
+Sandro Hawke (W3C/MIT)、
+Ivan Herman (W3C/ERCIM)、
+Rinke Hoekstra (University of Amsterdam)、
+Ian Horrocks (Oxford University Computing Laboratory)、
+Elisa Kendall (Sandpiper Software)、
+Markus Kr&ouml;tzsch (FZI)、
+Carsten Lutz (Universit&auml;t Bremen)、
+Deborah L. McGuinness (RPI)、
+Boris Motik (Oxford University Computing Laboratory)、
+Jeff Pan (University of Aberdeen)、
+Bijan Parsia (University of Manchester)、
+Peter F. Patel-Schneider (Bell Labs Research, Alcatel-Lucent)、
+Sebastian Rudolph (FZI)、
+Alan Ruttenberg (Science Commons)、
+Uli Sattler (University of Manchester)、
+Michael Schneider (FZI)、
+Mike Smith (Clark &amp; Parsia)、
+Evan Wallace (NIST)、
+Zhe Wu (Oracle Corporation)，以及
+Antoine Zimmermann (DERI Galway)。
+我们还要感谢工作组的往届成员：
+Jeremy Carroll、
+Jim Hendler 以及
+Vipul Kashyap。
+</p>
+<a id="References" name="References"></a><h2> <span class="mw-headline">9  参考文献 </span></h2>
+<a id="Normative_References" name="Normative_References"></a><h3> <span class="mw-headline">9.1  规范性参考文献 </span></h3>
+<dl><dt> <span id="ref-owl-2-conformance">[OWL 2 Conformance]</span>
+</dt><dd><span><cite><a href="https://www.w3.org/TR/2012/REC-owl2-conformance-20121211/">OWL 2 Web Ontology Language: <span>Conformance (Second Edition)</span></a></cite> Michael Smith, Ian Horrocks, Markus Kr&ouml;tzsch, Birte Glimm, eds. W3C Recommendation, 11 December 2012, <a href="https://www.w3.org/TR/2012/REC-owl2-conformance-20121211/">http://www.w3.org/TR/2012/REC-owl2-conformance-20121211/</a>.  Latest version available at <a href="https://www.w3.org/TR/owl2-conformance/">http://www.w3.org/TR/owl2-conformance/</a>.</span></dd><dt> <span id="ref-owl-2-direct-semantics">[OWL 2 Direct Semantics]</span>
+</dt><dd><span><cite><a href="https://www.w3.org/TR/2012/REC-owl2-direct-semantics-20121211/">OWL 2 Web Ontology Language: <span>Direct Semantics (Second Edition)</span></a></cite> Boris Motik, Peter F. Patel-Schneider, Bernardo Cuenca Grau, eds. W3C Recommendation, 11 December 2012, <a href="https://www.w3.org/TR/2012/REC-owl2-direct-semantics-20121211/">http://www.w3.org/TR/2012/REC-owl2-direct-semantics-20121211/</a>.  Latest version available at <a href="https://www.w3.org/TR/owl2-direct-semantics/">http://www.w3.org/TR/owl2-direct-semantics/</a>.</span></dd><dt> <span id="ref-owl-2-rdf-mapping">[OWL 2 RDF Mapping]</span>
+</dt><dd><span><cite><a href="https://www.w3.org/TR/2012/REC-owl2-mapping-to-rdf-20121211/">OWL 2 Web Ontology Language: <span>Mapping to RDF Graphs (Second Edition)</span></a></cite> Peter F. Patel-Schneider, Boris Motik, eds. W3C Recommendation, 11 December 2012, <a href="https://www.w3.org/TR/2012/REC-owl2-mapping-to-rdf-20121211/">http://www.w3.org/TR/2012/REC-owl2-mapping-to-rdf-20121211/</a>.  Latest version available at <a href="https://www.w3.org/TR/owl2-mapping-to-rdf/">http://www.w3.org/TR/owl2-mapping-to-rdf/</a>.</span></dd><dt> <span id="ref-owl-2-rdf-semantics">[OWL 2 RDF-Based Semantics]</span>
+</dt><dd><span><cite><a href="https://www.w3.org/TR/2012/REC-owl2-rdf-based-semantics-20121211/">OWL 2 Web Ontology Language: <span>RDF-Based Semantics (Second Edition)</span></a></cite> Michael Schneider, editor. W3C Recommendation, 11 December 2012, <a href="https://www.w3.org/TR/2012/REC-owl2-rdf-based-semantics-20121211/">http://www.w3.org/TR/2012/REC-owl2-rdf-based-semantics-20121211/</a>.  Latest version available at <a href="https://www.w3.org/TR/owl2-rdf-based-semantics/">http://www.w3.org/TR/owl2-rdf-based-semantics/</a>.</span></dd><dt> <span id="ref-owl-2-specification">[OWL 2 Specification]</span>
+</dt><dd><span><cite><a href="https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/">OWL 2 Web Ontology Language: <span>Structural Specification and Functional-Style Syntax (Second Edition)</span></a></cite> Boris Motik, Peter F. Patel-Schneider, Bijan Parsia, eds. W3C Recommendation, 11 December 2012, <a href="https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/">http://www.w3.org/TR/2012/REC-owl2-syntax-20121211/</a>.  Latest version available at <a href="https://www.w3.org/TR/owl2-syntax/">http://www.w3.org/TR/owl2-syntax/</a>.</span></dd><dt> <span id="ref-rfc-2119">[RFC 2119]</span>
+</dt><dd> <cite><a class="external text" href="http://www.ietf.org/rfc/rfc2119.txt" rel="nofollow" title="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119: Key words for use in RFCs to Indicate Requirement Levels</a></cite>. Network Working Group, S. Bradner. IETF, March 1997, http://www.ietf.org/rfc/rfc2119.txt
+</dd></dl>
+<a id="Nonnormative_References" name="Nonnormative_References"></a><h3> <span class="mw-headline">9.2  非规范性参考文献 </span></h3>
+<dl><dt> <span id="ref-complexity">[Complexity]</span>
+</dt><dd> <cite><a class="external text" href="http://lat.inf.tu-dresden.de/research/phd/Tobies-PhD-2001.pdf" rel="nofollow" title="http://lat.inf.tu-dresden.de/research/phd/Tobies-PhD-2001.pdf">Complexity Results and Practical Algorithms for Logics in Knowledge Representation</a></cite>. Stephan Tobies. Ph.D Dissertation, 2002
+</dd><dt> <span id="ref-DL-Lite">[DL-Lite]</span>
+</dt><dd> <cite><a class="external text" href="http://www.springerlink.com/content/n17338715966v81h/" rel="nofollow" title="http://www.springerlink.com/content/n17338715966v81h/">Tractable Reasoning and Efficient Query Answering in Description Logics: The DL-Lite Family</a></cite>. Diego Calvanese, Giuseppe de Giacomo, Domenico Lembo, Maurizio Lenzerini, Riccardo Rosati. J. of Automated Reasoning 39(3):385&ndash;429, 2007
+</dd><dt> <span id="ref-DL-Lite-bool">[DL-Lite-bool]</span>
+</dt><dd> <cite><a class="external text" href="http://www.dcs.bbk.ac.uk/~michael/DL-LiteFamily.pdf" rel="nofollow" title="http://www.dcs.bbk.ac.uk/~michael/DL-LiteFamily.pdf">The DL-Lite Family and Relatives</a></cite>. Alessandro Artale, Diego Calvanese, Roman Kontchakov, Michael Zakharyaschev, submitted. 
+</dd><dt> <span id="ref-dlp">[DLP]</span>
+</dt><dd> <cite><a class="external text" href="http://www2003.org/cdrom/papers/refereed/p117/p117-grosof.html" rel="nofollow" title="http://www2003.org/cdrom/papers/refereed/p117/p117-grosof.html">Description Logic Programs: Combining Logic Programs with Description Logic</a></cite>. Benjamin N. Grosof, Ian Horrocks, Raphael Volz, and Stefan Decker. in Proc. of the 12th Int. World Wide Web Conference (WWW 2003), Budapest, Hungary, 2003. pp.: 48&ndash;57
+</dd><dt> <span id="ref-ELpp">[EL++]</span>
+</dt><dd> <cite><a class="external text" href="http://lat.inf.tu-dresden.de/research/papers/2005/BaaderBrandtLutz-IJCAI-05.pdf" rel="nofollow" title="http://lat.inf.tu-dresden.de/research/papers/2005/BaaderBrandtLutz-IJCAI-05.pdf">Pushing the EL Envelope</a></cite>. Franz Baader, Sebastian Brandt, and Carsten Lutz. In Proc. of the 19th Joint Int. Conf. on Artificial Intelligence (IJCAI 2005), 2005
+</dd><dt> <span id="ref-ELppUpd">[EL++ Update]</span>
+</dt><dd> <cite><a class="external text" href="http://www.webont.org/owled/2008dc/papers/owled2008dc_paper_3.pdf" rel="nofollow" title="http://www.webont.org/owled/2008dc/papers/owled2008dc_paper_3.pdf">Pushing the EL Envelope Further</a></cite>. Franz Baader, Sebastian Brandt, and Carsten Lutz. In Proc. of the Washington DC workshop on OWL: Experiences and Directions (OWLED08DC), 2008
+</dd><dt> <span id="ref-owl-1-reference">[OWL 1 Reference]</span>
+</dt><dd> <cite><a class="external text" href="https://www.w3.org/TR/owl-ref/" rel="nofollow" title="http://www.w3.org/TR/owl-ref/">OWL Web Ontology Language Reference</a></cite>. Mike Dean and Guus Screiber, eds., W3C Recommendation, 10 February 2004.
+</dd><dt> <span id="ref-owl-2-primer">[OWL 2 Primer]</span>
+</dt><dd><span><cite><a href="https://www.w3.org/TR/2012/REC-owl2-primer-20121211/">OWL 2 Web Ontology Language: <span>Primer (Second Edition)</span></a></cite> Pascal Hitzler, Markus Kr&ouml;tzsch, Bijan Parsia, Peter F. Patel-Schneider, Sebastian Rudolph, eds. W3C Recommendation, 11 December 2012, <a href="https://www.w3.org/TR/2012/REC-owl2-primer-20121211/">http://www.w3.org/TR/2012/REC-owl2-primer-20121211/</a>.  Latest version available at <a href="https://www.w3.org/TR/owl2-primer/">http://www.w3.org/TR/owl2-primer/</a>.</span></dd><dt> <span id="ref-papa">[Papadimitriou]</span>
+</dt><dd> <cite><a class="external text" href="https://en.wikipedia.org/wiki/Christos_Papadimitriou" rel="nofollow" title="http://en.wikipedia.org/wiki/Christos_Papadimitriou">Christos H. Papadimitriou</a></cite>. Computational Complexity. Addison Wesley Publ. Co., Reading, Massachussetts, 1994.
+</dd><dt> <span id="ref-pdstar">[pD*]</span>
+</dt><dd> <cite><a class="external text" href="http://linkinghub.elsevier.com/retrieve/pii/S1570826805000144" rel="nofollow" title="http://linkinghub.elsevier.com/retrieve/pii/S1570826805000144">Completeness, decidability and complexity of entailment for RDF Schema and a semantic extension involving the OWL vocabulary</a></cite>. Herman J. ter Horst. J. of Web Semantics 3(2&ndash;3):79&ndash;115, 2005
+</dd><dt> <span id="ref-rdf-semantics">[RDF Semantics]</span>
+</dt><dd> <cite><a class="external text" href="https://www.w3.org/TR/2004/REC-rdf-mt-20040210/" rel="nofollow" title="http://www.w3.org/TR/2004/REC-rdf-mt-20040210/">RDF Semantics</a></cite>. Patrick Hayes, ed., W3C Recommendation, 10 February 2004, http://www.w3.org/TR/2004/REC-rdf-mt-20040210/.  Latest version available as http://www.w3.org/TR/rdf-mt/.
+</dd><dt> <span id="ref-rif-rdf-owl">[RIF RDF &amp; OWL]</span>
+</dt><dd> <cite><a class="external text" href="https://www.w3.org/TR/rif-rdf-owl/" rel="nofollow" title="http://www.w3.org/TR/rif-rdf-owl/">RIF RDF and OWL Compatibility</a></cite>. Jos de Bruijn, ed., W3C Working Draft, 30 July 2008.
+</dd><dt> <span id="ref-snomed-ct">[SNOMED CT]</span>
+</dt><dd> <cite><a class="external text" href="http://www.ihtsdo.org/snomed-ct/" rel="nofollow" title="http://www.ihtsdo.org/snomed-ct/">Systematized Nomenclature of Medicine &ndash; Clinical Terms</a></cite>. International Health Terminology Standards Development Organization (IHTSDO)
+</dd><dt> <span id="ref-automated-reasoning">[Automated Reasoning]</span>
+</dt><dd> <cite><a class="external text" href="http://www.elsevier.com/wps/find/bookdescription.cws_home/622118/description" rel="nofollow" title="http://www.elsevier.com/wps/find/bookdescription.cws_home/622118/description">Handbook of Automated Reasoning</a></cite>. A. Robinson and A. Voronkov, eds., Elsevier Science, 2001
+</dd><dt> <span id="ref-logic-programming">[Logic Programming]</span>
+</dt><dd> <cite><a class="external text" href="http://www.cs.ttu.edu/~mgelfond/papers/survey.pdf" rel="nofollow" title="http://www.cs.ttu.edu/~mgelfond/papers/survey.pdf">Logic programming and knowledge representation</a></cite>. Chitta Baral and Michael Gelfond. Journal of Logic Programming 19:73&ndash;148, 1994.
+</dd><dt> <span id="ref-lloyd">[Lloyd]</span>
+</dt><dd> <cite>Foundations of Logic Programming, 2nd ed.</cite> John Wylie Lloyd. Springer-Verlag, Berlin, Germany, 1987.
+</dd></dl>
+
+
+<script src="https://www.w3.org/scripts/TR/fixup.js"></script></body>

@@ -1,0 +1,392 @@
+[
+ {
+  "id": "eq-ref",
+  "if": "T(?s, ?p, ?o)",
+  "then": "T(?s, owl:sameAs, ?s)\nT(?p, owl:sameAs, ?p)\nT(?o, owl:sameAs, ?o)"
+ },
+ {
+  "id": "eq-sym",
+  "if": "T(?x, owl:sameAs, ?y)",
+  "then": "T(?y, owl:sameAs, ?x)"
+ },
+ {
+  "id": "eq-trans",
+  "if": "T(?x, owl:sameAs, ?y)\nT(?y, owl:sameAs, ?z)",
+  "then": "T(?x, owl:sameAs, ?z)"
+ },
+ {
+  "id": "eq-rep-s",
+  "if": "T(?s, owl:sameAs, ?s')\nT(?s, ?p, ?o)",
+  "then": "T(?s', ?p, ?o)"
+ },
+ {
+  "id": "eq-rep-p",
+  "if": "T(?p, owl:sameAs, ?p')\nT(?s, ?p, ?o)",
+  "then": "T(?s, ?p', ?o)"
+ },
+ {
+  "id": "eq-rep-o",
+  "if": "T(?o, owl:sameAs, ?o')\nT(?s, ?p, ?o)",
+  "then": "T(?s, ?p, ?o')"
+ },
+ {
+  "id": "eq-diff1",
+  "if": "T(?x, owl:sameAs, ?y)\nT(?x, owl:differentFrom, ?y)",
+  "then": "false"
+ },
+ {
+  "id": "eq-diff2",
+  "if": "T(?x, rdf:type, owl:AllDifferent)\nT(?x, owl:members, ?y)\nLIST[?y, ?z1, ..., ?zn]\nT(?zi, owl:sameAs, ?zj)",
+  "then": "false"
+ },
+ {
+  "id": "eq-diff3",
+  "if": "T(?x, rdf:type, owl:AllDifferent)\nT(?x, owl:distinctMembers, ?y)\nLIST[?y, ?z1, ..., ?zn]\nT(?zi, owl:sameAs, ?zj)",
+  "then": "false"
+ },
+ {
+  "id": "prp-ap",
+  "if": "",
+  "then": "T(ap, rdf:type, owl:AnnotationProperty)"
+ },
+ {
+  "id": "prp-dom",
+  "if": "T(?p, rdfs:domain, ?c)\nT(?x, ?p, ?y)",
+  "then": "T(?x, rdf:type, ?c)"
+ },
+ {
+  "id": "prp-rng",
+  "if": "T(?p, rdfs:range, ?c)\nT(?x, ?p, ?y)",
+  "then": "T(?y, rdf:type, ?c)"
+ },
+ {
+  "id": "prp-fp",
+  "if": "T(?p, rdf:type, owl:FunctionalProperty)\nT(?x, ?p, ?y1)\nT(?x, ?p, ?y2)",
+  "then": "T(?y1, owl:sameAs, ?y2)"
+ },
+ {
+  "id": "prp-ifp",
+  "if": "T(?p, rdf:type, owl:InverseFunctionalProperty)\nT(?x1, ?p, ?y)\nT(?x2, ?p, ?y)",
+  "then": "T(?x1, owl:sameAs, ?x2)"
+ },
+ {
+  "id": "prp-irp",
+  "if": "T(?p, rdf:type, owl:IrreflexiveProperty)\nT(?x, ?p, ?x)",
+  "then": "false"
+ },
+ {
+  "id": "prp-symp",
+  "if": "T(?p, rdf:type, owl:SymmetricProperty)\nT(?x, ?p, ?y)",
+  "then": "T(?y, ?p, ?x)"
+ },
+ {
+  "id": "prp-asyp",
+  "if": "T(?p, rdf:type, owl:AsymmetricProperty)\nT(?x, ?p, ?y)\nT(?y, ?p, ?x)",
+  "then": "false"
+ },
+ {
+  "id": "prp-trp",
+  "if": "T(?p, rdf:type, owl:TransitiveProperty)\nT(?x, ?p, ?y)\nT(?y, ?p, ?z)",
+  "then": "T(?x, ?p, ?z)"
+ },
+ {
+  "id": "prp-spo1",
+  "if": "T(?p1, rdfs:subPropertyOf, ?p2)\nT(?x, ?p1, ?y)",
+  "then": "T(?x, ?p2, ?y)"
+ },
+ {
+  "id": "prp-spo2",
+  "if": "T(?p, owl:propertyChainAxiom, ?x)\nLIST[?x, ?p1, ..., ?pn]\nT(?u1, ?p1, ?u2)\nT(?u2, ?p2, ?u3)\n...\nT(?un, ?pn, ?un+1)",
+  "then": "T(?u1, ?p, ?un+1)"
+ },
+ {
+  "id": "prp-eqp1",
+  "if": "T(?p1, owl:equivalentProperty, ?p2)\nT(?x, ?p1, ?y)",
+  "then": "T(?x, ?p2, ?y)"
+ },
+ {
+  "id": "prp-eqp2",
+  "if": "T(?p1, owl:equivalentProperty, ?p2)\nT(?x, ?p2, ?y)",
+  "then": "T(?x, ?p1, ?y)"
+ },
+ {
+  "id": "prp-pdw",
+  "if": "T(?p1, owl:propertyDisjointWith, ?p2)\nT(?x, ?p1, ?y)\nT(?x, ?p2, ?y)",
+  "then": "false"
+ },
+ {
+  "id": "prp-adp",
+  "if": "T(?x, rdf:type, owl:AllDisjointProperties)\nT(?x, owl:members, ?y)\nLIST[?y, ?p1, ..., ?pn]\nT(?u, ?pi, ?v)\nT(?u, ?pj, ?v)",
+  "then": "false"
+ },
+ {
+  "id": "prp-inv1",
+  "if": "T(?p1, owl:inverseOf, ?p2)\nT(?x, ?p1, ?y)",
+  "then": "T(?y, ?p2, ?x)"
+ },
+ {
+  "id": "prp-inv2",
+  "if": "T(?p1, owl:inverseOf, ?p2)\nT(?x, ?p2, ?y)",
+  "then": "T(?y, ?p1, ?x)"
+ },
+ {
+  "id": "prp-key",
+  "if": "T(?c, owl:hasKey, ?u)\nLIST[?u, ?p1, ..., ?pn]\nT(?x, rdf:type, ?c)\nT(?x, ?p1, ?z1)\n...\nT(?x, ?pn, ?zn)\nT(?y, rdf:type, ?c)\nT(?y, ?p1, ?z1)\n...\nT(?y, ?pn, ?zn)",
+  "then": "T(?x, owl:sameAs, ?y)"
+ },
+ {
+  "id": "prp-npa1",
+  "if": "T(?x, owl:sourceIndividual, ?i1)\nT(?x, owl:assertionProperty, ?p)\nT(?x, owl:targetIndividual, ?i2)\nT(?i1, ?p, ?i2)",
+  "then": "false"
+ },
+ {
+  "id": "prp-npa2",
+  "if": "T(?x, owl:sourceIndividual, ?i)\nT(?x, owl:assertionProperty, ?p)\nT(?x, owl:targetValue, ?lt)\nT(?i, ?p, ?lt)",
+  "then": "false"
+ },
+ {
+  "id": "cls-thing",
+  "if": "",
+  "then": "T(owl:Thing, rdf:type, owl:Class)"
+ },
+ {
+  "id": "cls-nothing1",
+  "if": "",
+  "then": "T(owl:Nothing, rdf:type, owl:Class)"
+ },
+ {
+  "id": "cls-nothing2",
+  "if": "T(?x, rdf:type, owl:Nothing)",
+  "then": "false"
+ },
+ {
+  "id": "cls-int1",
+  "if": "T(?c, owl:intersectionOf, ?x)\nLIST[?x, ?c1, ..., ?cn]\nT(?y, rdf:type, ?c1)\nT(?y, rdf:type, ?c2)\n...\nT(?y, rdf:type, ?cn)",
+  "then": "T(?y, rdf:type, ?c)"
+ },
+ {
+  "id": "cls-int2",
+  "if": "T(?c, owl:intersectionOf, ?x)\nLIST[?x, ?c1, ..., ?cn]\nT(?y, rdf:type, ?c)",
+  "then": "T(?y, rdf:type, ?c1)\nT(?y, rdf:type, ?c2)\n...\nT(?y, rdf:type, ?cn)"
+ },
+ {
+  "id": "cls-uni",
+  "if": "T(?c, owl:unionOf, ?x)\nLIST[?x, ?c1, ..., ?cn]\nT(?y, rdf:type, ?ci)",
+  "then": "T(?y, rdf:type, ?c)"
+ },
+ {
+  "id": "cls-com",
+  "if": "T(?c1, owl:complementOf, ?c2)\nT(?x, rdf:type, ?c1)\nT(?x, rdf:type, ?c2)",
+  "then": "false"
+ },
+ {
+  "id": "cls-svf1",
+  "if": "T(?x, owl:someValuesFrom, ?y)\nT(?x, owl:onProperty, ?p)\nT(?u, ?p, ?v)\nT(?v, rdf:type, ?y)",
+  "then": "T(?u, rdf:type, ?x)"
+ },
+ {
+  "id": "cls-svf2",
+  "if": "T(?x, owl:someValuesFrom, owl:Thing)\nT(?x, owl:onProperty, ?p)\nT(?u, ?p, ?v)",
+  "then": "T(?u, rdf:type, ?x)"
+ },
+ {
+  "id": "cls-avf",
+  "if": "T(?x, owl:allValuesFrom, ?y)\nT(?x, owl:onProperty, ?p)\nT(?u, rdf:type, ?x)\nT(?u, ?p, ?v)",
+  "then": "T(?v, rdf:type, ?y)"
+ },
+ {
+  "id": "cls-hv1",
+  "if": "T(?x, owl:hasValue, ?y)\nT(?x, owl:onProperty, ?p)\nT(?u, rdf:type, ?x)",
+  "then": "T(?u, ?p, ?y)"
+ },
+ {
+  "id": "cls-hv2",
+  "if": "T(?x, owl:hasValue, ?y)\nT(?x, owl:onProperty, ?p)\nT(?u, ?p, ?y)",
+  "then": "T(?u, rdf:type, ?x)"
+ },
+ {
+  "id": "cls-maxc1",
+  "if": "T(?x, owl:maxCardinality, \"0\"^^xsd:nonNegativeInteger)\nT(?x, owl:onProperty, ?p)\nT(?u, rdf:type, ?x)\nT(?u, ?p, ?y)",
+  "then": "false"
+ },
+ {
+  "id": "cls-maxc2",
+  "if": "T(?x, owl:maxCardinality, \"1\"^^xsd:nonNegativeInteger)\nT(?x, owl:onProperty, ?p)\nT(?u, rdf:type, ?x)\nT(?u, ?p, ?y1)\nT(?u, ?p, ?y2)",
+  "then": "T(?y1, owl:sameAs, ?y2)"
+ },
+ {
+  "id": "cls-maxqc1",
+  "if": "T(?x, owl:maxQualifiedCardinality, \"0\"^^xsd:nonNegativeInteger)\nT(?x, owl:onProperty, ?p)\nT(?x, owl:onClass, ?c)\nT(?u, rdf:type, ?x)\nT(?u, ?p, ?y)\nT(?y, rdf:type, ?c)",
+  "then": "false"
+ },
+ {
+  "id": "cls-maxqc2",
+  "if": "T(?x, owl:maxQualifiedCardinality, \"0\"^^xsd:nonNegativeInteger)\nT(?x, owl:onProperty, ?p)\nT(?x, owl:onClass, owl:Thing)\nT(?u, rdf:type, ?x)\nT(?u, ?p, ?y)",
+  "then": "false"
+ },
+ {
+  "id": "cls-maxqc3",
+  "if": "T(?x, owl:maxQualifiedCardinality, \"1\"^^xsd:nonNegativeInteger)\nT(?x, owl:onProperty, ?p)\nT(?x, owl:onClass, ?c)\nT(?u, rdf:type, ?x)\nT(?u, ?p, ?y1)\nT(?y1, rdf:type, ?c)\nT(?u, ?p, ?y2)\nT(?y2, rdf:type, ?c)",
+  "then": "T(?y1, owl:sameAs, ?y2)"
+ },
+ {
+  "id": "cls-maxqc4",
+  "if": "T(?x, owl:maxQualifiedCardinality, \"1\"^^xsd:nonNegativeInteger)\nT(?x, owl:onProperty, ?p)\nT(?x, owl:onClass, owl:Thing)\nT(?u, rdf:type, ?x)\nT(?u, ?p, ?y1)\nT(?u, ?p, ?y2)",
+  "then": "T(?y1, owl:sameAs, ?y2)"
+ },
+ {
+  "id": "cls-oo",
+  "if": "T(?c, owl:oneOf, ?x)\nLIST[?x, ?y1, ..., ?yn]",
+  "then": "T(?y1, rdf:type, ?c)\n...\nT(?yn, rdf:type, ?c)"
+ },
+ {
+  "id": "cax-sco",
+  "if": "T(?c1, rdfs:subClassOf, ?c2)\nT(?x, rdf:type, ?c1)",
+  "then": "T(?x, rdf:type, ?c2)"
+ },
+ {
+  "id": "cax-eqc1",
+  "if": "T(?c1, owl:equivalentClass, ?c2)\nT(?x, rdf:type, ?c1)",
+  "then": "T(?x, rdf:type, ?c2)"
+ },
+ {
+  "id": "cax-eqc2",
+  "if": "T(?c1, owl:equivalentClass, ?c2)\nT(?x, rdf:type, ?c2)",
+  "then": "T(?x, rdf:type, ?c1)"
+ },
+ {
+  "id": "cax-dw",
+  "if": "T(?c1, owl:disjointWith, ?c2)\nT(?x, rdf:type, ?c1)\nT(?x, rdf:type, ?c2)",
+  "then": "false"
+ },
+ {
+  "id": "cax-adc",
+  "if": "T(?x, rdf:type, owl:AllDisjointClasses)\nT(?x, owl:members, ?y)\nLIST[?y, ?c1, ..., ?cn]\nT(?z, rdf:type, ?ci)\nT(?z, rdf:type, ?cj)",
+  "then": "false"
+ },
+ {
+  "id": "dt-type1",
+  "if": "",
+  "then": "T(dt, rdf:type, rdfs:Datatype)"
+ },
+ {
+  "id": "dt-type2",
+  "if": "",
+  "then": "T(lt, rdf:type, dt)"
+ },
+ {
+  "id": "dt-eq",
+  "if": "",
+  "then": "T(lt1, owl:sameAs, lt2)"
+ },
+ {
+  "id": "dt-diff",
+  "if": "",
+  "then": "T(lt1, owl:differentFrom, lt2)"
+ },
+ {
+  "id": "dt-not-type",
+  "if": "T(lt, rdf:type, dt)",
+  "then": "false"
+ },
+ {
+  "id": "scm-cls",
+  "if": "T(?c, rdf:type, owl:Class)",
+  "then": "T(?c, rdfs:subClassOf, ?c)\nT(?c, owl:equivalentClass, ?c)\nT(?c, rdfs:subClassOf, owl:Thing)\nT(owl:Nothing, rdfs:subClassOf, ?c)"
+ },
+ {
+  "id": "scm-sco",
+  "if": "T(?c1, rdfs:subClassOf, ?c2)\nT(?c2, rdfs:subClassOf, ?c3)",
+  "then": "T(?c1, rdfs:subClassOf, ?c3)"
+ },
+ {
+  "id": "scm-eqc1",
+  "if": "T(?c1, owl:equivalentClass, ?c2)",
+  "then": "T(?c1, rdfs:subClassOf, ?c2)\nT(?c2, rdfs:subClassOf, ?c1)"
+ },
+ {
+  "id": "scm-eqc2",
+  "if": "T(?c1, rdfs:subClassOf, ?c2)\nT(?c2, rdfs:subClassOf, ?c1)",
+  "then": "T(?c1, owl:equivalentClass, ?c2)"
+ },
+ {
+  "id": "scm-op",
+  "if": "T(?p, rdf:type, owl:ObjectProperty)",
+  "then": "T(?p, rdfs:subPropertyOf, ?p)\nT(?p, owl:equivalentProperty, ?p)"
+ },
+ {
+  "id": "scm-dp",
+  "if": "T(?p, rdf:type, owl:DatatypeProperty)",
+  "then": "T(?p, rdfs:subPropertyOf, ?p)\nT(?p, owl:equivalentProperty, ?p)"
+ },
+ {
+  "id": "scm-spo",
+  "if": "T(?p1, rdfs:subPropertyOf, ?p2)\nT(?p2, rdfs:subPropertyOf, ?p3)",
+  "then": "T(?p1, rdfs:subPropertyOf, ?p3)"
+ },
+ {
+  "id": "scm-eqp1",
+  "if": "T(?p1, owl:equivalentProperty, ?p2)",
+  "then": "T(?p1, rdfs:subPropertyOf, ?p2)\nT(?p2, rdfs:subPropertyOf, ?p1)"
+ },
+ {
+  "id": "scm-eqp2",
+  "if": "T(?p1, rdfs:subPropertyOf, ?p2)\nT(?p2, rdfs:subPropertyOf, ?p1)",
+  "then": "T(?p1, owl:equivalentProperty, ?p2)"
+ },
+ {
+  "id": "scm-dom1",
+  "if": "T(?p, rdfs:domain, ?c1)\nT(?c1, rdfs:subClassOf, ?c2)",
+  "then": "T(?p, rdfs:domain, ?c2)"
+ },
+ {
+  "id": "scm-dom2",
+  "if": "T(?p2, rdfs:domain, ?c)\nT(?p1, rdfs:subPropertyOf, ?p2)",
+  "then": "T(?p1, rdfs:domain, ?c)"
+ },
+ {
+  "id": "scm-rng1",
+  "if": "T(?p, rdfs:range, ?c1)\nT(?c1, rdfs:subClassOf, ?c2)",
+  "then": "T(?p, rdfs:range, ?c2)"
+ },
+ {
+  "id": "scm-rng2",
+  "if": "T(?p2, rdfs:range, ?c)\nT(?p1, rdfs:subPropertyOf, ?p2)",
+  "then": "T(?p1, rdfs:range, ?c)"
+ },
+ {
+  "id": "scm-hv",
+  "if": "T(?c1, owl:hasValue, ?i)\nT(?c1, owl:onProperty, ?p1)\nT(?c2, owl:hasValue, ?i)\nT(?c2, owl:onProperty, ?p2)\nT(?p1, rdfs:subPropertyOf, ?p2)",
+  "then": "T(?c1, rdfs:subClassOf, ?c2)"
+ },
+ {
+  "id": "scm-svf1",
+  "if": "T(?c1, owl:someValuesFrom, ?y1)\nT(?c1, owl:onProperty, ?p)\nT(?c2, owl:someValuesFrom, ?y2)\nT(?c2, owl:onProperty, ?p)\nT(?y1, rdfs:subClassOf, ?y2)",
+  "then": "T(?c1, rdfs:subClassOf, ?c2)"
+ },
+ {
+  "id": "scm-svf2",
+  "if": "T(?c1, owl:someValuesFrom, ?y)\nT(?c1, owl:onProperty, ?p1)\nT(?c2, owl:someValuesFrom, ?y)\nT(?c2, owl:onProperty, ?p2)\nT(?p1, rdfs:subPropertyOf, ?p2)",
+  "then": "T(?c1, rdfs:subClassOf, ?c2)"
+ },
+ {
+  "id": "scm-avf1",
+  "if": "T(?c1, owl:allValuesFrom, ?y1)\nT(?c1, owl:onProperty, ?p)\nT(?c2, owl:allValuesFrom, ?y2)\nT(?c2, owl:onProperty, ?p)\nT(?y1, rdfs:subClassOf, ?y2)",
+  "then": "T(?c1, rdfs:subClassOf, ?c2)"
+ },
+ {
+  "id": "scm-avf2",
+  "if": "T(?c1, owl:allValuesFrom, ?y)\nT(?c1, owl:onProperty, ?p1)\nT(?c2, owl:allValuesFrom, ?y)\nT(?c2, owl:onProperty, ?p2)\nT(?p1, rdfs:subPropertyOf, ?p2)",
+  "then": "T(?c2, rdfs:subClassOf, ?c1)"
+ },
+ {
+  "id": "scm-int",
+  "if": "T(?c, owl:intersectionOf, ?x)\nLIST[?x, ?c1, ..., ?cn]",
+  "then": "T(?c, rdfs:subClassOf, ?c1)\nT(?c, rdfs:subClassOf, ?c2)\n...\nT(?c, rdfs:subClassOf, ?cn)"
+ },
+ {
+  "id": "scm-uni",
+  "if": "T(?c, owl:unionOf, ?x)\nLIST[?x, ?c1, ..., ?cn]",
+  "then": "T(?c1, rdfs:subClassOf, ?c)\nT(?c2, rdfs:subClassOf, ?c)\n...\nT(?cn, rdfs:subClassOf, ?c)"
+ }
+]

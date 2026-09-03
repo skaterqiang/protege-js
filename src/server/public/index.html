@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>Protégé JS</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: -apple-system, 'SF Pro', 'PingFang SC', sans-serif; background: #1e1e1e; color: #ddd; }
+    header { padding: 10px 16px; background: #252526; border-bottom: 1px solid #333; display: flex; gap: 10px; align-items: center; }
+    header h1 { font-size: 15px; margin: 0; font-weight: 600; }
+    input[type=text] { flex: 1; max-width: 480px; padding: 6px 10px; border: 1px solid #3a3a3a; background: #1e1e1e; color: #ddd; border-radius: 6px; font-size: 13px; }
+    button { padding: 6px 14px; border: 1px solid #3a3a3a; background: #0e639c; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; }
+    button.ghost { background: #3a3a3a; }
+    #stats { margin-left: auto; font-size: 12px; color: #999; }
+    main { display: flex; height: calc(100vh - 49px); }
+    nav { width: 200px; background: #252526; border-right: 1px solid #333; padding: 10px; }
+    nav .tab { padding: 8px 10px; border-radius: 6px; cursor: pointer; font-size: 13px; margin-bottom: 4px; }
+    nav .tab.active { background: #0e639c; color: #fff; }
+    #tree-wrap { flex: 1; overflow: auto; padding: 14px 18px; }
+    .node { margin: 2px 0; }
+    .node .row { display: flex; align-items: center; gap: 6px; padding: 2px 4px; border-radius: 4px; cursor: default; }
+    .node .row:hover { background: #2d2d30; }
+    .twisty { width: 14px; display: inline-block; text-align: center; color: #888; cursor: pointer; user-select: none; }
+    .children { margin-left: 20px; }
+    .collapsed > .children { display: none; }
+    .badge { font-size: 10px; color: #888; margin-left: 6px; }
+    #empty { color: #777; padding: 40px; text-align: center; }
+    #msg { font-size: 12px; color: #7cc7ff; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Protégé <span style="color:#888">JS</span></h1>
+    <input type="text" id="filePath" placeholder="输入 .owl / .rdf 文件路径后加载…">
+    <button id="btn-load">加载本体</button>
+    <span id="msg"></span>
+    <span id="stats"></span>
+  </header>
+  <main>
+    <nav>
+      <div class="tab active" data-kind="class">Classes</div>
+      <div class="tab" data-kind="objectProperty">Object Properties</div>
+      <div class="tab" data-kind="dataProperty">Data Properties</div>
+    </nav>
+    <div id="tree-wrap"><div id="empty">尚未加载本体。请输入 OWL (RDF/XML) 文件路径并点击「加载本体」。</div></div>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

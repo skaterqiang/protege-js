@@ -1,0 +1,16 @@
+{
+  "name": "protege-js",
+  "version": "0.1.0",
+  "description": "A Node.js reimplementation of Protégé's core OWL ontology model, with an Electron desktop UI served over a local web server.",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "start:web": "node src/server/webServer.js",
+    "test": "node --test test/*.test.js test/owl2rl/*.test.js test/owl2/*.test.js"
+  },
+  "license": "BSD-2-Clause",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^33.0.0"
+  }
+}
