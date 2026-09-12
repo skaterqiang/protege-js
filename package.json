@@ -1,14 +1,68 @@
 {
   "name": "protege-js",
   "version": "0.1.0",
-  "description": "A Node.js reimplementation of Protégé's core OWL ontology model, with an Electron desktop UI served over a local web server.",
-  "main": "main.js",
+  "description": "Zero-dependency OWL 2 / RDF / SWRL library for Node.js: 6 parsers, 3 serializers, and a forward-chaining reasoner covering all 78 W3C OWL 2 RL rules plus QL/EL profiles. A Node.js port of Protégé's non-UI core.",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src/",
+    "docs/",
+    "sample/",
+    "test/",
+    "main.js",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
   "scripts": {
     "start": "node main.js",
     "start:web": "node src/server/webServer.js",
-    "test": "node --test test/*.test.js test/owl2rl/*.test.js test/owl2/*.test.js"
+    "test": "node --test test/*.test.js test/owl2rl/*.test.js test/owl2/*.test.js",
+    "test:rl": "node --test test/owl2rl/*.test.js",
+    "test:spec": "node --test test/owl2/*.test.js",
+    "sample": "node sample/case1-ecommerce-risk.js",
+    "prepublishOnly": "npm test"
   },
+  "keywords": [
+    "owl",
+    "owl2",
+    "owl2-rl",
+    "rdf",
+    "rdfs",
+    "swrl",
+    "ontology",
+    "semantic-web",
+    "reasoner",
+    "reasoning",
+    "knowledge-graph",
+    "turtle",
+    "rdfxml",
+    "manchester-syntax",
+    "functional-syntax",
+    "protege",
+    "bfo",
+    "description-logic",
+    "parser",
+    "serializer"
+  ],
+  "author": "skaterqiang",
   "license": "BSD-2-Clause",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skaterqiang/protege-js.git"
+  },
+  "homepage": "https://github.com/skaterqiang/protege-js#readme",
+  "bugs": {
+    "url": "https://github.com/skaterqiang/protege-js/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "sideEffects": false,
   "dependencies": {},
   "devDependencies": {
     "electron": "^33.0.0"

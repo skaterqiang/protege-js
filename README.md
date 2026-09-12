@@ -1,6 +1,36 @@
 # Protégé JS
 
+A zero-dependency **OWL 2 / RDF / SWRL** library for Node.js — 6 parsers,
+3 round-trip serializers, and a forward-chaining reasoner covering **all 78
+W3C OWL 2 RL rules** plus QL / EL profiles.
 
+[![tests](https://img.shields.io/badge/tests-274%20passing-brightgreen)](https://github.com/skaterqiang/protege-js)
+[![license](https://img.shields.io/badge/license-BSD--2--Clause-blue)](./LICENSE)
+[![node](https://img.shields.io/badge/node-%3E%3D18-green)](https://nodejs.org)
+[![dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)](./package.json)
+
+## Install
+
+```bash
+npm install protege-js
+```
+
+```js
+// Flat imports
+const { OWL2RLReasoner, TripleStore, TurtleParser, checkRL } = require('protege-js');
+
+// Or namespaced
+const protege = require('protege-js');
+protege.inference.OWL2RLReasoner;   // reasoners, triple store, queries
+protege.io.TurtleParser;            // parsers + writers + loader
+protege.model.OWLClass;             // entities, axioms, class expressions
+protege.profiles.checkRL;           // RL / QL / EL profile validators
+
+// Deep imports also work
+const { OWL2RLReasoner } = require('protege-js/src/inference/OWL2RLReasoner');
+```
+
+Full API reference: [docs/API.md](docs/API.md).
 
 ## What this is
 
@@ -12,9 +42,19 @@ Only the *model layer* is reimplemented — the part that is genuinely useful in
 Node.js and reusable by other projects (such as Synapse). Swing views, OSGi plugin
 plumbing, and the Java desktop workspace are intentionally **not** ported.
 
+> **Attribution**: protege-js is an independent reimplementation and is **not
+> affiliated with or endorsed by Stanford University or the Protégé team**.
+> Protégé is a trademark of Stanford University; the name is used for
+> descriptive purposes only. See [LICENSE](./LICENSE) for details. Sample
+> ontologies under `sample/ontologies/` (BFO / OGMS / IAO / RO-core) come from
+> the OBO Foundry under CC-BY 4.0 / CC0 1.0 — see [sample/README.md](sample/README.md).
+
 ## Run
 
 ```bash
+# As a library (no server needed):
+node -e "const {TurtleParser}=require('protege-js'); console.log(new TurtleParser().parse('@prefix ex: <http://e.org/> . ex:a ex:p ex:b .').size)"
+
 # Web UI only (no Electron dependency needed):
 npm run start:web
 # then open http://localhost:8899/
@@ -143,6 +183,7 @@ const onto = new FunctionalSyntaxParser().parse(`
 ```
 main.js                        Electron shell (falls back to headless web server)
 src/
+  index.js                     public API entry (flat + namespaced exports)
   model/                       org.protege.editor.owl.model equivalents
     IRI.js                     org.semanticweb.owlapi.model.IRI
     OWLEntity.js               OWLClass / OWLObjectProperty / OWLDataProperty /

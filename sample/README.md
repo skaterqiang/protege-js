@@ -42,7 +42,20 @@ node --test test/owl2/sample-e2e.test.js
 | [ontologies/ogms.owl](ontologies/ogms.owl) | Ontology for General Medical Science (OGMS) | https://purl.obolibrary.org/obo/ogms.owl | 845 | 医疗通用科学本体（disease/diagnosis 等临床核心类） |
 | [ontologies/ro-core.owl](ontologies/ro-core.owl) | OBO Relation Ontology core | https://purl.obolibrary.org/obo/ro/core.owl | 245 | 标准关系（part_of/has_part 等），制造业 BOM 谓词来源 |
 | [ontologies/iao.owl](ontologies/iao.owl) | Information Artifact Ontology (IAO) | https://purl.obolibrary.org/obo/iao.owl | 2361 | 信息制品本体（工艺文档/批记录/计划规范等标准类） |
+### 许可证与归属（License & Attribution）
 
+上述 4 个文件为第三方作品，**不属于本项目的 BSD-2-Clause 许可范围**，按各自原始许可证随包再分发。许可证信息取自各文件内嵌的 `dcterms:license` / `dc:license` 注解（已逐个核实）：
+
+| 文件 | 许可证 | 文件内声明位置 | 版权/来源 |
+|------|--------|---------------|----------|
+| `bfo.owl` | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) | `<terms:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>` | Barry Smith 等，[Basic Formal Ontology](https://basic-formal-ontology.org/) |
+| `ogms.owl` | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) | `<terms:license>http://creativecommons.org/licenses/by/4.0/</terms:license>` | OGMS 项目组，[OBO Foundry](http://obofoundry.org/ontology/ogms.html) |
+| `iao.owl` | [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) | `<terms:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>` | IAO 项目组，[OBO Foundry](http://obofoundry.org/ontology/iao.html) |
+| `ro-core.owl` | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | `<terms:license rdf:resource="https://creativecommons.org/publicdomain/zero/1.0/"/>` | OBO Relation Ontology 项目组 |
+
+CC-BY 4.0 要求署名（attribution）：本表即为署名声明；如需再分发，请保留本表与各文件内的原始许可证注解。
+
+> 这 4 个文件共约 **1.07 MB**，占 npm 包体积的主要部分。若你只需要库本身，可在安装后删除 `sample/ontologies/`——但 `test/owl2/sample-e2e.test.js` 中 case8 / case9 / case10 依赖它们，删除后这 3 个用例会失败。
 ## 每个案例的结构
 
 - 文件顶部块注释：**业务背景 / 业务规则 / 用到的 OWL 2 能力 / 预期结果**。

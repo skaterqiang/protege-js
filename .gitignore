@@ -1,3 +1,11 @@
-﻿node_modules/
-nohup.out
+node_modules/
+npm-debug.log*
 *.log
+nohup.out
+*.tgz
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+coverage/
+.nyc_output/
