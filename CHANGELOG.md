@@ -39,8 +39,27 @@ First public release on npm as **`@skaterqiang/protege-js`**.
   hierarchy tree browser; optional Electron desktop shell.
 - **Public API entry** — `src/index.js` with flat and namespaced exports
   (`model` / `io` / `inference` / `profiles`).
-- **Tests** — 274 tests via `node:test`: core model, ≥1 test per OWL 2 RL
-  rule (80), full-spec suites, and 10 end-to-end business cases
-  (incl. loading real BFO / OGMS / IAO / RO-core ontologies).
+- **Tests** — 281 tests via `node:test`: core model, ≥1 test per OWL 2 RL
+  rule (80), full-spec suites, 10 end-to-end business cases
+  (incl. loading real BFO / OGMS / IAO / RO-core ontologies), and an
+  `exports`-map regression suite.
+
+### Fixed
+
+- **Deep imports now resolve without the `.js` extension.** `exports` declared
+  `"./src/*": "./src/*"`, but Node performs *no* extension resolution for
+  subpath patterns — so `require('@skaterqiang/protege-js/src/model/IRI')`, the
+  spelling used in 31 of the 34 documented import examples, threw
+  `MODULE_NOT_FOUND` for real consumers. The map now carries two sibling pattern
+  keys (`"./src/*.js"` and `"./src/*" → "./src/*.js"`); Node's best-match rule
+  picks the more specific key by suffix length, so both spellings resolve to the
+  same module.
+
+  The existing suite could not catch this: every other test `require`s siblings
+  by *relative* path, which bypasses `exports` and falls back to legacy CommonJS
+  resolution (where `.js` *is* appended). `test/exports-map.test.js` closes the
+  gap by resolving the package through its own name (Node self-reference) and by
+  **scraping README.md and docs/API.md for every documented import specifier**,
+  so the tests can never drift from the docs again.
 
 [0.1.0]: https://github.com/skaterqiang/protege-js/releases/tag/v0.1.0

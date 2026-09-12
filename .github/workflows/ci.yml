@@ -29,7 +29,7 @@ jobs:
           package-manager-cache: false
 
       # Zero runtime dependencies — nothing to install for the library itself.
-      # `npm test` runs 274 tests via node:test (core model + 78 OWL 2 RL rules
+      # `npm test` runs 281 tests via node:test (core model + 78 OWL 2 RL rules
       # + full-spec suites + 10 end-to-end business cases).
       - name: Run tests
         run: npm test

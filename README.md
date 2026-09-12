@@ -5,7 +5,7 @@ A zero-dependency **OWL 2 / RDF / SWRL** library for Node.js — 6 parsers,
 W3C OWL 2 RL rules** plus QL / EL profiles.
 
 [![CI](https://github.com/skaterqiang/protege-js/actions/workflows/ci.yml/badge.svg)](https://github.com/skaterqiang/protege-js/actions/workflows/ci.yml)
-[![tests](https://img.shields.io/badge/tests-274%20passing-brightgreen)](https://github.com/skaterqiang/protege-js)
+[![tests](https://img.shields.io/badge/tests-281%20passing-brightgreen)](https://github.com/skaterqiang/protege-js)
 [![license](https://img.shields.io/badge/license-BSD--2--Clause-blue)](./LICENSE)
 [![node](https://img.shields.io/badge/node-%3E%3D18-green)](https://nodejs.org)
 [![dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)](./package.json)
@@ -76,7 +76,7 @@ npm start
 ## Test
 
 ```bash
-npm test    # 274 tests: core model + 80 OWL 2 RL rule tests + OWL 2 full-spec + 业务案例 e2e
+npm test    # 281 tests: core model + 80 OWL 2 RL rule tests + OWL 2 full-spec + 业务案例 e2e + exports map
 ```
 
 ## OWL 2 全覆盖

@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "exports": {
     ".": "./src/index.js",
-    "./src/*": "./src/*",
+    "./src/*.js": "./src/*.js",
+    "./src/*": "./src/*.js",
     "./package.json": "./package.json"
   },
   "publishConfig": {
