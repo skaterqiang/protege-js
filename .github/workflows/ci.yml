@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+    tags: ['v*']
+  pull_request:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Node ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # package.json declares engines.node >= 18; verify the floor and current LTS/Current.
+        node-version: [18.x, 20.x, 22.x, 24.x]
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+          package-manager-cache: false
+
+      # Zero runtime dependencies — nothing to install for the library itself.
+      # `npm test` runs 274 tests via node:test (core model + 78 OWL 2 RL rules
+      # + full-spec suites + 10 end-to-end business cases).
+      - name: Run tests
+        run: npm test
+
+      - name: Verify public API entry point
+        run: node scripts/verify-api.js
+
+      - name: Pack dry-run
+        run: npm pack --dry-run
+
+  # ---------------------------------------------------------------------------
+  # Trusted publishing (OIDC) — currently DISABLED.
+  #
+  # It cannot be used for the first release: the trusted-publisher config lives
+  # under npmjs.com → <package> → Settings → Trusted Publisher, so the package
+  # must already exist. It also requires npm CLI >= 11.5.1.
+  #
+  # To enable for v0.1.1+:
+  #   1. Publish v0.1.0 interactively (with account 2FA enabled).
+  #   2. On npmjs.com, add a trusted publisher for this package:
+  #        Owner/User : skaterqiang
+  #        Repository : protege-js
+  #        Workflow   : ci.yml
+  #        Allowed    : npm publish  (and/or npm stage publish)
+  #   3. Uncomment the job below.
+  # ---------------------------------------------------------------------------
+  # publish:
+  #   name: Publish to npm
+  #   needs: test
+  #   if: startsWith(github.ref, 'refs/tags/v')
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     id-token: write   # required for OIDC
+  #     contents: read
+  #   steps:
+  #     - uses: actions/checkout@v6
+  #     - uses: actions/setup-node@v6
+  #       with:
+  #         node-version: '24'
+  #         registry-url: 'https://registry.npmjs.org'
+  #         package-manager-cache: false
+  #     - run: npm test
+  #     - run: npm publish --access public   # OIDC — no token needed

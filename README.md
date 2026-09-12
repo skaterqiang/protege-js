@@ -4,6 +4,7 @@ A zero-dependency **OWL 2 / RDF / SWRL** library for Node.js — 6 parsers,
 3 round-trip serializers, and a forward-chaining reasoner covering **all 78
 W3C OWL 2 RL rules** plus QL / EL profiles.
 
+[![CI](https://github.com/skaterqiang/protege-js/actions/workflows/ci.yml/badge.svg)](https://github.com/skaterqiang/protege-js/actions/workflows/ci.yml)
 [![tests](https://img.shields.io/badge/tests-274%20passing-brightgreen)](https://github.com/skaterqiang/protege-js)
 [![license](https://img.shields.io/badge/license-BSD--2--Clause-blue)](./LICENSE)
 [![node](https://img.shields.io/badge/node-%3E%3D18-green)](https://nodejs.org)

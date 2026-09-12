@@ -13,6 +13,7 @@
     "docs/",
     "sample/",
     "test/",
+    "scripts/",
     "main.js",
     "README.md",
     "CHANGELOG.md",
@@ -24,8 +25,9 @@
     "test": "node --test test/*.test.js test/owl2rl/*.test.js test/owl2/*.test.js",
     "test:rl": "node --test test/owl2rl/*.test.js",
     "test:spec": "node --test test/owl2/*.test.js",
+    "verify:api": "node scripts/verify-api.js",
     "sample": "node sample/case1-ecommerce-risk.js",
-    "prepublishOnly": "npm test"
+    "prepublishOnly": "npm test && npm run verify:api"
   },
   "keywords": [
     "owl",
