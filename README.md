@@ -13,23 +13,32 @@ W3C OWL 2 RL rules** plus QL / EL profiles.
 ## Install
 
 ```bash
-npm install protege-js
+npm install @skaterqiang/protege-js
 ```
 
 ```js
 // Flat imports
-const { OWL2RLReasoner, TripleStore, TurtleParser, checkRL } = require('protege-js');
+const { OWL2RLReasoner, TripleStore, TurtleParser, checkRL } = require('@skaterqiang/protege-js');
 
 // Or namespaced
-const protege = require('protege-js');
+const protege = require('@skaterqiang/protege-js');
 protege.inference.OWL2RLReasoner;   // reasoners, triple store, queries
 protege.io.TurtleParser;            // parsers + writers + loader
 protege.model.OWLClass;             // entities, axioms, class expressions
 protege.profiles.checkRL;           // RL / QL / EL profile validators
 
 // Deep imports also work
-const { OWL2RLReasoner } = require('protege-js/src/inference/OWL2RLReasoner');
+const { OWL2RLReasoner } = require('@skaterqiang/protege-js/src/inference/OWL2RLReasoner');
 ```
+
+> **Why the scoped name?** The unscoped name `protege-js` is rejected by npm's
+> name-similarity rule because [`protegejs`](https://www.npmjs.com/package/protegejs)
+> already exists — an unrelated 2018 jQuery/Prototype.js shim that happens to
+> share the French word *protégé*. This package is scoped to make authorship
+> unambiguous, which is exactly what npm's
+> [package name guidelines](https://docs.npmjs.com/package-name-guidelines) ask
+> for. The GitHub repository keeps the shorter name:
+> [skaterqiang/protege-js](https://github.com/skaterqiang/protege-js).
 
 Full API reference: [docs/API.md](docs/API.md).
 
@@ -54,7 +63,7 @@ plumbing, and the Java desktop workspace are intentionally **not** ported.
 
 ```bash
 # As a library (no server needed):
-node -e "const {TurtleParser}=require('protege-js'); console.log(new TurtleParser().parse('@prefix ex: <http://e.org/> . ex:a ex:p ex:b .').size)"
+node -e "const {TurtleParser}=require('@skaterqiang/protege-js'); console.log(new TurtleParser().parse('@prefix ex: <http://e.org/> . ex:a ex:p ex:b .').size)"
 
 # Web UI only (no Electron dependency needed):
 npm run start:web

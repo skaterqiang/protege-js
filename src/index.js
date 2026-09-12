@@ -5,11 +5,11 @@
 //
 // Everything is re-exported here so consumers can do:
 //
-//   const { OWL2RLReasoner, TurtleParser } = require('protege-js');
+//   const { OWL2RLReasoner, TurtleParser } = require('@skaterqiang/protege-js');
 //
 // Namespaced access is available too, for callers that prefer grouping:
 //
-//   const protege = require('protege-js');
+//   const protege = require('@skaterqiang/protege-js');
 //   protege.inference.OWL2RLReasoner
 //   protege.io.TurtleParser
 //   protege.model.OWLClass

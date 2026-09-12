@@ -29,14 +29,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 Acknowledgements
 ----------------
 
-protege-js is an independent Node.js reimplementation of the non-UI core of
-Protégé (https://protege.stanford.edu/), which is developed by the Stanford
-Center for Biomedical Informatics Research and distributed under the BSD
-2-Clause license (Copyright (c) 2014, The Board of Trustees of Leland Stanford
-Junior University). protege-js is not affiliated with, endorsed by, or
-sponsored by Stanford University or the Protégé team. "Protégé" is a trademark
-of Stanford University; the name "protege-js" is used for descriptive purposes
-only.
+protege-js (published on npm as @skaterqiang/protege-js) is an independent
+Node.js reimplementation of the non-UI core of Protégé
+(https://protege.stanford.edu/), which is developed by the Stanford Center for
+Biomedical Informatics Research and distributed under the BSD 2-Clause license
+(Copyright (c) 2014, The Board of Trustees of Leland Stanford Junior
+University). protege-js is not affiliated with, endorsed by, or sponsored by
+Stanford University or the Protégé team. "Protégé" is a trademark of Stanford
+University; the name "protege-js" is used for descriptive purposes only.
 
 The OWL 2 RL rule set implements the W3C recommendation:
   OWL 2 Web Ontology Language Profiles (Second Edition)

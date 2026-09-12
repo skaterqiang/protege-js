@@ -6,7 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0] - 2026-09-12
 
-First public release on npm.
+First public release on npm as **`@skaterqiang/protege-js`**.
+
+> The unscoped name `protege-js` is unavailable: npm's name-similarity rule
+> rejects it because `protegejs` (an unrelated 2018 jQuery/Prototype.js shim)
+> already exists. The package is scoped to keep authorship unambiguous; the
+> GitHub repository keeps the shorter name `skaterqiang/protege-js`.
 
 ### Added
 

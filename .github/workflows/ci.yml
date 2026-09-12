@@ -49,11 +49,14 @@ jobs:
   #
   # To enable for v0.1.1+:
   #   1. Publish v0.1.0 interactively (with account 2FA enabled).
-  #   2. On npmjs.com, add a trusted publisher for this package:
+  #   2. On npmjs.com, add a trusted publisher for @skaterqiang/protege-js
+  #      (package Settings -> Trusted Publisher):
   #        Owner/User : skaterqiang
   #        Repository : protege-js
   #        Workflow   : ci.yml
   #        Allowed    : npm publish  (and/or npm stage publish)
+  #      Note: repository.url in package.json already matches the GitHub repo,
+  #      which is required for OIDC publishing to work.
   #   3. Uncomment the job below.
   # ---------------------------------------------------------------------------
   # publish:

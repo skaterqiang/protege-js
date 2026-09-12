@@ -42,7 +42,7 @@
 **IRI** = **I**nternationalized **R**esource **I**dentifier，国际化资源标识符。它是 URI 的超集，允许出现中文字符。OWL 中每个资源（类、属性、个体、本体）都有一个唯一的 IRI 作为「身份证」。本类是不可变值对象，`IRI.create(s)` 内部有缓存，同一字符串返回同一实例。
 
 ```js
-const { IRI } = require('protege-js/src/model/IRI');
+const { IRI } = require('@skaterqiang/protege-js/src/model/IRI');
 
 const iri = IRI.create('http://example.org/Person');
 iri.toString();        // 'http://example.org/Person'
@@ -65,7 +65,7 @@ iri.getNamespace();    // 'http://example.org/'
 const {
   OWLClass, OWLObjectProperty, OWLDataProperty,
   OWLNamedIndividual, OWLDatatype, OWLAnnotationProperty
-} = require('protege-js/src/model/OWLEntity');
+} = require('@skaterqiang/protege-js/src/model/OWLEntity');
 
 const Person = new OWLClass(IRI.create('http://example.org/Person'));
 const knows = new OWLObjectProperty(IRI.create('http://example.org/knows'));
@@ -85,7 +85,7 @@ const xsdInt = new OWLDatatype(IRI.create('http://www.w3.org/2001/XMLSchema#inte
 XSD = **X**ML **S**chema **D**efinition，W3C 定义的标准数据类型集（integer、string、boolean、dateTime 等）。
 
 ```js
-const { OWLLiteral } = require('protege-js/src/model/OWLLiteral');
+const { OWLLiteral } = require('@skaterqiang/protege-js/src/model/OWLLiteral');
 
 const name = new OWLLiteral('Alice');                                          // 字符串
 const age30 = new OWLLiteral('30', xsdInt);                                    // 带类型
@@ -106,7 +106,7 @@ const title = new OWLLiteral('你好', null, 'zh');                             
 - **注解公理**：对实体或公理本身附加说明文字，不参与逻辑推理。
 
 ```js
-const AX = require('protege-js/src/model/OWLAxiom');
+const AX = require('@skaterqiang/protege-js/src/model/OWLAxiom');
 
 // 类公理
 new AX.OWLDeclarationAxiom(Person);
@@ -171,7 +171,7 @@ new AX.OWLAnnotationPropertyRangeAxiom(prop, iri);
 **Facet**（限定面）是 XSD 定义的约束，如 `minInclusive` / `maxInclusive` / `length` / `pattern`。
 
 ```js
-const CE = require('protege-js/src/model/OWLClassExpression');
+const CE = require('@skaterqiang/protege-js/src/model/OWLClassExpression');
 
 // 布尔运算
 new CE.OWLObjectIntersectionOf([A, B]);
@@ -216,8 +216,8 @@ new CE.OWLDatatypeRestriction(xsdInt, [
 **NS** = **N**ame**s**pace，命名空间常量集合。RDF/RDFS/OWL/XSD 都预定义了一组词汇 IRI 前缀，此处集中导出避免硬编码。
 
 ```js
-const { TripleStore } = require('protege-js/src/inference/TripleStore');
-const { NS } = require('protege-js/src/inference/rdf');
+const { TripleStore } = require('@skaterqiang/protege-js/src/inference/TripleStore');
+const { NS } = require('@skaterqiang/protege-js/src/inference/rdf');
 
 const store = new TripleStore();
 
@@ -251,7 +251,7 @@ NS.XSD    // http://www.w3.org/2001/XMLSchema#
 **物化（Materialization）**指把所有可推出的事实真正写入存储，之后查询 O(1)。这与「反向链/查询时推理」相对。
 
 ```js
-const { OWL2RLReasoner } = require('protege-js/src/inference/OWL2RLReasoner');
+const { OWL2RLReasoner } = require('@skaterqiang/protege-js/src/inference/OWL2RLReasoner');
 
 const r = new OWL2RLReasoner();
 
@@ -286,8 +286,8 @@ r.inconsistencies;                             // 不一致的三元组列表
 const {
   SWRLRule, SWRLClassAtom, SWRLObjectPropertyAtom,
   SWRLDataPropertyAtom, SWRLBuiltInAtom, SWRLVariable
-} = require('protege-js/src/model/SWRL');
-const { SWRLReasoner } = require('protege-js/src/inference/SWRLReasoner');
+} = require('@skaterqiang/protege-js/src/model/SWRL');
+const { SWRLReasoner } = require('@skaterqiang/protege-js/src/inference/SWRLReasoner');
 
 // 变量（URI 格式 urn:swrl:var:NAME）
 const vx = new SWRLVariable(IRI.create('urn:swrl:var:x'));
@@ -315,7 +315,7 @@ const added = r.run([rule]);    // → 1 (新增 hasUncle 三元组)
 ### 内置函数（30+）
 
 ```js
-const { SWRLBuiltins } = require('protege-js/src/inference/SWRLReasoner');
+const { SWRLBuiltins } = require('@skaterqiang/protege-js/src/inference/SWRLReasoner');
 
 SWRLBuiltins.call('equal', [5, 5]);                    // true
 SWRLBuiltins.call('lessThan', [3, 7]);                 // true
@@ -349,7 +349,7 @@ SWRLBuiltins.call('contains', ['hello world', 'world']); // true
 **Turtle** = **T**erse **R**DF **T**riple **L**anguage，W3C RDF 的一种紧凑文本语法，是当前最常用的 RDF 书写格式（比 RDF/XML 可读性高得多）。文件后缀通常为 `.ttl`。
 
 ```js
-const { TurtleParser } = require('protege-js/src/io/TurtleParser');
+const { TurtleParser } = require('@skaterqiang/protege-js/src/io/TurtleParser');
 
 const store = new TurtleParser().parse(`
   @prefix ex: <http://example.org/> .
@@ -387,7 +387,7 @@ store.match(null, NS.RDF + 'type', null);   // 所有类型断言
 **OWL 本体文档**常以 RDF/XML 形式分发，本解析器同时识别 `<owl:Class>` 元素式与 `<rdf:Description>` + `<rdf:type>` 描述式两种风格。
 
 ```js
-const { parseRDFXML } = require('protege-js/src/io/RDFXMLParser');
+const { parseRDFXML } = require('@skaterqiang/protege-js/src/io/RDFXMLParser');
 
 const ont = parseRDFXML(`<?xml version="1.0"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -426,7 +426,7 @@ ont.getAxioms();    // → 所有解析出的公理
 **Functional-Style Syntax**（函数式语法）是 OWL 2 规范文档本身使用的「权威语法」，用类似 Lisp 的 S 表达式书写公理，例如 `SubClassOf(Student Person)`。它的优势是结构严谨、与规范文法一一对应，常用于规范文档、测试套件、工具间交换。Manchester Syntax 是另一种以它为基准设计的「人类友好」语法。
 
 ```js
-const { FunctionalSyntaxParser } = require('protege-js/src/io/FunctionalSyntaxParser');
+const { FunctionalSyntaxParser } = require('@skaterqiang/protege-js/src/io/FunctionalSyntaxParser');
 
 const ont = new FunctionalSyntaxParser().parse(`
   Prefix(ex:=<http://example.org/>)
@@ -463,9 +463,9 @@ ont.getAxiomCount();   // 12
 ### 8.1 从 Turtle 加载 + OWL 2 RL 推理
 
 ```js
-const { TurtleParser } = require('protege-js/src/io/TurtleParser');
-const { OWL2RLReasoner } = require('protege-js/src/inference/OWL2RLReasoner');
-const { NS } = require('protege-js/src/inference/rdf');
+const { TurtleParser } = require('@skaterqiang/protege-js/src/io/TurtleParser');
+const { OWL2RLReasoner } = require('@skaterqiang/protege-js/src/inference/OWL2RLReasoner');
+const { NS } = require('@skaterqiang/protege-js/src/inference/rdf');
 
 const ttl = `
   @prefix ex: <http://example.org/> .
@@ -485,8 +485,8 @@ r.entails('http://example.org/alice', NS.RDF + 'type', 'http://example.org/Perso
 ### 8.2 SWRL 规则链
 
 ```js
-const { SWRLRule, SWRLClassAtom, SWRLObjectPropertyAtom, SWRLDataPropertyAtom, SWRLBuiltInAtom, SWRLVariable } = require('protege-js/src/model/SWRL');
-const { SWRLReasoner } = require('protege-js/src/inference/SWRLReasoner');
+const { SWRLRule, SWRLClassAtom, SWRLObjectPropertyAtom, SWRLDataPropertyAtom, SWRLBuiltInAtom, SWRLVariable } = require('@skaterqiang/protege-js/src/model/SWRL');
+const { SWRLReasoner } = require('@skaterqiang/protege-js/src/inference/SWRLReasoner');
 
 const v = (n) => new SWRLVariable(IRI.create('urn:swrl:var:' + n));
 
@@ -513,8 +513,8 @@ r.run(rules);   // fixpoint，自动终止
 ### 8.3 Functional 语法 → 模型 → RL 推理
 
 ```js
-const { FunctionalSyntaxParser } = require('protege-js/src/io/FunctionalSyntaxParser');
-const { OWL2RLReasoner } = require('protege-js/src/inference/OWL2RLReasoner');
+const { FunctionalSyntaxParser } = require('@skaterqiang/protege-js/src/io/FunctionalSyntaxParser');
+const { OWL2RLReasoner } = require('@skaterqiang/protege-js/src/inference/OWL2RLReasoner');
 
 const ont = new FunctionalSyntaxParser().parse(`
   Ontology(
@@ -553,7 +553,7 @@ npm test    # 256 个测试全部通过
 解析 Protégé 风格的 Manchester Syntax 帧语法。
 
 ```js
-const { ManchesterSyntaxParser } = require('protege-js/src/io/ManchesterSyntaxParser');
+const { ManchesterSyntaxParser } = require('@skaterqiang/protege-js/src/io/ManchesterSyntaxParser');
 const ont = new ManchesterSyntaxParser({ prefixes: { ex: 'http://ex.org/' } }).parse(`
 Prefix: ex: <http://ex.org/>
 Class: ex:Person
@@ -577,7 +577,7 @@ Individual: ex:alice
 解析 W3C OWL 2 XML Serialization（与 RDF/XML 不同的另一种 XML 语法）。
 
 ```js
-const { OWLXMLParser } = require('protege-js/src/io/OWLXMLParser');
+const { OWLXMLParser } = require('@skaterqiang/protege-js/src/io/OWLXMLParser');
 const ont = new OWLXMLParser().parse(`<Ontology xmlns="http://www.w3.org/2002/07/owl#" ontologyIRI="http://ex.org/ont">
   <Prefix name="ex" IRI="http://ex.org/"/>
   <Declaration><Class IRI="http://ex.org/Person"/></Declaration>
@@ -595,9 +595,9 @@ const ont = new OWLXMLParser().parse(`<Ontology xmlns="http://www.w3.org/2002/07
 把 OWLOntology 写回各种语法，支持 round-trip（加载 → 修改 → 保存）。
 
 ```js
-const { FunctionalSyntaxWriter, writeFunctionalSyntax } = require('protege-js/src/io/FunctionalSyntaxWriter');
-const { TurtleWriter, writeTurtle } = require('protege-js/src/io/TurtleWriter');
-const { RDFXMLWriter, writeRDFXML } = require('protege-js/src/io/RDFXMLWriter');
+const { FunctionalSyntaxWriter, writeFunctionalSyntax } = require('@skaterqiang/protege-js/src/io/FunctionalSyntaxWriter');
+const { TurtleWriter, writeTurtle } = require('@skaterqiang/protege-js/src/io/TurtleWriter');
+const { RDFXMLWriter, writeRDFXML } = require('@skaterqiang/protege-js/src/io/RDFXMLWriter');
 
 const fsText  = writeFunctionalSyntax(ont);  // Functional-Style Syntax
 const ttlText = writeTurtle(ont);            // Turtle（含 @prefix、blank node restriction）
@@ -611,7 +611,7 @@ const xmlText = writeRDFXML(ont);            // RDF/XML
 OWL 2 三个 profile 中的 QL（查询重写优化）与 EL（多项式分类）的最小实现，基于 RL 规则子集。
 
 ```js
-const { OWL2QLReasoner, OWL2ELReasoner } = require('protege-js/src/inference/OWL2ProfileReasoners');
+const { OWL2QLReasoner, OWL2ELReasoner } = require('@skaterqiang/protege-js/src/inference/OWL2ProfileReasoners');
 
 const ql = new OWL2QLReasoner(store);   // 14 条 QL 规则（无 eq-*/prp-fp/ifp）
 ql.materialize();
@@ -623,17 +623,17 @@ const el = new OWL2ELReasoner(store);   // 14 条 EL 规则（含 prp-trp 传递
 ## 13. Profile 检查与全局约束
 
 ```js
-const { checkRL, checkQL, checkEL, Profiles } = require('protege-js/src/profiles/OWL2Profiles');
+const { checkRL, checkQL, checkEL, Profiles } = require('@skaterqiang/protege-js/src/profiles/OWL2Profiles');
 const violations = checkRL(ont);  // [{axiom, reason}, ...]
 
-const { GlobalRestrictionsValidator } = require('protege-js/src/validation/GlobalRestrictionsValidator');
+const { GlobalRestrictionsValidator } = require('@skaterqiang/protege-js/src/validation/GlobalRestrictionsValidator');
 const errs = new GlobalRestrictionsValidator().validate(ont);  // 正则性 / simple property 检查
 ```
 
 ## 14. 推理查询 API
 
 ```js
-const { ReasonerQueries } = require('protege-js/src/inference/ReasonerQueries');
+const { ReasonerQueries } = require('@skaterqiang/protege-js/src/inference/ReasonerQueries');
 const q = new ReasonerQueries(store);
 q.getSubClasses('ex:Animal');
 q.getInstances('ex:Person');

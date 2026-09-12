@@ -1,5 +1,5 @@
 {
-  "name": "protege-js",
+  "name": "@skaterqiang/protege-js",
   "version": "0.1.0",
   "description": "Zero-dependency OWL 2 / RDF / SWRL library for Node.js: 6 parsers, 3 serializers, and a forward-chaining reasoner covering all 78 W3C OWL 2 RL rules plus QL/EL profiles. A Node.js port of Protégé's non-UI core.",
   "main": "src/index.js",
@@ -7,6 +7,9 @@
     ".": "./src/index.js",
     "./src/*": "./src/*",
     "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "files": [
     "src/",
